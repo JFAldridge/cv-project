@@ -1,0 +1,159 @@
+$primary-font: 'Noto Sans JP', sans-serif;
+$secondary-font: 'Open Sans', sans-serif;
+
+$page-margin: .6in;
+$top-section-height: 2.6in;
+
+$fg: rgb(24, 24, 24);
+$bg: rgb(248, 248, 248);
+
+$accent-fg: rgb(184, 184, 189);
+$accent-bg: rgb(50, 59, 76);
+
+body {
+    font-family: $secondary-font;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: $primary-font;
+}
+
+.resume {
+    display: flex;
+    width: 8.5in;
+    height: 11in;
+    background-color: $bg;
+    color: $fg;
+    font-family: $secondary-font;
+
+    section {
+        margin-bottom: 1.5em;
+    }
+
+    h1, h2, h3, h4, h5 {
+        font-family: $primary-font;
+        color: $accent-bg;
+    }
+
+    h2 {
+        font-size: 1.4em;
+        letter-spacing: .1em;
+        border-bottom: 1.5px solid $accent-bg;
+        padding: .3em 0;
+        margin-bottom: 1em;
+    }
+
+    h4 {
+        font-size: 1em;
+        margin-bottom: .2em;
+        font-weight: bold;
+    }
+
+    p {
+        font-size: .9em;
+        margin-bottom: .9em;
+    }
+
+    li {
+        font-size: .9em;
+    }
+
+    i {
+        color: $bg;
+    }
+
+    .sidebar {
+        width: 32%;
+        background-color: $accent-bg;
+        color: $accent-fg;
+        padding-left: $page-margin;
+        padding-bottom: $page-margin;
+
+        h1, h2, h3, h4, h5 {
+            font-family: $primary-font;
+            color: $bg;
+        }
+
+        h2 {
+            border-bottom: 1.5px solid $bg;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                margin: .5em 0;
+            }
+            
+            i {
+                margin-right: .5em;
+            }           
+        }
+
+        .portrait-container {
+            display: flex;
+            align-items: center;
+            height: $top-section-height;
+
+            .portrait {
+                background-color: rgb(189, 189, 189);
+                width: 1.6in;
+                height: 1.6in;
+                border-radius: 50%;
+                margin-top: 1em;
+            }
+        }
+
+        .education {
+            .institution {
+                margin-bottom: 1em;
+                p {
+                    margin-bottom: .2em;
+                }
+            }
+        }
+
+        .skills {
+            li {
+                margin: 0;
+            }
+        }
+    }
+    
+    .main-content {
+        width: 68%;
+        padding: $page-margin $page-margin $page-margin 2.5em;
+
+        ul {
+            padding-left: 1em;
+        }
+        
+        .introduction {
+            margin: 0;
+            height: calc(#{$top-section-height} - #{$page-margin});
+
+            .first-name {
+                font-weight: bold;
+            }
+
+            .professional-title {
+                letter-spacing: .15em;
+                margin-bottom: 1em;
+            }
+
+            p {
+                margin: 0;
+            }
+        }
+
+        .work-experience {
+            .position {
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+
+

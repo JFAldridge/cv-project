@@ -1,0 +1,146 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.resume {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 8.5in;
+  height: 11in;
+  background-color: #f8f8f8;
+  color: #181818;
+  font-family: "Open Sans", sans-serif;
+}
+
+.resume section {
+  margin-bottom: 1.5em;
+}
+
+.resume h1, .resume h2, .resume h3, .resume h4, .resume h5 {
+  font-family: "Noto Sans JP", sans-serif;
+  color: #323b4c;
+}
+
+.resume h2 {
+  font-size: 1.4em;
+  letter-spacing: .1em;
+  border-bottom: 1.5px solid #323b4c;
+  padding: .3em 0;
+  margin-bottom: 1em;
+}
+
+.resume h4 {
+  font-size: 1em;
+  margin-bottom: .2em;
+  font-weight: bold;
+}
+
+.resume p {
+  font-size: .9em;
+  margin-bottom: .9em;
+}
+
+.resume li {
+  font-size: .9em;
+}
+
+.resume i {
+  color: #f8f8f8;
+}
+
+.resume .sidebar {
+  width: 32%;
+  background-color: #323b4c;
+  color: #b8b8bd;
+  padding-left: 0.6in;
+  padding-bottom: 0.6in;
+}
+
+.resume .sidebar h1, .resume .sidebar h2, .resume .sidebar h3, .resume .sidebar h4, .resume .sidebar h5 {
+  font-family: "Noto Sans JP", sans-serif;
+  color: #f8f8f8;
+}
+
+.resume .sidebar h2 {
+  border-bottom: 1.5px solid #f8f8f8;
+}
+
+.resume .sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resume .sidebar ul li {
+  margin: .5em 0;
+}
+
+.resume .sidebar ul i {
+  margin-right: .5em;
+}
+
+.resume .sidebar .portrait-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 2.6in;
+}
+
+.resume .sidebar .portrait-container .portrait {
+  background-color: #bdbdbd;
+  width: 1.6in;
+  height: 1.6in;
+  border-radius: 50%;
+  margin-top: 1em;
+}
+
+.resume .sidebar .education .institution {
+  margin-bottom: 1em;
+}
+
+.resume .sidebar .education .institution p {
+  margin-bottom: .2em;
+}
+
+.resume .sidebar .skills li {
+  margin: 0;
+}
+
+.resume .main-content {
+  width: 68%;
+  padding: 0.6in 0.6in 0.6in 2.5em;
+}
+
+.resume .main-content ul {
+  padding-left: 1em;
+}
+
+.resume .main-content .introduction {
+  margin: 0;
+  height: calc(2.6in - 0.6in);
+}
+
+.resume .main-content .introduction .first-name {
+  font-weight: bold;
+}
+
+.resume .main-content .introduction .professional-title {
+  letter-spacing: .15em;
+  margin-bottom: 1em;
+}
+
+.resume .main-content .introduction p {
+  margin: 0;
+}
+
+.resume .main-content .work-experience .position {
+  font-weight: normal;
+}
+/*# sourceMappingURL=style.css.map */
