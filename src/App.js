@@ -1,4 +1,4 @@
-import CV from './components/cv.jsx';
+import CV from './components/cv/cv.jsx';
 
 function App() {
   return (
