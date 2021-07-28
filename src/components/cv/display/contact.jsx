@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import CVForm from '../form/cv-form.jsx';
 
 function ContactItem(props) {
 	const iconClasses = {
-			phone: "bi bi-telephone-fill",
+			tel: "bi bi-telephone-fill",
 			email: "bi bi-envelope-fill",
 			portfolio: "bi bi-border-style",
 			github: "bi bi-github",
@@ -21,7 +22,7 @@ class Contact extends Component {
 		super(props);
 
 		this.state = {
-			phone: '555-555-5555',
+			tel: '555-555-5555',
 			email: 'email@me.com',
 			portfolio: 'www.portfolio.com',
 			github: 'github.com/me',
@@ -44,6 +45,7 @@ class Contact extends Component {
 						);
 					})}
 				</ul>
+				<CVForm fields={this.state} />
 			</section>
 		);
 	}
