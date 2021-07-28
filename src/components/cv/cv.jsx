@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../../styles/cv.css';
 import Contact from './display/contact.jsx';
 
 class CV extends Component {
