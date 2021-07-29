@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
-function CVInput({fieldName, currentValue}) {
+class CVInput extends Component {
 
-    const inputType = (name) => {
+    constructor(props) {
+        super(props)
+
+        this.imputType = this.inputType.bind(this);
+        this.capitalize = this.capitalize.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+    }
+    
+    inputType(name) {
         if (name === 'tel' || name === 'email') {
             return name
         } else {
@@ -11,31 +18,39 @@ function CVInput({fieldName, currentValue}) {
         }
     }
 
-    const capitalize = (string) => {
+    capitalize(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    return (
+    handleInputChange(event) {
+        this.props.inputChangeHandle(event);
+    }
 
-        <div className="row g-3 align-items-center">
-            <div className="col-auto">
-                <label 
-                    htmlFor={fieldName} 
-                    className="form-label">
-                {capitalize(fieldName)}
-                </label>
+    render(){
+        const {fieldName, currentValue} = this.props;
+
+        return (
+            <div className="row g-3 align-items-center">
+                <div className="col-auto">
+                    <label 
+                        htmlFor={fieldName} 
+                        className="form-label">
+                    {this.capitalize(fieldName)}
+                    </label>
+                </div>
+                <div className="col-auto">
+                    <input 
+                        type={this.inputType(fieldName)} 
+                        className="form-control" 
+                        id={fieldName}
+                        name={fieldName}
+                        value={currentValue} 
+                        onChange={this.handleInputChange}
+                    />
+                </div>
             </div>
-            <div className="col-auto">
-                <input 
-                    type={inputType(fieldName)} 
-                    class="form-control" 
-                    id={fieldName}
-                    value={currentValue} 
-                />
-            </div>
-        </div>
-    
-    );
+        );
+    }
 }
 
 class CVForm extends Component {
@@ -43,30 +58,54 @@ class CVForm extends Component {
         super(props);
 
         this.state = {
-            display: false
+            displayForm: false,
         };
+
+        this.toggleDisplay = this.toggleDisplay.bind(this);
+    }
+
+    toggleDisplay() {
+        this.setState ({
+            displayForm: this.state.displayForm ? false : true
+        });
     }
 
     render(){
-        console.log(this.props);
 
-        return(
-            <div className="form-modal">
-                <div className="form-container">
-                    <form>
-                        { Object.entries(this.props.fields).map(([key, value]) => {
-                            return (
-                                <CVInput 
-                                    fieldName={key}
-                                    currentValue={value}
-                                    key={uuidv4()}
-                                />                 
-                            );
-                        }) }
-                    </form>
+
+        if (this.state.displayForm) {
+
+            return(
+                <div className="form-modal">
+                    <div className="form-container">
+                        <form>
+                            { Object.entries(this.props.fields).map(([inputName, inputValue]) => {
+                                return (
+                                    <CVInput 
+                                        fieldName={inputName}
+                                        currentValue={inputValue}
+                                        key={inputName}
+                                        inputChangeHandle={this.props.inputChangeHandle}
+                                    />                 
+                                );
+                            }) }
+                            <button
+                                className="btn btn-primary"
+                                onClick={this.toggleDisplay}
+                                type="button"
+                            >Done</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        } else {
+            return (
+                <i 
+                    className="bi bi-pencil-square edit-section"
+                    onClick={() => this.toggleDisplay()}
+                ></i>
+            );
+        }
     }
 }
 

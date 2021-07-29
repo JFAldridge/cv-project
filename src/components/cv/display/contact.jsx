@@ -28,7 +28,18 @@ class Contact extends Component {
 			github: 'github.com/me',
 		};
 
+		this.handleInputChange = this.handleInputChange.bind(this);
 	}
+
+	handleInputChange(event) {
+		const target = event.target;
+		const value = target.value;
+		const name = target.name;
+	
+		this.setState({
+		  [name]: value
+		});
+	  }
 
 	render() {
 		return (
@@ -45,7 +56,10 @@ class Contact extends Component {
 						);
 					})}
 				</ul>
-				<CVForm fields={this.state} />
+				<CVForm 
+					fields={this.state} 
+					inputChangeHandle={this.handleInputChange}
+				/>
 			</section>
 		);
 	}

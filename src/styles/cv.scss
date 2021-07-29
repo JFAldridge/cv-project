@@ -22,7 +22,6 @@ h1, h2, h3, h4, h5 {
 
 .resume {
     display: flex;
-    position: relative;
     width: 8.5in;
     height: 11in;
     background-color: $bg;
@@ -31,6 +30,7 @@ h1, h2, h3, h4, h5 {
 
     section {
         margin-bottom: 1.5em;
+        position: relative;
     }
 
     h1, h2, h3, h4, h5 {
@@ -157,6 +157,53 @@ h1, h2, h3, h4, h5 {
         }
     }
 }
+
+/* Form */
+
+.edit-section {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* The Modal (background) */
+.form-modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+/* Modal Content/Box */
+.form-container {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+  
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
 
 
 
