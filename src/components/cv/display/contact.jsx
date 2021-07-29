@@ -33,7 +33,13 @@ class Contact extends Component {
 
 	handleInputChange(event) {
 		const target = event.target;
-		const value = target.value;
+
+		// Convert empty string to null to remove field
+		let value = target.value;
+		if (value === '') {
+			value = null;
+		}
+
 		const name = target.name;
 	
 		this.setState({
