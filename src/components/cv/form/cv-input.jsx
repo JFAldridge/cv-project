@@ -1,13 +1,6 @@
-function CVInput( {fieldName, currentValue, inputChangeHandle} ) {
-    
-    const inputType = (name) => {
-        if (name === 'tel' || name === 'email') {
-            return name
-        } else {
-            return 'text';
-        }
-    }
 
+function CVInput( {inputName, inputType, currentValue, inputChangeHandle} ) {
+    
     const capitalize = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -21,18 +14,18 @@ function CVInput( {fieldName, currentValue, inputChangeHandle} ) {
         <div className="row g-3 align-items-center">
             <div className="col-auto">
                 <label 
-                    htmlFor={fieldName} 
+                    htmlFor={inputName} 
                     className="form-label">
-                {capitalize(fieldName)}
+                {capitalize(inputName)}
                 </label>
             </div>
             <div className="col-auto">
                 <input 
-                    type={inputType(fieldName)} 
+                    type={inputType} 
                     className="form-control" 
-                    id={fieldName}
-                    name={fieldName}
-                    value={currentValue} 
+                    id={inputName}
+                    name={inputName}
+                    value={currentValue || ''} 
                     onChange={handleInputChange}
                 />
             </div>

@@ -27,11 +27,12 @@ class CVForm extends Component {
                 <div className="form-modal">
                     <div className="form-container">
                         <form>
-                            { Object.entries(this.props.fields).map(([inputName, inputValue]) => {
+                            { Object.entries(this.props.fields).map(([inputName, inputInfo]) => {
                                 return (
                                     <CVInput 
-                                        fieldName={inputName}
-                                        currentValue={inputValue}
+                                        inputName={inputName}
+                                        inputType={inputInfo[1]}
+                                        currentValue={inputInfo[0]}
                                         key={inputName}
                                         inputChangeHandle={this.props.inputChangeHandle}
                                     />                 

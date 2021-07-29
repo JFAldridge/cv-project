@@ -22,10 +22,10 @@ class Contact extends Component {
 		super(props);
 
 		this.state = {
-			tel: '555-555-5555',
-			email: 'email@me.com',
-			portfolio: 'www.portfolio.com',
-			github: 'github.com/me',
+			tel: ['555-555-5555', 'tel'],
+			email: ['email@me.com', 'email'],
+			portfolio: ['www.portfolio.com', 'url'],
+			github: ['github.com/me', 'text'],
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -33,6 +33,7 @@ class Contact extends Component {
 
 	handleInputChange(event) {
 		const target = event.target;
+		const name = target.name;
 
 		// Convert empty string to null to remove field
 		let value = target.value;
@@ -40,10 +41,11 @@ class Contact extends Component {
 			value = null;
 		}
 
-		const name = target.name;
+		let inputInfo = this.state[name].slice();
+		inputInfo[0] = value;
 	
 		this.setState({
-		  [name]: value
+		  [name]: inputInfo
 		});
 	  }
 
@@ -52,11 +54,11 @@ class Contact extends Component {
 			<section className="contact">
 				<h2>Contact</h2>
 				<ul className="contact-list">
-					{ Object.entries(this.state).map(([key, value]) => {
+					{ Object.entries(this.state).map(([key, inputInfo]) => {
 						return (
 							<ContactItem 
 								type={key}
-								value={value}
+								value={inputInfo[0]}
 								key={uuidv4()}
 							/>
 						);
