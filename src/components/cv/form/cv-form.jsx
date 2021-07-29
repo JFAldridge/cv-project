@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 
-class CVInput extends Component {
-
-    constructor(props) {
-        super(props)
-
-        this.imputType = this.inputType.bind(this);
-        this.capitalize = this.capitalize.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
-    }
+function CVInput( {fieldName, currentValue, inputChangeHandle} ) {
     
-    inputType(name) {
+    const inputType = (name) => {
         if (name === 'tel' || name === 'email') {
             return name
         } else {
@@ -18,39 +10,36 @@ class CVInput extends Component {
         }
     }
 
-    capitalize(string) {
+    const capitalize = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    handleInputChange(event) {
-        this.props.inputChangeHandle(event);
+    const handleInputChange = (event) => {
+        inputChangeHandle(event);
     }
 
-    render(){
-        const {fieldName, currentValue} = this.props;
 
-        return (
-            <div className="row g-3 align-items-center">
-                <div className="col-auto">
-                    <label 
-                        htmlFor={fieldName} 
-                        className="form-label">
-                    {this.capitalize(fieldName)}
-                    </label>
-                </div>
-                <div className="col-auto">
-                    <input 
-                        type={this.inputType(fieldName)} 
-                        className="form-control" 
-                        id={fieldName}
-                        name={fieldName}
-                        value={currentValue} 
-                        onChange={this.handleInputChange}
-                    />
-                </div>
+    return (
+        <div className="row g-3 align-items-center">
+            <div className="col-auto">
+                <label 
+                    htmlFor={fieldName} 
+                    className="form-label">
+                {capitalize(fieldName)}
+                </label>
             </div>
-        );
-    }
+            <div className="col-auto">
+                <input 
+                    type={inputType(fieldName)} 
+                    className="form-control" 
+                    id={fieldName}
+                    name={fieldName}
+                    value={currentValue} 
+                    onChange={handleInputChange}
+                />
+            </div>
+        </div>
+    );
 }
 
 class CVForm extends Component {
