@@ -4,7 +4,7 @@ import CVForm from '../form/cv-form.jsx';
 
 function ContactItem(props) {
 	const iconClasses = {
-			tel: "bi bi-telephone-fill",
+			phone: "bi bi-telephone-fill",
 			email: "bi bi-envelope-fill",
 			portfolio: "bi bi-border-style",
 			github: "bi bi-github",
@@ -22,10 +22,10 @@ class Contact extends Component {
 		super(props);
 
 		this.state = {
-			tel: ['555-555-5555', 'tel'],
-			email: ['email@me.com', 'email'],
-			portfolio: ['www.portfolio.com', 'url'],
-			github: ['github.com/me', 'text'],
+			phone: ['555-555-5555', 'tel', 'Phone'],
+			email: ['email@me.com', 'email', 'Email'],
+			portfolio: ['www.portfolio.com', 'url', 'Portfolio'],
+			github: ['github.com/me', 'text', 'Github'],
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);

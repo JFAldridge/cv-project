@@ -1,14 +1,9 @@
 
-function CVInput( {inputName, inputType, currentValue, inputChangeHandle} ) {
+function CVInput( {inputName, inputType, currentValue, labelContent, inputChangeHandle} ) {
     
-    const capitalize = (string) => {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
     const handleInputChange = (event) => {
         inputChangeHandle(event);
     }
-
 
     return (
         <div className="row g-3 align-items-center">
@@ -16,7 +11,7 @@ function CVInput( {inputName, inputType, currentValue, inputChangeHandle} ) {
                 <label 
                     htmlFor={inputName} 
                     className="form-label">
-                {capitalize(inputName)}
+                {labelContent}
                 </label>
             </div>
             <div className="col-auto">
