@@ -2,30 +2,44 @@ import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import CVForm from '../form/cv-form.jsx';
 
-function ContactItem(props) {
-	const iconClasses = {
-		phone: "bi bi-telephone-fill",
-		email: "bi bi-envelope-fill",
-		portfolio: "bi bi-border-style",
-		github: "bi bi-github",
-	};
-	
-	if (props.freshMount) {
-		return (
-			<li className={props.type}>
-				<i className={iconClasses[props.type]}></i>
-				{props.placeholder}
-			</li>
-		);
-	} else {
-		if (props.value === null) return null;
+class ContactItem extends Component {
+	getIconClass(type) {
+		const iconClasses = {
+			phone: "bi bi-telephone-fill",
+			email: "bi bi-envelope-fill",
+			portfolio: "bi bi-border-style",
+			github: "bi bi-github",
+		};
 
-		return (
-			<li className={props.type}>
-				<i className={iconClasses[props.type]}></i>
-				{props.value}
-			</li>
-		);
+		return iconClasses[type];
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (this.props.freshMount) {
+			this.props.mountAge();
+		}
+	}
+	
+	render() {
+		const {type, placeholder, value} = this.props;
+
+		if (this.props.freshMount) {
+			return (
+				<li className={type}>
+					<i className={this.getIconClass(type)}></i>
+					{placeholder}
+				</li>
+			);
+		} else {
+			if (value === null) return null;
+
+			return (
+				<li className={type}>
+					<i className={this.getIconClass(type)}></i>
+					{value}
+				</li>
+			);
+		}
 	}
 }
 
@@ -41,15 +55,14 @@ class Contact extends Component {
 			freshMount: true,
 		};
 
+		this.ageMount = this.ageMount.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
 	ageMount() {
-		if (this.state.freshMount) {
-			this.setState({
-				freshMount: false
-			});
-		}
+		this.setState({
+			freshMount: false
+		});
 	}
 
 	handleInputChange(event) {
@@ -63,8 +76,6 @@ class Contact extends Component {
 
 		let inputInfo = this.state[name].slice();
 		inputInfo[0] = value;
-
-		this.ageMount();
 	
 		this.setState({
 		  [name]: inputInfo
@@ -85,8 +96,9 @@ class Contact extends Component {
 								type={key}
 								value={inputInfo[0]}
 								placeholder={inputInfo[3]}
-								key={uuidv4()}
+								key={key}
 								freshMount={freshMount}
+								mountAge={this.ageMount}
 							/>
 						);
 					})}
