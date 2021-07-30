@@ -31,9 +31,10 @@ class CVForm extends Component {
                                 return (
                                     <CVInput 
                                         inputName={inputName}
-                                        inputType={inputInfo[1]}
                                         currentValue={inputInfo[0]}
+                                        inputType={inputInfo[1]}
                                         labelContent={inputInfo[2]}
+                                        placeholder={inputInfo[3]}
                                         key={inputName}
                                         inputChangeHandle={this.props.inputChangeHandle}
                                     />                 

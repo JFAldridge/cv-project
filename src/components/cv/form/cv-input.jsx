@@ -1,5 +1,5 @@
 
-function CVInput( {inputName, inputType, currentValue, labelContent, inputChangeHandle} ) {
+function CVInput( {inputName, currentValue, inputType, labelContent, placeholder, inputChangeHandle} ) {
     
     const handleInputChange = (event) => {
         inputChangeHandle(event);
@@ -16,11 +16,12 @@ function CVInput( {inputName, inputType, currentValue, labelContent, inputChange
             </div>
             <div className="col-auto">
                 <input 
-                    type={inputType} 
-                    className="form-control" 
                     id={inputName}
                     name={inputName}
-                    value={currentValue || ''} 
+                    value={currentValue || ''}
+                    type={inputType} 
+                    placeholder={placeholder}
+                    className="form-control"
                     onChange={handleInputChange}
                 />
             </div>
