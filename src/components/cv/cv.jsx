@@ -1,5 +1,6 @@
 import React from 'react';
-import Contact from './display/contact.jsx';
+import Contact from './display/contact';
+import Education from './display/education';
 
 function CV({contact, formDisplay}) {
 	return (
@@ -9,6 +10,7 @@ function CV({contact, formDisplay}) {
 					fields={contact}
 					formDisplay={formDisplay}
 				/>
+				<Education />
 			</div>
 			<div className="main-content">
 
