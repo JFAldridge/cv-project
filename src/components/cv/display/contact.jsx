@@ -16,7 +16,7 @@ function ContactItem({type, value}) {
 	if (value === null) return null;
 
 	return (
-		<li className={type}>
+		<li className="contact-item">
 			<i className={getIconClass(type)}></i>
 			{value}
 		</li>
@@ -25,14 +25,6 @@ function ContactItem({type, value}) {
 }
 
 function Contact({fields, formDisplay}) {
-
-	const allFieldValuesNull = () => {
-		/* When all field values are null, the cv is populated
-		by placeholder text. This provides a design guide to the
-		templates usage.
-		*/
-		return Object.values(fields).every((inputInfo) => inputInfo[0] === null);
-	}
 
 	const displayForm = () => {
 		formDisplay('contact');
@@ -50,7 +42,7 @@ function Contact({fields, formDisplay}) {
 					return (
 						<ContactItem 
 							type={key}
-							value={allFieldValuesNull(fields) ? inputInfo[3] : inputInfo[0]}
+							value={(inputInfo)}
 							key={key}
 						/>
 					);

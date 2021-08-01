@@ -2,7 +2,7 @@ import React from 'react';
 import Contact from './display/contact';
 import Education from './display/education';
 
-function CV({contact, formDisplay}) {
+function CV({contact, education, formDisplay}) {
 	return (
 		<div className="resume">
 			<div className="sidebar">
@@ -10,7 +10,10 @@ function CV({contact, formDisplay}) {
 					fields={contact}
 					formDisplay={formDisplay}
 				/>
-				<Education />
+				<Education 
+					fields={education}
+					formDisplay={formDisplay}
+				/>
 			</div>
 			<div className="main-content">
 
