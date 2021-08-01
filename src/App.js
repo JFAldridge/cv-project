@@ -1,9 +1,9 @@
-import CV from './components/cv/cv.jsx';
+import CVCreator from './components/cv/cv-creator';
 
 function App() {
   return (
     <div className="App">
-      <CV />
+      <CVCreator />
     </div>
   );
 }

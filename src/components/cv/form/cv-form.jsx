@@ -5,59 +5,44 @@ class CVForm extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            displayForm: false,
-        };
-
-        this.toggleDisplay = this.toggleDisplay.bind(this);
+        this.displayForm = this.displayForm.bind(this);
     }
 
-    toggleDisplay() {
-        this.setState ({
-            displayForm: this.state.displayForm ? false : true
-        });
+    displayForm() {
+        this.props.formDisplay(null);
     }
 
     render(){
+        const fields = this.props.fields;
 
-
-        if (this.state.displayForm) {
-
-            return(
-                <div className="form-modal">
-                    <div className="form-container">
-                        <form>
-                            { Object.entries(this.props.fields).map(([inputName, inputInfo]) => {
-                                return (
-                                    <CVInput 
-                                        inputName={inputName}
-                                        currentValue={inputInfo[0]}
-                                        inputType={inputInfo[1]}
-                                        labelContent={inputInfo[2]}
-                                        placeholder={inputInfo[3]}
-                                        key={inputName}
-                                        inputChangeHandle={this.props.inputChangeHandle}
-                                    />                 
-                                );
-                            }) }
-                            <button
-                                className="btn btn-primary"
-                                onClick={this.toggleDisplay}
-                                type="button"
-                            >Done</button>
-                        </form>
-                    </div>
+        return(
+            <div className="form-modal">
+                <div className="form-container">
+                    <form>
+                        { Object.entries(fields).map(([inputName, inputInfo]) => {
+                            return (
+                                <CVInput 
+                                    inputName={inputName}
+                                    currentValue={inputInfo[0]}
+                                    inputType={inputInfo[1]}
+                                    labelContent={inputInfo[2]}
+                                    placeholder={inputInfo[3]}
+                                    key={inputName}
+                                    inputChangeHandle={this.props.inputChangeHandle}
+                                />                 
+                            );
+                        }) }
+                        <button
+                            className="btn btn-primary"
+                            onClick={this.displayForm}
+                            type="button"
+                        >Done</button>
+                    </form>
                 </div>
-            );
-        } else {
-            return (
-                <i 
-                    className="bi bi-pencil-square edit-section"
-                    onClick={() => this.toggleDisplay()}
-                ></i>
-            );
-        }
+            </div>
+        );
     }
+    
 }
 
 export default CVForm;
