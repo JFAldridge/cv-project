@@ -1,5 +1,5 @@
 import React from 'react';
-import CVInput from './cv-input';
+import DeletableFieldset from './deletable-fieldset';
 
 function CVFormDynamic({fields, section, inputChangeHandle, formDisplay}) {
  
@@ -29,25 +29,15 @@ function CVFormDynamic({fields, section, inputChangeHandle, formDisplay}) {
         return (
             Object.keys(groupedFields).map((group) => {
                 return (
-                    Object.entries(groupedFields[group]).map(([inputName, inputInfo]) => {
-                        return (
-                            <CVInput 
-                                inputName={inputName}
-                                currentValue={inputInfo[0]}
-                                inputType={inputInfo[1]}
-                                labelContent={inputInfo[2]}
-                                placeholder={inputInfo[3]}
-                                key={inputName}
-                                inputChangeHandle={inputChangeHandle}
-                            />                 
-                        );
-                    })
+                    <DeletableFieldset 
+                        fields={groupedFields[group]}
+                        key={section + group}
+                        inputChangeHandle={inputChangeHandle}
+                    />
                 );
             })
         );
     }
-
-    console.log(buildForm(groupTheFields()))
 
     return(
         <div className="form-modal">

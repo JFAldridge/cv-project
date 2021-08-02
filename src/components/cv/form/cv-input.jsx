@@ -1,3 +1,4 @@
+import React from "react";
 
 function CVInput( {inputName, currentValue, inputType, labelContent, placeholder, inputChangeHandle} ) {
     
