@@ -10,13 +10,11 @@ function InstitutionDiv({degree, institution, timeToDegree}) {
     );
 }
 
-function Education({fields, formDisplay}) {
-    console.log(fields);
-    
+function Education({fields, formDisplay}) {    
 
     const getFieldGroupNumbers = () => {
         const numberIdentifiers = Object.keys(fields).map((key) => key.charAt(key.length - 1));
-        const uniqueIdentifiers = [... new Set(numberIdentifiers)];
+        const uniqueIdentifiers = [...new Set(numberIdentifiers)];
         return uniqueIdentifiers;
     }
 
@@ -34,6 +32,7 @@ function Education({fields, formDisplay}) {
                                 degree={degreeInfo}
                                 institution={institutionInfo}
                                 timeToDegree={timeToDegreeInfo}
+                                key={degreeInfo + groupNum}
                             />
                         );
                     })
