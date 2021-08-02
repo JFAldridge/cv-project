@@ -94,8 +94,8 @@ class CVCreator extends Component {
 	}
 
 	render() {
-		const sectionFields = this.sortStateIntoSections();
-		const displayData = this.distillDisplayData(sectionFields);
+		const sectionedFields = this.sortStateIntoSections();
+		const displayData = this.distillDisplayData(sectionedFields);
 		return (
 			<div className="cv-creator">
 				<CV 
@@ -105,7 +105,8 @@ class CVCreator extends Component {
 				/>
 				{this.state.displayForm && 
 					<CVForm 
-						fields={sectionFields[this.state.displayForm]} 
+						fields={sectionedFields[this.state.displayForm]}
+						section={this.state.displayForm} 
 						inputChangeHandle={this.handleInputChange}
 						formDisplay={this.displayForm}
 					/>

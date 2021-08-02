@@ -21,7 +21,7 @@ function CVInput( {inputName, currentValue, inputType, labelContent, placeholder
                     value={currentValue || ''}
                     type={inputType} 
                     placeholder={placeholder}
-                    className="form-control"
+                    className="form-control mb-3"
                     onChange={handleInputChange}
                 />
             </div>

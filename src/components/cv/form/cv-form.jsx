@@ -1,15 +1,20 @@
 import React from 'react';
 import CVInput from './cv-input';
 
-function CVForm({fields, inputChangeHandle, formDisplay}) {
+function CVForm({fields, section, inputChangeHandle, formDisplay}) {
  
     const displayForm = () => {
         formDisplay(null);
     }
 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     return(
         <div className="form-modal">
             <div className="form-container">
+            <h2>{capitalizeFirstLetter(section)}</h2>
                 <form>
                     { Object.entries(fields).map(([inputName, inputInfo]) => {
                         return (
