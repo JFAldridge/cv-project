@@ -18,8 +18,16 @@ function Education({fields, formDisplay}) {
         return uniqueIdentifiers;
     }
 
+    const displayForm = () => {
+		formDisplay('education');
+	}
+
     return (
         <section className="education">
+            <i 
+				className="bi bi-pencil-square edit-section"
+				onClick={displayForm}
+			></i>
             <h2>Education</h2>
                 {
                     getFieldGroupNumbers().map((groupNum) => {
