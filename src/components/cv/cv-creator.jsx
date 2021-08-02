@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CVForm from './form/cv-form';
+import CVFormDynamic from './form/cv-form-dynamic';
 import CV from './cv';
 
 class CVCreator extends Component {
@@ -93,9 +94,18 @@ class CVCreator extends Component {
 		return displayData;
 	}
 
+	isDynamicForm(section) {
+        const dynamicSections = [
+            'education',
+        ];
+        return dynamicSections.includes(section);
+    }
+
 	render() {
 		const sectionedFields = this.sortStateIntoSections();
 		const displayData = this.distillDisplayData(sectionedFields);
+		const displayForm = this.state.displayForm;
+		const dynamicForm = this.isDynamicForm(displayForm);
 		return (
 			<div className="cv-creator">
 				<CV 
@@ -103,8 +113,16 @@ class CVCreator extends Component {
 					education={displayData.education}
 					formDisplay={this.displayForm}
 				/>
-				{this.state.displayForm && 
+				{displayForm && !dynamicForm &&
 					<CVForm 
+						fields={sectionedFields[this.state.displayForm]}
+						section={this.state.displayForm} 
+						inputChangeHandle={this.handleInputChange}
+						formDisplay={this.displayForm}
+					/>
+				}
+				{displayForm && dynamicForm &&
+					<CVFormDynamic 
 						fields={sectionedFields[this.state.displayForm]}
 						section={this.state.displayForm} 
 						inputChangeHandle={this.handleInputChange}
