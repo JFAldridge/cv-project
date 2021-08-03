@@ -12,7 +12,7 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldSetDelete, form
     }
 
     function groupTheFields(fields) {
-        let groupedFields = {}
+        let groupedFields = [];
 
         Object.keys(fields).forEach((field) => {
             const groupNum = field.charAt(field.length - 1);
@@ -27,10 +27,10 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldSetDelete, form
 
     function buildForm(groupedFields) {
         return (
-            Object.keys(groupedFields).map((groupNum) => {
+            groupedFields.map((group, groupNum) => {
                 return (
                     <DeletableFieldset 
-                        fields={groupedFields[groupNum]}
+                        fields={group}
                         groupNum={groupNum}
                         inputChangeHandle={inputChangeHandle}
                         fieldSetDelete={fieldSetDelete}
@@ -56,7 +56,19 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldSetDelete, form
             <div className="form-container">
             <h2>{capitalizeFirstLetter(section)}</h2>
                 <form>
-                    {buildForm(groupedFields)}
+                    {
+                        groupedFields.map((group, groupNum) => {
+                            return (
+                                <DeletableFieldset 
+                                    fields={group}
+                                    groupNum={groupNum}
+                                    inputChangeHandle={inputChangeHandle}
+                                    fieldSetDelete={fieldSetDelete}
+                                    key={section + groupNum}
+                                />
+                            );
+                        })
+                    }
                     <button
                         className="btn btn-primary"
                         onClick={displayForm}

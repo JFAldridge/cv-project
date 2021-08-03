@@ -22,7 +22,6 @@ function CVCreator(props) {
 
 	const handleInputChange = (event) => {
 		const name = event.target.name;
-		console.log(name)
 		
 		// Convert empty string to null to remove unused fields
 		let value = event.target.value;
