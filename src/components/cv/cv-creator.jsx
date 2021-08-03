@@ -11,10 +11,10 @@ function CVCreator(props) {
 		contact_github: [null, 'url', 'Github', 'github.com/me'],
 		education_degree0: [null, 'text', 'Degree', 'Bachelors of a Field'],
 		education_institution0: [null, 'text', 'Institution', 'University of a State'],
-		education_timeToDegree0: [null, 'timeSpan', 'Time to Degree', '2014-2018'],
+		education_timeToDegree0: [null, 'text', 'Time to Degree', '2014-2018'],
 		education_degree1: [null, 'text', 'Degree', 'Bachelors of a Field'],
 		education_institution1: [null, 'text', 'Institution', 'University of a State'],
-		education_timeToDegree1: [null, 'timeSpan', 'Time to Degree', '2014-2018'],
+		education_timeToDegree1: [null, 'text', 'Time to Degree', '2014-2018'],
 		displayForm: null,
 	}); 
 
