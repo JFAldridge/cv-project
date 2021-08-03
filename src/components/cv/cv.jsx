@@ -1,6 +1,7 @@
 import React from 'react';
 import Contact from './display/contact';
 import Education from './display/education';
+import Skills from './display/skills';
 
 function CV({contact, education, formDisplay}) {
 	return (
@@ -13,6 +14,9 @@ function CV({contact, education, formDisplay}) {
 				<Education 
 					fields={education}
 					formDisplay={formDisplay}
+				/>
+				<Skills 
+
 				/>
 			</div>
 			<div className="main-content">
