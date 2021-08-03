@@ -11,7 +11,7 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldSetDelete, form
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    function groupTheFields() {
+    function groupTheFields(fields) {
         let groupedFields = {}
 
         Object.keys(fields).forEach((field) => {
@@ -40,13 +40,23 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldSetDelete, form
             })
         );
     }
+    /* 
+    const createFieldset = (groupedFields) => {
+        const hightestGroupNum = Object.keys(groupTheFields).sort.pop(); 
+        const newGroupNum = hightestGroupNum + 1;
+
+        const groupCopy = groupTheFields[1]
+    }
+    */
+
+    const groupedFields = groupTheFields(fields)
 
     return(
         <div className="form-modal">
             <div className="form-container">
             <h2>{capitalizeFirstLetter(section)}</h2>
                 <form>
-                    {buildForm(groupTheFields())}
+                    {buildForm(groupedFields)}
                     <button
                         className="btn btn-primary"
                         onClick={displayForm}

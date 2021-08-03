@@ -9,7 +9,7 @@ function DeletableFieldset({fields, groupNum, inputChangeHandle, fieldSetDelete}
         
     return (
         <fieldset>
-            {groupNum > 1 &&
+            {groupNum > 0 &&
             <i 
                 className="bi bi-x-square"
                 onClick={() => deleteFieldSet()}

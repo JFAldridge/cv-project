@@ -9,12 +9,12 @@ function CVCreator(props) {
 		contact_email: [null, 'email', 'Email', 'email@me.com'],
 		contact_portfolio: [null, 'url', 'Portfolio', 'www.portfolio.com'],
 		contact_github: [null, 'url', 'Github', 'github.com/me'],
+		education_degree0: [null, 'text', 'Degree', 'Bachelors of a Field'],
+		education_institution0: [null, 'text', 'Institution', 'University of a State'],
+		education_timeToDegree0: [null, 'timeSpan', 'Time to Degree', '2014-2018'],
 		education_degree1: [null, 'text', 'Degree', 'Bachelors of a Field'],
 		education_institution1: [null, 'text', 'Institution', 'University of a State'],
 		education_timeToDegree1: [null, 'timeSpan', 'Time to Degree', '2014-2018'],
-		education_degree2: [null, 'text', 'Degree', 'Bachelors of a Field'],
-		education_institution2: [null, 'text', 'Institution', 'University of a State'],
-		education_timeToDegree2: [null, 'timeSpan', 'Time to Degree', '2014-2018'],
 		displayForm: null,
 	}); 
 
@@ -45,9 +45,9 @@ function CVCreator(props) {
 			const newState = {...prevState};
 			
 			Object.keys(fields).forEach((field) => delete newState[field]);
-			
+
     		return newState;
-		})
+		});
 	}
 
 	const displaySectionForm = (section) => {
