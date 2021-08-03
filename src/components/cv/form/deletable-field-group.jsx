@@ -1,7 +1,7 @@
 import React from 'react';
 import CVInput from './cv-input';
 
-function DeletableFieldset({fields, groupNum, inputChangeHandle, fieldGroupDelete}) {
+function DeletableFieldGroup({fields, groupNum, inputChangeHandle, fieldGroupDelete}) {
 
     const deleteFieldGroup = () => {
         fieldGroupDelete(fields)
@@ -33,4 +33,4 @@ function DeletableFieldset({fields, groupNum, inputChangeHandle, fieldGroupDelet
     );
 }
 
-export default DeletableFieldset;
+export default DeletableFieldGroup;

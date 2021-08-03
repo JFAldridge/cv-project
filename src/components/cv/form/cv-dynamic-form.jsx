@@ -1,5 +1,5 @@
 import React from 'react';
-import DeletableFieldset from './deletable-fieldset';
+import DeletableFieldGroup from './deletable-field-group';
 
 function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fieldGroupDelete, formDisplay}) {
  
@@ -54,7 +54,7 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fi
                     {
                         groupedFields.map((group, groupNum) => {
                             return (
-                                <DeletableFieldset 
+                                <DeletableFieldGroup 
                                     fields={group}
                                     groupNum={groupNum}
                                     inputChangeHandle={inputChangeHandle}
