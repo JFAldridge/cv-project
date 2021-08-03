@@ -1,7 +1,7 @@
 import React from 'react';
 import DeletableFieldset from './deletable-fieldset';
 
-function CVDynamicFrom({fields, section, inputChangeHandle, fieldSetDelete, formDisplay}) {
+function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fieldGroupDelete, formDisplay}) {
  
     const displayForm = () => {
         formDisplay(null);
@@ -25,29 +25,24 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldSetDelete, form
         return groupedFields;
     }
 
-    function buildForm(groupedFields) {
-        return (
-            groupedFields.map((group, groupNum) => {
-                return (
-                    <DeletableFieldset 
-                        fields={group}
-                        groupNum={groupNum}
-                        inputChangeHandle={inputChangeHandle}
-                        fieldSetDelete={fieldSetDelete}
-                        key={section + groupNum}
-                    />
-                );
-            })
-        );
-    }
-    /* 
-    const createFieldset = (groupedFields) => {
-        const hightestGroupNum = Object.keys(groupTheFields).sort.pop(); 
-        const newGroupNum = hightestGroupNum + 1;
+    const createFieldGroup = (groupedFields) => {
+        // Creates new field group to add to state
+        const newGroup = {};
+        const newGroupNum = groupedFields.length;
 
-        const groupCopy = groupTheFields[1]
+        const firstGroupCopy = {...groupedFields[0]};
+
+        Object.keys(firstGroupCopy).forEach((field) => {
+            // Copy field name, but with new groupNum, and copy inputInfo
+            const newFieldName = field.slice(0, -1) + newGroupNum;
+            newGroup[newFieldName] = firstGroupCopy[field];
+
+            // Clear input value of inputInfo
+            newGroup[newFieldName][0] = '';
+        })
+
+        fieldGroupCreate(newGroup);
     }
-    */
 
     const groupedFields = groupTheFields(fields)
 
@@ -63,18 +58,24 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldSetDelete, form
                                     fields={group}
                                     groupNum={groupNum}
                                     inputChangeHandle={inputChangeHandle}
-                                    fieldSetDelete={fieldSetDelete}
+                                    fieldGroupDelete={fieldGroupDelete}
                                     key={section + groupNum}
                                 />
                             );
                         })
                     }
-                    <button
-                        className="btn btn-primary"
-                        onClick={displayForm}
-                        type="button"
-                    >Done</button>
                 </form>
+                <button
+                    className="btn btn-primary"
+                    onClick={() => createFieldGroup(groupedFields)}
+                >
+                    Add Field Group
+                </button>
+                <button
+                    className="btn btn-primary"
+                    onClick={displayForm}
+                    type="button"
+                >Done</button>
             </div>
         </div>
     );

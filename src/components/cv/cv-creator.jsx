@@ -39,7 +39,13 @@ function CVCreator(props) {
 		});
 	}
 
-	const deleteField = (fields) => {
+	const createFieldGroup = (group) => {
+		setInputFields((prevState) => {
+			return {...prevState, ...group}
+		})
+	}
+
+	const deleteFieldGroup = (fields) => {
 		setInputFields((prevState) => {
 			const newState = {...prevState};
 			
@@ -133,7 +139,8 @@ function CVCreator(props) {
 					section={displayForm} 
 					inputChangeHandle={handleInputChange}
 					formDisplay={displaySectionForm}
-					fieldSetDelete={deleteField}
+					fieldGroupDelete={deleteFieldGroup}
+					fieldGroupCreate={createFieldGroup}
 				/>
 			}
 		</div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import CVInput from './cv-input';
 
-function DeletableFieldset({fields, groupNum, inputChangeHandle, fieldSetDelete}) {
+function DeletableFieldset({fields, groupNum, inputChangeHandle, fieldGroupDelete}) {
 
-    const deleteFieldSet = () => {
-        fieldSetDelete(fields)
+    const deleteFieldGroup = () => {
+        fieldGroupDelete(fields)
     }
         
     return (
@@ -12,7 +12,7 @@ function DeletableFieldset({fields, groupNum, inputChangeHandle, fieldSetDelete}
             {groupNum > 0 &&
             <i 
                 className="bi bi-x-square"
-                onClick={() => deleteFieldSet()}
+                onClick={() => deleteFieldGroup()}
             ></i> }  
             {
                 Object.entries(fields).map(([inputName, inputInfo]) => {
