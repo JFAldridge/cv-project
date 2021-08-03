@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import CVForm from './form/cv-form';
-import CVFormDynamic from './form/cv-form-dynamic';
+import CVDynamicForm from './form/cv-dynamic-form';
 import CV from './cv';
+import CVDynamicFrom from './form/cv-dynamic-form';
 
 class CVCreator extends Component {
 	constructor(props) {
@@ -122,7 +123,7 @@ class CVCreator extends Component {
 					/>
 				}
 				{displayForm && dynamicForm &&
-					<CVFormDynamic 
+					<CVDynamicFrom 
 						fields={sectionedFields[this.state.displayForm]}
 						section={this.state.displayForm} 
 						inputChangeHandle={this.handleInputChange}

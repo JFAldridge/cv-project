@@ -1,7 +1,7 @@
 import React from 'react';
 import DeletableFieldset from './deletable-fieldset';
 
-function CVFormDynamic({fields, section, inputChangeHandle, formDisplay}) {
+function CVDynamicFrom({fields, section, inputChangeHandle, formDisplay}) {
  
     const displayForm = () => {
         formDisplay(null);
@@ -56,4 +56,4 @@ function CVFormDynamic({fields, section, inputChangeHandle, formDisplay}) {
     );
 }
 
-export default CVFormDynamic;
+export default CVDynamicFrom;
