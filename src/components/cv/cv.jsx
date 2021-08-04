@@ -3,6 +3,7 @@ import Contact from './display/contact';
 import Education from './display/education';
 import Skills from './display/skills';
 import Introduction from './display/introduction';
+import WorkExperience from './display/work-experience';
 
 function CV({contact, education, skills, introduction, formDisplay}) {
 	return (
@@ -25,6 +26,9 @@ function CV({contact, education, skills, introduction, formDisplay}) {
 				<Introduction 
 					fields={introduction}
 					formDisplay={formDisplay}
+				/>
+				<WorkExperience 
+					
 				/>
 			</div>
 		</div>
