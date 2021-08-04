@@ -34,6 +34,10 @@ function CVCreator(props) {
 		skills_item15: [null, 'text', 'Skill', ''],
 		skills_item16: [null, 'text', 'Skill', ''],
 		skills_item17: [null, 'text', 'Skill', ''],
+		introduction_given: [null, 'text', 'First Name', 'Given'],
+		introduction_surname: [null, 'text', 'Last Name', 'Surname'],
+		introduction_title: [null, 'text', 'Professional Title', 'Professional Title'],
+		introduction_about: [null, 'textarea', 'About', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
 		displayForm: null,
 	}); 
 
@@ -143,6 +147,7 @@ function CVCreator(props) {
 				contact={displayData.contact}
 				education={displayData.education}
 				skills={displayData.skills}
+				introduction={displayData.introduction}
 				formDisplay={displaySectionForm}
 			/>
 			{displayForm && !dynamicForm &&

@@ -1,14 +1,23 @@
 import React from 'react';
 
 function Introduction({fields, formDisplay}) {
+
+    const displayForm = () => {
+		formDisplay('introduction');
+	}
+
     return (
-        <section class="introduction">
-            <h1 class="name">
-                <span class="first-name">Given</span>
-                <span class="second-name">Surname</span>
+        <section className="introduction">
+            <i 
+				className="bi bi-pencil-square edit-section"
+				onClick={displayForm}
+			></i>
+            <h1 className="name">
+                <span className="first-name">{fields.introduction_given}</span>
+                <span className="second-name">{fields.introduction_surname}</span>
             </h1>
-            <h4 class="professional-title">Professional title</h4>
-            <p class="about">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <h4 className="professional-title">{fields.introduction_title}</h4>
+            <p className="about">{fields.introduction_about}</p>
         </section>
     );
 }
