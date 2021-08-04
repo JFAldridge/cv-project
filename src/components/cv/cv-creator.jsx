@@ -38,6 +38,37 @@ function CVCreator(props) {
 		introduction_surname: [null, 'text', 'Last Name', 'Surname'],
 		introduction_title: [null, 'text', 'Professional Title', 'Professional Title'],
 		introduction_about: [null, 'textarea', 'About', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
+		workExperience_company1: [null, 'text', 'Company', 'Company Name'],
+		workExperience_position1: [null, 'text', 'Position', '/ Position Title'],
+		workExperience_duration1: [null, 'text', 'Duration of Employment', 'From 2018 to 2020'],
+		workExperience_summary1: [null, 'text', 'Position Summary', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'],
+		workExperience_achievementA1: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		workExperience_achievementB1: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		workExperience_achievementC1: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		workExperience_achievementD1: [null, 'text', 'Achievement', ''],
+		workExperience_achievementE1: [null, 'text', 'Achievement', ''],
+		workExperience_achievementF1: [null, 'text', 'Achievement', ''],
+		workExperience_company2: [null, 'text', 'Company', 'Company Name'],
+		workExperience_position2: [null, 'text', 'Position', '/ Position Title'],
+		workExperience_duration2: [null, 'text', 'Duration of Employment', 'From 2018 to 2020'],
+		workExperience_summary2: [null, 'text', 'Position Summary', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'],
+		workExperience_achievementA2: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		workExperience_achievementB2: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		workExperience_achievementC2: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		workExperience_achievementD2: [null, 'text', 'Achievement', ''],
+		workExperience_achievementE2: [null, 'text', 'Achievement', ''],
+		workExperience_achievementF2: [null, 'text', 'Achievement', ''],
+		workExperience_company3: [null, 'text', 'Company', 'Company Name'],
+		workExperience_position3: [null, 'text', 'Position', '/ Position Title'],
+		workExperience_duration3: [null, 'text', 'Duration of Employment', 'From 2018 to 2020'],
+		workExperience_summary3: [null, 'text', 'Position Summary', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'],
+		workExperience_achievementA3: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		workExperience_achievementB3: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		workExperience_achievementC3: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		workExperience_achievementD3: [null, 'text', 'Achievement', ''],
+		workExperience_achievementE3: [null, 'text', 'Achievement', ''],
+		workExperience_achievementF3: [null, 'text', 'Achievement', ''],
+
 		displayForm: null,
 	}); 
 
@@ -132,6 +163,7 @@ function CVCreator(props) {
 	const isDynamicForm = (section) => {
         const dynamicSections = [
             'education',
+			'workExperience'
         ];
         return dynamicSections.includes(section);
     }
@@ -148,6 +180,7 @@ function CVCreator(props) {
 				education={displayData.education}
 				skills={displayData.skills}
 				introduction={displayData.introduction}
+				workExperience={displayData.workExperience}
 				formDisplay={displaySectionForm}
 			/>
 			{displayForm && !dynamicForm &&
