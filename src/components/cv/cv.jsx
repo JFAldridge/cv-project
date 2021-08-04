@@ -2,6 +2,7 @@ import React from 'react';
 import Contact from './display/contact';
 import Education from './display/education';
 import Skills from './display/skills';
+import Introduction from './display/introduction';
 
 function CV({contact, education, skills, formDisplay}) {
 	return (
@@ -21,7 +22,9 @@ function CV({contact, education, skills, formDisplay}) {
 				/>
 			</div>
 			<div className="main-content">
-
+				<Introduction 
+				
+				/>
 			</div>
 		</div>
 	);
