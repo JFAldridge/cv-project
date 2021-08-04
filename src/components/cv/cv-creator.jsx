@@ -15,6 +15,25 @@ function CVCreator(props) {
 		education_degree1: [null, 'text', 'Degree', 'Bachelors of a Field'],
 		education_institution1: [null, 'text', 'Institution', 'University of a State'],
 		education_timeToDegree1: [null, 'text', 'Time to Degree', '2014-2018'],
+		skills_heading1: [null, 'text', 'Skill Heading', '/ / Technical'],
+		skills_item1: [null, 'text', 'Skill', 'Making list items'],
+		skills_item2: [null, 'text', 'Skill', 'Making list items'],
+		skills_item3: [null, 'text', 'Skill', 'Making list items'],
+		skills_item4: [null, 'text', 'Skill', 'Making list items'],
+		skills_item5: [null, 'text', 'Skill', 'Making list items'],
+		skills_item6: [null, 'text', 'Skill', 'Making list items'],
+		skills_item7: [null, 'text', 'Skill', ''],
+		skills_item8: [null, 'text', 'Skill', ''],
+		skills_item9: [null, 'text', 'Skill', ''],
+		skills_heading2: [null, 'text', 'Skill Heading', '/ / Soft'],
+		skills_item10: [null, 'text', 'Skill', 'Being well liked'],
+		skills_item11: [null, 'text', 'Skill', 'Being well liked'],
+		skills_item12: [null, 'text', 'Skill', 'Being well liked'],
+		skills_item13: [null, 'text', 'Skill', 'Being well liked'],
+		skills_item14: [null, 'text', 'Skill', 'Being well liked'],
+		skills_item15: [null, 'text', 'Skill', ''],
+		skills_item16: [null, 'text', 'Skill', ''],
+		skills_item17: [null, 'text', 'Skill', ''],
 		displayForm: null,
 	}); 
 
@@ -123,6 +142,7 @@ function CVCreator(props) {
 			<CV 
 				contact={displayData.contact}
 				education={displayData.education}
+				skills={displayData.skills}
 				formDisplay={displaySectionForm}
 			/>
 			{displayForm && !dynamicForm &&

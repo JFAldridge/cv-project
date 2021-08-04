@@ -3,7 +3,7 @@ import Contact from './display/contact';
 import Education from './display/education';
 import Skills from './display/skills';
 
-function CV({contact, education, formDisplay}) {
+function CV({contact, education, skills, formDisplay}) {
 	return (
 		<div className="resume">
 			<div className="sidebar">
@@ -16,7 +16,8 @@ function CV({contact, education, formDisplay}) {
 					formDisplay={formDisplay}
 				/>
 				<Skills 
-
+					fields={skills}
+					formDisplay={formDisplay}
 				/>
 			</div>
 			<div className="main-content">
