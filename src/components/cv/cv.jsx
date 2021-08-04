@@ -1,4 +1,5 @@
 import React from 'react';
+import Portrait from './display/portrait';
 import Contact from './display/contact';
 import Education from './display/education';
 import Skills from './display/skills';
@@ -9,6 +10,9 @@ function CV({contact, education, skills, introduction, workExperience, formDispl
 	return (
 		<div className="resume">
 			<div className="sidebar">
+				<Portrait 
+					
+				/>
 				<Contact 
 					fields={contact}
 					formDisplay={formDisplay}

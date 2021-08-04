@@ -11,7 +11,6 @@ function Position({fieldGroup, groupNum}) {
                 const listItem = fieldGroup[field];
 
                 if (listItem !== null && listItem !== '') {
-                    console.log(listItem)
                     listItems.push(<li key={listItemIdentifier}>{listItem}</li>);
                 }
             }
