@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import CVForm from './form/cv-form';
 import CV from './cv';
+import CVForm from './form/cv-form';
 import CVDynamicFrom from './form/cv-dynamic-form';
+import CVImageForm from './form/cv-image-form';
 
 function CVCreator(props) {
 	const [inputFields, setInputFields] = useState({
@@ -68,8 +69,7 @@ function CVCreator(props) {
 		workExperience_achievementD3: [null, 'text', 'Achievement', ''],
 		workExperience_achievementE3: [null, 'text', 'Achievement', ''],
 		workExperience_achievementF3: [null, 'text', 'Achievement', ''],
-
-		displayForm: null,
+		portrait_image: [''],
 	}); 
 
 	const [displayForm, setDisplayForm] = useState(null);
@@ -90,6 +90,14 @@ function CVCreator(props) {
 
 		setInputFields((prevState) => {
 			return {...prevState, ...newInputObject};
+		});
+	}
+
+	const handleImageChange = (result) => {
+		const imageChangeObject = {portrait_image: [result]};
+	
+		setInputFields((prevState) => {
+			return {...prevState, ...imageChangeObject};
 		});
 	}
 
@@ -160,22 +168,32 @@ function CVCreator(props) {
 		return displayData;
 	}
 
-	const isDynamicForm = (section) => {
+	const getFormType = (section) => {
+		if (section === null) return null;
+
         const dynamicSections = [
             'education',
 			'workExperience'
         ];
-        return dynamicSections.includes(section);
+
+		if (dynamicSections.includes(section)) {
+			return 'dynamic';
+		} else if (section === 'portrait') {
+			return 'image';
+		} else {
+			return 'form';
+		}
     }
 
 	
 	const sectionedFields = sortStateIntoSections(inputFields);
 	const displayData = distillDisplayData(sectionedFields);
-	const dynamicForm = isDynamicForm(displayForm);
+	const formType = getFormType(displayForm);
 
 	return (
 		<div className="cv-creator">
 			<CV 
+				portrait={displayData.portrait}
 				contact={displayData.contact}
 				education={displayData.education}
 				skills={displayData.skills}
@@ -183,7 +201,7 @@ function CVCreator(props) {
 				workExperience={displayData.workExperience}
 				formDisplay={displaySectionForm}
 			/>
-			{displayForm && !dynamicForm &&
+			{formType === 'form' &&
 				<CVForm 
 					fields={sectionedFields[displayForm]}
 					section={displayForm} 
@@ -191,7 +209,7 @@ function CVCreator(props) {
 					formDisplay={displaySectionForm}
 				/>
 			}
-			{displayForm && dynamicForm &&
+			{formType === 'dynamic' &&
 				<CVDynamicFrom 
 					fields={sectionedFields[displayForm]}
 					section={displayForm} 
@@ -199,6 +217,13 @@ function CVCreator(props) {
 					formDisplay={displaySectionForm}
 					fieldGroupDelete={deleteFieldGroup}
 					fieldGroupCreate={createFieldGroup}
+				/>
+			}
+			{formType === 'image' &&
+				<CVImageForm 
+					section={displayForm} 
+					imageChangeHandle={handleImageChange}
+					formDisplay={displaySectionForm}
 				/>
 			}
 		</div>

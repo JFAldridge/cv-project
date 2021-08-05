@@ -102,10 +102,17 @@ h1, h2, h3, h4, h5 {
 
             .portrait {
                 background-color: rgb(189, 189, 189);
-                width: 1.6in;
-                height: 1.6in;
+                width: 1.61in;
+                height: 1.61in;
                 border-radius: 50%;
                 margin-top: 1em;
+
+                img {
+                    width: 1.62in;
+                    height: 1.62in;
+                    border-radius: 50%;
+                    background-color: $accent-bg;
+                }
             }
         }
 
@@ -139,7 +146,7 @@ h1, h2, h3, h4, h5 {
         
         .introduction {
             margin: 0;
-            height: calc(#{$top-section-height} - #{$page-margin});
+            height: calc(#{$top-section-height} - #{$page-margin} + 1.5em);
 
             .first-name {
                 font-weight: bold;
@@ -168,7 +175,16 @@ h1, h2, h3, h4, h5 {
 .edit-section {
     position: absolute;
     top: 0;
-    right: 0;
+    right: .07in;
+    font-size: 1.5em;
+}
+
+.portrait-container {
+    .edit-section {
+        position: absolute;
+        top: .6in;
+        right: .07in;
+    }
 }
 
 /* The Modal (background) */
