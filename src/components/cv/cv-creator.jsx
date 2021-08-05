@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
 import CV from './cv';
 import CVForm from './form/cv-form';
 import CVDynamicFrom from './form/cv-dynamic-form';
 import CVImageForm from './form/cv-image-form';
 
 function CVCreator(props) {
+	// Ref used for ReactToPrint
+	const CVRef = useRef();
+
+	// State
+
 	const [inputFields, setInputFields] = useState({
 		contact_phone: [null, 'tel', 'Phone', '555-555-5555'],
 		contact_email: [null, 'email', 'Email', 'email@me.com'],
@@ -74,6 +80,8 @@ function CVCreator(props) {
 
 	const [displayForm, setDisplayForm] = useState(null);
 
+	// Event handlers
+
 	const handleInputChange = (event) => {
 		const name = event.target.name;
 		
@@ -120,6 +128,12 @@ function CVCreator(props) {
 	const displaySectionForm = (section) => {
 		setDisplayForm(section);
 	}
+
+	const handlePrint = useReactToPrint({
+		content: () => CVRef.current,
+	});
+
+	// State distribution functions
 
 	const sortStateIntoSections = (inputFlds) => {
 		/* {contact: {field1: [i, n, f, o], field2: [], ...}, education: {}, ...} */
@@ -192,6 +206,11 @@ function CVCreator(props) {
 
 	return (
 		<div className="cv-creator">
+			<button 
+				className="btn btn-primary"
+				onClick={handlePrint}>
+			Print / Save PDF
+			</button>
 			<CV 
 				portrait={displayData.portrait}
 				contact={displayData.contact}
@@ -200,6 +219,7 @@ function CVCreator(props) {
 				introduction={displayData.introduction}
 				workExperience={displayData.workExperience}
 				formDisplay={displaySectionForm}
+				ref={CVRef}
 			/>
 			{formType === 'form' &&
 				<CVForm 

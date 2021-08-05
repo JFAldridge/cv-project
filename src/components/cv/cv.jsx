@@ -6,39 +6,46 @@ import Skills from './display/skills';
 import Introduction from './display/introduction';
 import WorkExperience from './display/work-experience';
 
-function CV({portrait, contact, education, skills, introduction, workExperience, formDisplay}) {
-	return (
-		<div className="resume">
-			<div className="sidebar">
-				<Portrait 
-					fields={portrait}
-					formDisplay={formDisplay}
-				/>
-				<Contact 
-					fields={contact}
-					formDisplay={formDisplay}
-				/>
-				<Education 
-					fields={education}
-					formDisplay={formDisplay}
-				/>
-				<Skills 
-					fields={skills}
-					formDisplay={formDisplay}
-				/>
+//react-to-print only prints class components
+
+class CV extends React.Component {
+	render() {
+		const {portrait, contact, education, skills, introduction, workExperience, formDisplay} = this.props;
+
+		return (
+			<div className="resume">
+				<div className="sidebar">
+					<Portrait 
+						fields={portrait}
+						formDisplay={formDisplay}
+					/>
+					<Contact 
+						fields={contact}
+						formDisplay={formDisplay}
+					/>
+					<Education 
+						fields={education}
+						formDisplay={formDisplay}
+					/>
+					<Skills 
+						fields={skills}
+						formDisplay={formDisplay}
+					/>
+				</div>
+				<div className="main-content">
+					<Introduction 
+						fields={introduction}
+						formDisplay={formDisplay}
+					/>
+					<WorkExperience 
+						fields={workExperience}
+						formDisplay={formDisplay}
+					/>
+				</div>
 			</div>
-			<div className="main-content">
-				<Introduction 
-					fields={introduction}
-					formDisplay={formDisplay}
-				/>
-				<WorkExperience 
-					fields={workExperience}
-					formDisplay={formDisplay}
-				/>
-			</div>
-		</div>
-	);
+		);
+	
+	}
 }
 
 export default CV;
