@@ -1,6 +1,36 @@
 import React, {useState, useRef} from 'react';
 import { CSSTransition } from 'react-transition-group';
 
+function SkillGroup({fieldGroup, groupNum}) {
+    
+    function winnowAndSortListitems(fields) {
+        let listItems = [];
+
+        Object.keys(fields).forEach((field) => {
+            const listItemIdentifier = field.charAt(field.length - 2);
+            if (listItemIdentifier === listItemIdentifier.toUpperCase()) {
+                const listItem = fieldGroup[field];
+
+                if (listItem !== null && listItem !== '') {
+                    listItems.push(<li key={listItemIdentifier}>{listItem}</li>);
+                }
+            }
+        });
+
+        const sortedListItems = listItems.sort()
+        return sortedListItems;
+    }
+
+    return (
+		<div className="skill-list-container">
+			<h4>{fieldGroup['skills_heading' + groupNum]}</h4>
+			<ul className="skill-list">
+				{winnowAndSortListitems(fieldGroup)}
+			</ul>
+		</div>
+    );
+}
+
 function Skills({fields, formDisplay}) {
 	const [displayEditIcon, setDisplayEditIcon] = useState(false);
     const editIconContainer = useRef(null);
@@ -8,6 +38,20 @@ function Skills({fields, formDisplay}) {
 	const displayForm = () => {
 		formDisplay('skills');
 	}
+
+	function groupTheFields(fields) {
+        let groupedFields = [];
+
+        Object.keys(fields).forEach((field) => {
+            const groupNum = field.charAt(field.length - 1);
+            if (!groupedFields[groupNum]) {
+                groupedFields[groupNum] = {}
+            }
+            groupedFields[groupNum][field] = fields[field];
+        });
+
+        return groupedFields;
+    }
 
     return (
         <section 
@@ -30,29 +74,17 @@ function Skills({fields, formDisplay}) {
                 </div>
             </CSSTransition>
             <h2>Skills</h2>
-            <div className="skill-list-container">
-				<h4>{fields.skills_heading1}</h4>
-				<ul className="skill-list">
-					<li>{fields.skills_item1}</li>
-					<li>{fields.skills_item2}</li>
-					<li>{fields.skills_item3}</li>
-					<li>{fields.skills_item4}</li>
-					<li>{fields.skills_item5}</li>
-					<li>{fields.skills_item6}</li>
-				</ul>
-            </div>
-            <div className="skill-list-container">
-				<h4>{fields.skills_heading2}</h4>
-				<ul className="skill-list">
-					<li>{fields.skills_item7}</li>
-					<li>{fields.skills_item8}</li>
-					<li>{fields.skills_item9}</li>
-					<li>{fields.skills_item10}</li>
-					<li>{fields.skills_item11}</li>
-					<li>{fields.skills_item12}</li>
-					<li>{fields.skills_item13}</li>
-				</ul>
-            </div>
+				{
+                    groupTheFields(fields).map((group, i) => {
+                        return (
+                            <SkillGroup 
+                                fieldGroup={group}
+                                groupNum={i}
+                                key={i}
+                            />
+                        );
+                    })
+                }
         </section>
     );
 }

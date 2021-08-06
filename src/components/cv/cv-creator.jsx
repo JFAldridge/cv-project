@@ -9,7 +9,7 @@ function CVCreator(props) {
 	// Ref used for ReactToPrint
 	const CVRef = useRef();
 
-	// State
+	// All user info is held here.
 
 	const [inputFields, setInputFields] = useState({
 		contact_phoneA0: [null, 'tel', 'Phone', '555-555-5555'],
@@ -26,25 +26,25 @@ function CVCreator(props) {
 		education_degree1: [null, 'text', 'Degree', 'Bachelors of a Field'],
 		education_institution1: [null, 'text', 'Institution', 'University of a State'],
 		education_timeToDegree1: [null, 'text', 'Time to Degree', '2014-2018'],
-		skills_heading1: [null, 'text', 'Skill Heading', '/ / Technical'],
-		skills_item1: [null, 'text', 'Skill', 'Making list items'],
-		skills_item2: [null, 'text', 'Skill', 'Making list items'],
-		skills_item3: [null, 'text', 'Skill', 'Making list items'],
-		skills_item4: [null, 'text', 'Skill', 'Making list items'],
-		skills_item5: [null, 'text', 'Skill', 'Making list items'],
-		skills_item6: [null, 'text', 'Skill', 'Making list items'],
-		skills_item7: [null, 'text', 'Skill', ''],
-		skills_item8: [null, 'text', 'Skill', ''],
-		skills_item9: [null, 'text', 'Skill', ''],
-		skills_heading2: [null, 'text', 'Skill Heading', '/ / Soft'],
-		skills_item10: [null, 'text', 'Skill', 'Being well liked'],
-		skills_item11: [null, 'text', 'Skill', 'Being well liked'],
-		skills_item12: [null, 'text', 'Skill', 'Being well liked'],
-		skills_item13: [null, 'text', 'Skill', 'Being well liked'],
-		skills_item14: [null, 'text', 'Skill', 'Being well liked'],
-		skills_item15: [null, 'text', 'Skill', ''],
-		skills_item16: [null, 'text', 'Skill', ''],
-		skills_item17: [null, 'text', 'Skill', ''],
+		skills_heading0: [null, 'text', 'Skill Heading', '/ / Technical'],
+		skills_itemA0: [null, 'text', 'Skill', 'Making list items'],
+		skills_itemB0: [null, 'text', 'Skill', 'Making list items'],
+		skills_itemC0: [null, 'text', 'Skill', 'Making list items'],
+		skills_itemD0: [null, 'text', 'Skill', 'Making list items'],
+		skills_itemE0: [null, 'text', 'Skill', 'Making list items'],
+		skills_itemF0: [null, 'text', 'Skill', 'Making list items'],
+		skills_itemG0: [null, 'text', 'Skill', ''],
+		skills_itemH0: [null, 'text', 'Skill', ''],
+		skills_itemI0: [null, 'text', 'Skill', ''],
+		skills_heading1: [null, 'text', 'Skill Heading', '/ / Soft'],
+		skills_itemA1: [null, 'text', 'Skill', 'Being well liked'],
+		skills_itemB1: [null, 'text', 'Skill', 'Being well liked'],
+		skills_itemC1: [null, 'text', 'Skill', 'Being well liked'],
+		skills_itemD1: [null, 'text', 'Skill', 'Being well liked'],
+		skills_itemE1: [null, 'text', 'Skill', 'Being well liked'],
+		skills_itemF1: [null, 'text', 'Skill', ''],
+		skills_itemG1: [null, 'text', 'Skill', ''],
+		skills_itemH1: [null, 'text', 'Skill', ''],
 		introduction_given: [null, 'text', 'First Name', 'Given'],
 		introduction_surname: [null, 'text', 'Last Name', 'Surname'],
 		introduction_title: [null, 'text', 'Professional Title', 'Professional Title'],
@@ -190,6 +190,7 @@ function CVCreator(props) {
 		if (section === null) return null;
 
         const dynamicSections = [
+			'skills',
             'education',
 			'workExperience',
         ];
