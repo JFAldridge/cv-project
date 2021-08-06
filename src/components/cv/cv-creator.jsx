@@ -12,14 +12,14 @@ function CVCreator(props) {
 	// All user info is held here.
 
 	const [inputFields, setInputFields] = useState({
-		contact_phoneA0: [null, 'tel', 'Phone', '555-555-5555'],
-		contact_emailB0: [null, 'email', 'Email', 'email@me.com'],
-		contact_portfolioC0: [null, 'url', 'Portfolio', 'www.portfolio.com'],
-		contact_githubD0: [null, 'url', 'Github', 'github.com/me'],
-		contact_linkedInE0: [null, 'url', 'Github', ''],
-		contact_instagramF0: [null, 'url', 'Github', ''],
-		contact_youtubeG0: [null, 'url', 'Github', ''],
-		contact_facebookH0: [null, 'url', 'Github', ''],
+		contact_phone: [null, 'tel', 'Phone', '555-555-5555'],
+		contact_email: [null, 'email', 'Email', 'email@me.com'],
+		contact_portfolio: [null, 'url', 'Portfolio', 'www.portfolio.com'],
+		contact_github: [null, 'url', 'Github', 'github.com/me'],
+		contact_linkedIn: [null, 'url', 'Github', ''],
+		contact_instagram: [null, 'url', 'Github', ''],
+		contact_youtube: [null, 'url', 'Github', ''],
+		contact_facebook: [null, 'url', 'Github', ''],
 		education_degree0: [null, 'text', 'Degree', 'Bachelors of a Field'],
 		education_institution0: [null, 'text', 'Institution', 'University of a State'],
 		education_timeToDegree0: [null, 'text', 'Time to Degree', '2014-2018'],

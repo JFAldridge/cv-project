@@ -5,14 +5,14 @@ function ContactItem({type, value}) {
 
 	const getIconClass = (type) => {
 		const iconClasses = {
-			contact_phoneA0: "bi bi-telephone-fill",
-			contact_emailB0: "bi bi-envelope-fill",
-			contact_portfolioC0: "bi bi-border-style",
-			contact_githubD0: "bi bi-github",
-			contact_linkedInE0: "bi bi-linkedin",
-			contact_instagramF0: "bi bi-instagram",
-			contact_youtubeG0: "bi bi-youtube",
-			contact_facebookH0: "bi bi-facebook",
+			contact_phone: "bi bi-telephone-fill",
+			contact_email: "bi bi-envelope-fill",
+			contact_portfolio: "bi bi-border-style",
+			contact_github: "bi bi-github",
+			contact_linkedIn: "bi bi-linkedin",
+			contact_instagram: "bi bi-instagram",
+			contact_youtube: "bi bi-youtube",
+			contact_facebook: "bi bi-facebook",
 		};
 
 		return iconClasses[type];
