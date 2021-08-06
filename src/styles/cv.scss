@@ -1,3 +1,4 @@
+/* Variables for CV*/
 $primary-font: 'Noto Sans JP', sans-serif;
 $secondary-font: 'Open Sans', sans-serif;
 
@@ -10,18 +11,274 @@ $bg: rgb(248, 248, 248);
 $accent-fg: rgb(184, 184, 189);
 $accent-bg: rgb(50, 59, 76);
 
+/* Variables for homepage template*/
+// Default Colors Set
+$default: #444;
+$default-light: #666;
+$default-dark: #222;
+
+// Primary Colors Set
+$primary: #68A4C4;
+$primary-light: #a2cce3;
+$primary-dark: #32627b;
+
+// Secondary Colors Set
+$secondary: #1e4356;
+$secondary-light: #7b9bab;
+$secondary-dark: #0d2735;
+
+// Link Colors
+$links: #4fa6d5;
+$links-hover: #45beff;
+
+/// Fonts
+$font-default: 'Open Sans', sans-serif;
+$font-primary: 'Roboto', sans-serif;
+$font-secondary: 'Roboto', sans-serif;
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
 body {
-    font-family: $secondary-font;
+    background-color: $secondary-dark;
+}
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+    height: 80px;
+    transition: all 0.5s;
+    z-index: 997;
+    transition: all 0.5s;
+    background: $secondary;
+
+    &.header-transparent {
+        background: none;
+    }
+
+    &.header-scrolled {
+        background: rgba($secondary, 0.8);
+        height: 60px;
+    }
+
+    .logo {
+
+        h1 {
+     font-size: 28px;
+            margin: 0;
+            padding: 4px 0;
+            line-height: 1;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        h1 a, h1 a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        img {
+            padding: 0;
+            margin: 0;
+            max-height: 40px;
+        }
+    }
 }
 
-h1, h2, h3, h4, h5 {
-    font-family: $primary-font;
+#main {
+    margin-top: 80px;
 }
 
-/* Resume */
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#hero {
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+    position: relative;
+  
 
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 130%;
+        height: 95%;
+        background: linear-gradient(to right, rgba($secondary, 0.8), rgba($secondary, 0.6)), url("../img/hero-bg.jpg") center top no-repeat;
+        z-index: 0;
+        border-radius: 0 0 50% 50%;
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 130%;
+        height: 96%;
+        background: $primary;
+        opacity: 0.3;
+        z-index: 0;
+        border-radius: 0 0 50% 50%;
+        transform: translateX(-50%) translateY(18px) rotate(2deg);
+    }
+
+    h2 {
+        color: #fff;
+        margin-bottom: 30px;
+        font-size: 48px;
+        font-weight: 700;
+    }
+
+    p {
+        width: 80%;
+        animation-delay: 0.4s;
+        margin: 0 auto 30px auto;
+        color: #fff;
+    }
+
+    .btn-get-started {
+        font-family: $font-primary;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 1px;
+        display: inline-block;
+        padding: 12px 32px;
+        border-radius: 50px;
+        transition: 0.5s;
+        line-height: 1;
+        margin: 10px;
+        color: #fff;
+        animation-delay: 0.8s;
+        border: 2px solid $primary;
+        &:hover {
+            background: $primary;
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+
+  
+    @media (min-width: 1024px) {
+        p {
+            width: 60%;
+        }
+        .carousel-control-prev, .carousel-control-next {
+            width: 5%;
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        &::after {
+            width: 180%;
+            height: 95%;
+            border-radius: 0 0 50% 50%;
+            transform: translateX(-50%) rotate(0deg);
+        }
+  
+        &::before {
+                top: 0;
+                width: 180%;
+                height: 94%;
+                border-radius: 0 0 50% 50%;
+                transform: translateX(-50%) translateY(20px) rotate(4deg);
+        }
+    }
+
+    @media (max-width: 575px) {
+        h2 {
+            font-size: 30px;
+        }
+
+        &::after {
+            left: 40%;
+            top: 0;
+            width: 200%;
+            height: 95%;
+            border-radius: 0 0 50% 50%;
+            transform: translateX(-50%) rotate(0deg);
+        }
+  
+        &::before {
+                left: 50%;
+                top: 0;
+                width: 200%;
+                height: 94%;
+                border-radius: 0 0 50% 50%;
+                transform: translateX(-50%) translateY(20px) rotate(4deg);
+        }
+    }
+
+}
+
+/*--------------------------------------------------------------
+# Hero No Slider Section
+--------------------------------------------------------------*/
+#hero-no-slider {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+  
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to right, rgba($secondary, 0.8), rgba($secondary, 0.6)), url("../img/hero-bg.jpg") center top no-repeat;
+    }
+
+    h2 {
+        color: #fff;
+        margin-bottom: 15px;
+        font-size: 48px;
+        font-weight: 700;
+    }
+
+    p {
+        color: #fff;
+    }
+
+    .btn-get-started {
+        font-family: $font-primary;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 1px;
+        display: inline-block;
+        padding: 12px 32px;
+        border-radius: 50px;
+        transition: 0.5s;
+        line-height: 1;
+        margin: 10px;
+        color: #fff;
+        animation-delay: 0.8s;
+        border: 2px solid $primary;
+        &:hover {
+            background: $primary;
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+
+    @media (max-width: 575px) {
+        h2 {
+            font-size: 30px;
+        }
+    }
+}
+
+/*--------------------------------------------------------------
+# Resume
+--------------------------------------------------------------*/
 // General styles
-
 .resume {
     word-wrap: break-word;
     display: flex;
