@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 function Position({fieldGroup, groupNum}) {
@@ -35,6 +35,7 @@ function Position({fieldGroup, groupNum}) {
 
 function WorkExperience({fields, formDisplay}) {
     const [displayEditIcon, setDisplayEditIcon] = useState(false);
+    const editIconContainer = useRef(null);
 
     function groupTheFields(fields) {
         let groupedFields = [];
@@ -61,12 +62,13 @@ function WorkExperience({fields, formDisplay}) {
             onMouseLeave={() => setDisplayEditIcon(false)}
         >
             <CSSTransition 
+                nodeRef={editIconContainer}
                 in={displayEditIcon}
                 timeout={300}
                 classNames="edit-icon"
                 unmountOnExit
             >
-                <div className="edit-icon-container">
+                <div className="edit-icon-container" ref={editIconContainer}>
                     <i 
                         className="bi bi-pencil-square edit-section"
                         onClick={displayForm}

@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 function Introduction({fields, formDisplay}) {
     const [displayEditIcon, setDisplayEditIcon] = useState(false);
+    const editIconContainer = useRef(null);
 
     const displayForm = () => {
 		formDisplay('introduction');
@@ -15,12 +16,13 @@ function Introduction({fields, formDisplay}) {
             onMouseLeave={() => setDisplayEditIcon(false)}
         >
             <CSSTransition 
+                nodeRef={editIconContainer}
                 in={displayEditIcon}
                 timeout={300}
                 classNames="edit-icon"
                 unmountOnExit
             >
-                <div className="edit-icon-container">
+                <div className="edit-icon-container" ref={editIconContainer}>
                     <i 
                         className="bi bi-pencil-square edit-section"
                         onClick={displayForm}

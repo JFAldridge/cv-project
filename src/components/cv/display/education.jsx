@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 function InstitutionDiv({degree, institution, timeToDegree}) {
@@ -13,7 +13,7 @@ function InstitutionDiv({degree, institution, timeToDegree}) {
 
 function Education({fields, formDisplay}) {   
     const [displayEditIcon, setDisplayEditIcon] = useState(false);
- 
+    const editIconContainer = useRef(null);
 
     const getFieldGroupNumbers = () => {
         const numberIdentifiers = Object.keys(fields).map((key) => key.charAt(key.length - 1)).sort();
@@ -32,12 +32,13 @@ function Education({fields, formDisplay}) {
             onMouseLeave={() => setDisplayEditIcon(false)}
         >
             <CSSTransition 
+                nodeRef={editIconContainer}
                 in={displayEditIcon}
                 timeout={300}
                 classNames="edit-icon"
                 unmountOnExit
             >
-                <div className="edit-icon-container">
+                <div className="edit-icon-container" ref={editIconContainer}>
                     <i 
                         className="bi bi-pencil-square edit-section"
                         onClick={displayForm}
