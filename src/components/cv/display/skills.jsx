@@ -1,17 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 function Skills({fields, formDisplay}) {
+	const [displayEditIcon, setDisplayEditIcon] = useState(false);
+
 
 	const displayForm = () => {
 		formDisplay('skills');
 	}
 
     return (
-        <section className="skills">
-			<i 
-				className="bi bi-pencil-square edit-section"
-				onClick={displayForm}
-			></i>
+        <section 
+			className="skills"
+			onMouseEnter={() => setDisplayEditIcon(true)}
+            onMouseLeave={() => setDisplayEditIcon(false)}
+		>
+			<CSSTransition 
+                in={displayEditIcon}
+                timeout={300}
+                classNames="edit-icon"
+                unmountOnExit
+            >
+                <div className="edit-icon-container">
+                    <i 
+                        className="bi bi-pencil-square edit-section"
+                        onClick={displayForm}
+                    ></i>
+                </div>
+            </CSSTransition>
             <h2>Skills</h2>
             <div className="skill-list-container">
 				<h4>{fields.skills_heading1}</h4>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 function InstitutionDiv({degree, institution, timeToDegree}) {
     return (
@@ -10,7 +11,9 @@ function InstitutionDiv({degree, institution, timeToDegree}) {
     );
 }
 
-function Education({fields, formDisplay}) {    
+function Education({fields, formDisplay}) {   
+    const [displayEditIcon, setDisplayEditIcon] = useState(false);
+ 
 
     const getFieldGroupNumbers = () => {
         const numberIdentifiers = Object.keys(fields).map((key) => key.charAt(key.length - 1)).sort();
@@ -23,11 +26,24 @@ function Education({fields, formDisplay}) {
 	}
 
     return (
-        <section className="education">
-            <i 
-				className="bi bi-pencil-square edit-section"
-				onClick={displayForm}
-			></i>
+        <section 
+            className="education"
+            onMouseEnter={() => setDisplayEditIcon(true)}
+            onMouseLeave={() => setDisplayEditIcon(false)}
+        >
+            <CSSTransition 
+                in={displayEditIcon}
+                timeout={300}
+                classNames="edit-icon"
+                unmountOnExit
+            >
+                <div className="edit-icon-container">
+                    <i 
+                        className="bi bi-pencil-square edit-section"
+                        onClick={displayForm}
+                    ></i>
+                </div>
+            </CSSTransition>
             <h2>Education</h2>
                 {
                     getFieldGroupNumbers().map((groupNum) => {

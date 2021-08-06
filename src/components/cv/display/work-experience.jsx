@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 function Position({fieldGroup, groupNum}) {
     
@@ -33,6 +34,8 @@ function Position({fieldGroup, groupNum}) {
 }
 
 function WorkExperience({fields, formDisplay}) {
+    const [displayEditIcon, setDisplayEditIcon] = useState(false);
+
     function groupTheFields(fields) {
         let groupedFields = [];
 
@@ -52,11 +55,24 @@ function WorkExperience({fields, formDisplay}) {
 	}
 
     return (
-        <section className="work-experience">
-            <i 
-				className="bi bi-pencil-square edit-section"
-				onClick={displayForm}
-			></i>
+        <section 
+            className="work-experience"
+            onMouseEnter={() => setDisplayEditIcon(true)}
+            onMouseLeave={() => setDisplayEditIcon(false)}
+        >
+            <CSSTransition 
+                in={displayEditIcon}
+                timeout={300}
+                classNames="edit-icon"
+                unmountOnExit
+            >
+                <div className="edit-icon-container">
+                    <i 
+                        className="bi bi-pencil-square edit-section"
+                        onClick={displayForm}
+                    ></i>
+                </div>
+            </CSSTransition>
             <h2>Work Expierence</h2>
                 {
                     groupTheFields(fields).map((group, i) => {

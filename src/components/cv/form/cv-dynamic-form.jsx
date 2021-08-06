@@ -66,11 +66,12 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fi
                     }
                 </form>
                 <button
-                    className="btn btn-primary"
+                    className="btn btn-outline-primary mb-3"
                     onClick={() => createFieldGroup(groupedFields)}
                 >
                     Add Field Group
                 </button>
+                <br />
                 <button
                     className="btn btn-primary"
                     onClick={displayForm}

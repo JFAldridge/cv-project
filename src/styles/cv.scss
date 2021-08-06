@@ -20,6 +20,8 @@ h1, h2, h3, h4, h5 {
 
 /* Resume */
 
+// General styles
+
 .resume {
     word-wrap: break-word;
     display: flex;
@@ -66,12 +68,44 @@ h1, h2, h3, h4, h5 {
         color: $bg;
     }
 
+    .edit-icon-container {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: .3in;
+        width: .3in;
+        display: flex;
+        align-items: center;
+        border-radius: 6%;
+          
+        .edit-section {
+            margin: 0 auto;
+            font-size: 1.5em;
+        }
+    }
+
+    // Left Column
+
     .sidebar {
         width: 32%;
         background-color: $accent-bg;
         color: $accent-fg;
         padding-left: $page-margin;
         padding-bottom: $page-margin;
+
+        .edit-icon-container{
+            box-shadow: 0 0 3px $bg;
+            margin-right: .5em;
+            &:hover {
+                background-color: $bg;
+            }
+            i {
+                color: $bg;
+                &:hover {
+                    color: $accent-bg;
+                }
+            }
+        }
 
         h1, h2, h3, h4, h5 {
             font-family: $primary-font;
@@ -99,6 +133,10 @@ h1, h2, h3, h4, h5 {
             display: flex;
             align-items: center;
             height: $top-section-height;
+
+            .edit-icon-container {
+                margin-top: .6in;
+            }
 
             .portrait {
                 background-color: rgb(189, 189, 189);
@@ -131,13 +169,25 @@ h1, h2, h3, h4, h5 {
             }
         }
     }
+
+    // Right Column
     
     .main-content {
         width: 68%;
         padding: $page-margin $page-margin $page-margin 2.5em;
 
-        i {
-            color: $accent-bg;
+        .edit-icon-container{
+            box-shadow: 0 0 3px $accent-bg;
+
+            &:hover {
+                background-color: $accent-bg;
+            }
+            i {
+                color: $accent-bg;
+                &:hover {
+                    color: $bg;
+                }
+            }
         }
 
         ul {
@@ -172,20 +222,26 @@ h1, h2, h3, h4, h5 {
 
 /* Form */
 
-.edit-section {
-    position: absolute;
-    top: 0;
-    right: .07in;
-    font-size: 1.5em;
+
+
+.edit-icon-enter {
+    opacity: 0;
+    transform: scale(0.9);
+}
+.edit-icon-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+.edit-icon-exit {
+    opacity: 1;
+}
+.edit-icon-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
 }
 
-.portrait-container {
-    .edit-section {
-        position: absolute;
-        top: .6in;
-        right: .07in;
-    }
-}
 
 /* The Modal (background) */
 .form-modal {
