@@ -16,10 +16,10 @@ function CVCreator(props) {
 		contact_email: [null, 'email', 'Email', 'email@me.com'],
 		contact_portfolio: [null, 'url', 'Portfolio', 'www.portfolio.com'],
 		contact_github: [null, 'url', 'Github', 'github.com/me'],
-		contact_linkedIn: [null, 'url', 'Github', ''],
-		contact_instagram: [null, 'url', 'Github', ''],
-		contact_youtube: [null, 'url', 'Github', ''],
-		contact_facebook: [null, 'url', 'Github', ''],
+		contact_linkedIn: [null, 'url', 'LinkedIn', ''],
+		contact_instagram: [null, 'url', 'Instagram', ''],
+		contact_youtube: [null, 'url', 'Youtube', ''],
+		contact_facebook: [null, 'url', 'Facebook', ''],
 		education_degree0: [null, 'text', 'Degree', 'Bachelors of a Field'],
 		education_institution0: [null, 'text', 'Institution', 'University of a State'],
 		education_timeToDegree0: [null, 'text', 'Time to Degree', '2014-2018'],
@@ -210,47 +210,49 @@ function CVCreator(props) {
 	const formType = getFormType(displayForm);
 
 	return (
-		<div className="cv-creator">
-			<button 
-				className="btn btn-primary"
-				onClick={handlePrint}>
-			Print / Save PDF
-			</button>
-			<CV 
-				portrait={displayData.portrait}
-				contact={displayData.contact}
-				education={displayData.education}
-				skills={displayData.skills}
-				introduction={displayData.introduction}
-				workExperience={displayData.workExperience}
-				formDisplay={displaySectionForm}
-				ref={CVRef}
-			/>
-			{formType === 'form' &&
-				<CVForm 
-					fields={sectionedFields[displayForm]}
-					section={displayForm} 
-					inputChangeHandle={handleInputChange}
+		<div className="cv-creator-container">
+			<div className="cv-creator">
+				<button 
+					className="btn btn-print-cv"
+					onClick={handlePrint}>
+				Print / Save PDF
+				</button>
+				<CV 
+					portrait={displayData.portrait}
+					contact={displayData.contact}
+					education={displayData.education}
+					skills={displayData.skills}
+					introduction={displayData.introduction}
+					workExperience={displayData.workExperience}
 					formDisplay={displaySectionForm}
+					ref={CVRef}
 				/>
-			}
-			{formType === 'dynamic' &&
-				<CVDynamicFrom 
-					fields={sectionedFields[displayForm]}
-					section={displayForm} 
-					inputChangeHandle={handleInputChange}
-					formDisplay={displaySectionForm}
-					fieldGroupDelete={deleteFieldGroup}
-					fieldGroupCreate={createFieldGroup}
-				/>
-			}
-			{formType === 'image' &&
-				<CVImageForm 
-					section={displayForm} 
-					imageChangeHandle={handleImageChange}
-					formDisplay={displaySectionForm}
-				/>
-			}
+				{formType === 'form' &&
+					<CVForm 
+						fields={sectionedFields[displayForm]}
+						section={displayForm} 
+						inputChangeHandle={handleInputChange}
+						formDisplay={displaySectionForm}
+					/>
+				}
+				{formType === 'dynamic' &&
+					<CVDynamicFrom 
+						fields={sectionedFields[displayForm]}
+						section={displayForm} 
+						inputChangeHandle={handleInputChange}
+						formDisplay={displaySectionForm}
+						fieldGroupDelete={deleteFieldGroup}
+						fieldGroupCreate={createFieldGroup}
+					/>
+				}
+				{formType === 'image' &&
+					<CVImageForm 
+						section={displayForm} 
+						imageChangeHandle={handleImageChange}
+						formDisplay={displaySectionForm}
+					/>
+				}
+			</div>
 		</div>
 	);
 	
