@@ -26,7 +26,11 @@ function CVImageForm({section, imageChangeHandle, formDisplay}) {
     return(
         <div className="form-modal">
             <div className="form-container">
-            <h2>{capitalizeFirstLetter(section)}</h2>
+                <i 
+                    className="bi bi-x-square close-form"
+                    onClick={displayForm}
+                ></i>
+                <h2>{capitalizeFirstLetter(section)}</h2>
                 <form>
                     <input 
                         type="file" 
@@ -34,8 +38,6 @@ function CVImageForm({section, imageChangeHandle, formDisplay}) {
                         id="portrai-file" 
                         onChange={(e) => handleImageChange(e)}
                     />
-           
-                    
                     <button
                         className="btn btn-primary"
                         onClick={displayForm}

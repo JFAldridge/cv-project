@@ -14,7 +14,12 @@ function CVForm({fields, section, inputChangeHandle, formDisplay}) {
     return(
         <div className="form-modal">
             <div className="form-container">
-            <h2>{capitalizeFirstLetter(section)}</h2>
+                <i 
+                    className="bi bi-x-square close-form"
+                    onClick={displayForm}
+                ></i>
+                <h2>{capitalizeFirstLetter(section)}</h2>
+                <p className="from-text mb-3">(Unused fields will not show up on the CV)</p>
                 <form>
                     {
                         Object.entries(fields).map(([inputName, inputInfo]) => {

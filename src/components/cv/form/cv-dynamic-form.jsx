@@ -11,6 +11,10 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fi
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
+    function splitCamelCaseString(string) {
+        return string.split(/(?=[A-Z])/).join(' ')
+    }
+
     function groupTheFields(fields) {
         let groupedFields = [];
 
@@ -45,11 +49,16 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fi
     }
 
     const groupedFields = groupTheFields(fields)
-
+    const prettifiedSectionName = splitCamelCaseString(capitalizeFirstLetter(section));
     return(
         <div className="form-modal">
             <div className="form-container">
-            <h2>{capitalizeFirstLetter(section)}</h2>
+                <i 
+                    className="bi bi-x-square close-form"
+                    onClick={displayForm}
+                ></i>
+                <h2>{prettifiedSectionName}</h2>
+                <p className="from-text mb-3">(Unused fields will not show up on the CV)</p>
                 <form>
                     {
                         groupedFields.map((group, groupNum) => {
@@ -65,12 +74,12 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fi
                         })
                     }
                 </form>
-                <button
-                    className="btn btn-outline-primary mb-3"
-                    onClick={() => createFieldGroup(groupedFields)}
-                >
-                    Add Field Group
-                </button>
+                <div
+                    className="btn btn-outline-primary mb-3 create-field-group"
+                    onClick={() => createFieldGroup(groupedFields)} >
+                    <i className="bi bi-plus-square add-icon"></i>
+                    Add {prettifiedSectionName}
+                </div>
                 <br />
                 <button
                     className="btn btn-primary"

@@ -11,7 +11,7 @@ function DeletableFieldGroup({fields, groupNum, inputChangeHandle, fieldGroupDel
         <fieldset>
             {groupNum > 0 &&
             <i 
-                className="bi bi-x-square"
+                className="bi bi-x-square close-input-group"
                 onClick={() => deleteFieldGroup()}
             ></i> }  
             {
