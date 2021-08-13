@@ -383,13 +383,7 @@ body {
 
     // Left Column
 
-    .sidebar {
-        width: 32%;
-        background-color: $accent-bg;
-        color: $accent-fg;
-        padding-left: $page-margin;
-        padding-bottom: $page-margin;
-
+    .left-column {
         .edit-icon-container{
             box-shadow: 0 0 3px $bg;
             margin-right: .5em;
@@ -469,9 +463,7 @@ body {
 
     // Right Column
     
-    .main-content {
-        width: 68%;
-        padding: $page-margin $page-margin $page-margin 2.5em;
+    .right-column {
 
         .edit-icon-container{
             box-shadow: 0 0 3px $accent-bg;
