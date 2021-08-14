@@ -458,50 +458,6 @@ body {
         }
     }
 
-    // Right Column
-    
-    .right-column {
-
-        .edit-icon-container{
-            box-shadow: 0 0 3px $accent-bg;
-
-            &:hover {
-                background-color: $accent-bg;
-            }
-            i {
-                color: $accent-bg;
-                &:hover {
-                    color: $bg;
-                }
-            }
-        }
-
-        ul {
-            padding-left: 1em;
-        }
-        
-        .introduction {
-            margin: 0;
-            height: calc(#{$top-section-height} - #{$page-margin} + 1.5em);
-
-            .first-name {
-                font-weight: bold;
-            }
-
-            .professional-title {
-                letter-spacing: .15em;
-                margin-bottom: 1em;
-            }
-
-            
-        }
-
-        .work-experience {
-            .position {
-                font-weight: normal;
-            }
-        }
-    }
 }
 
 /* Form Button Transition */

@@ -1,5 +1,9 @@
-import React, {useState, useRef} from 'react';
-import { CSSTransition } from 'react-transition-group';
+import React from 'react';
+import styled from 'styled-components';
+
+const PositionTitle = styled.span`
+    font-weight: normal;
+`;
 
 function Position({fieldGroup, groupNum}) {
     
@@ -23,7 +27,7 @@ function Position({fieldGroup, groupNum}) {
 
     return (
         <div className="position">
-            <h4 className="company">{fieldGroup['workExperience_company' + groupNum]} <span className="position">{fieldGroup['workExperience_position' + groupNum]}</span></h4>
+            <h4 className="company">{fieldGroup['workExperience_company' + groupNum]} <PositionTitle>{fieldGroup['workExperience_position' + groupNum]}</PositionTitle></h4>
             <p className="duration">{fieldGroup['workExperience_duration' + groupNum]}</p>
             <p className="position-summary">{fieldGroup['workExperience_summary' + groupNum]}</p>
             <ul className="achievements">
@@ -33,9 +37,7 @@ function Position({fieldGroup, groupNum}) {
     );
 }
 
-function WorkExperience({fields, formDisplay}) {
-    const [displayEditIcon, setDisplayEditIcon] = useState(false);
-    const editIconContainer = useRef(null);
+function WorkExperience({fields}) {
 
     function groupTheFields(fields) {
         let groupedFields = [];
@@ -51,43 +53,21 @@ function WorkExperience({fields, formDisplay}) {
         return groupedFields;
     }
 
-    const displayForm = () => {
-		formDisplay('workExperience');
-	}
-
     return (
-        <section 
-            className="work-experience"
-            onMouseEnter={() => setDisplayEditIcon(true)}
-            onMouseLeave={() => setDisplayEditIcon(false)}
-        >
-            <CSSTransition 
-                nodeRef={editIconContainer}
-                in={displayEditIcon}
-                timeout={300}
-                classNames="edit-icon"
-                unmountOnExit
-            >
-                <div className="edit-icon-container" ref={editIconContainer}>
-                    <i 
-                        className="bi bi-pencil-square edit-section"
-                        onClick={displayForm}
-                    ></i>
-                </div>
-            </CSSTransition>
-            <h2>Work Expierence</h2>
-                {
-                    groupTheFields(fields).map((group, i) => {
-                        return (
-                            <Position 
-                                fieldGroup={group}
-                                groupNum={i}
-                                key={i}
-                            />
-                        );
-                    })
-                }
-        </section>
+        <>
+        <h2>Work Experience</h2>
+            {
+                groupTheFields(fields).map((group, i) => {
+                    return (
+                        <Position 
+                            fieldGroup={group}
+                            groupNum={i}
+                            key={i}
+                        />
+                    );
+                })
+            }
+        </>
     );
 }
 

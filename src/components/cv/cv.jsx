@@ -37,6 +37,9 @@ const LeftColumn = styled.div`
 const RightColumn = styled.div`
 	width: 68%;
     padding: .6in .6in .6in 2.5em;
+	ul {
+            padding-left: 1em;
+    }
 `;
 
 class CV extends React.Component {
@@ -67,10 +70,9 @@ class CV extends React.Component {
 						<Section formDisplay={formDisplay} sectionName="introduction">
 							<Introduction fields={introduction} />
 						</Section>
-						<WorkExperience 
-							fields={workExperience}
-							formDisplay={formDisplay}
-						/>
+						<Section formDisplay={formDisplay} sectionName="workExperience">
+							<WorkExperience fields={workExperience}/>
+						</Section>
 					</RightColumn>
 			</CVWrapper>
 		);
