@@ -2,6 +2,12 @@ import React, {useState, useRef} from 'react';
 import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 
+const CVSection = styled.section`
+    margin-bottom: ${props => props.section === 'introduction' ? "0" : "1.5em"};
+    position: relative;
+    ${props => props.section === 'introduction' && "height: calc(1.8in + 1.5em);"};
+`;
+
 const EditIconContainer = styled.div`
     position: absolute;
     top: 0px;
@@ -28,17 +34,17 @@ const EditIcon = styled.i`
     }
 `;
 
-function Section({children, formDisplay}) {
+function Section({children, formDisplay, sectionName}) {
     const [displayEditIcon, setDisplayEditIcon] = useState(false);
     const editIconContainer = useRef(null);
 
     const displayForm = () => {
-		formDisplay('introduction');
+		formDisplay(sectionName);
 	}
 
     return (
-        <section 
-            className="introduction"
+        <CVSection
+            section={sectionName}
             onMouseEnter={() => setDisplayEditIcon(true)}
             onMouseLeave={() => setDisplayEditIcon(false)}
         >
@@ -57,7 +63,7 @@ function Section({children, formDisplay}) {
                 </EditIconContainer>
             </CSSTransition>
             {children}
-        </section>
+        </CVSection>
     );
 }
 

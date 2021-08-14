@@ -59,7 +59,7 @@ class CV extends React.Component {
 						/>
 					</LeftColumn>
 					<RightColumn className="right-column">
-						<Section formDisplay={formDisplay}>
+						<Section formDisplay={formDisplay} sectionName="introduction">
 							<Introduction fields={introduction} />
 						</Section>
 						<WorkExperience 
