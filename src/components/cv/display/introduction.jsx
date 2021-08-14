@@ -1,13 +1,25 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const FirstName = styled.span`
+    font-weight: bold;
+`;
+
+const ProfessionalTitle = styled.h4`
+    && {
+        letter-spacing: .15em;
+        margin-bottom: 1em;
+    }
+`;
 
 function Introduction({fields}) {
     return (
         <>
-            <h1 className="name">
-                <span className="first-name">{fields.introduction_given}</span>
-                <span className="second-name">{fields.introduction_surname}</span>
+            <h1>
+                <FirstName>{fields.introduction_given}</FirstName> 
+                {fields.introduction_surname}
             </h1>
-            <h4 className="professional-title">{fields.introduction_title}</h4>
+            <ProfessionalTitle className="pro-title">{fields.introduction_title}</ProfessionalTitle>
             <p className="about">{fields.introduction_about}</p>
         </>
     );

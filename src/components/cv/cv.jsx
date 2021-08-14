@@ -19,6 +19,11 @@ const CVWrapper = styled.div`
     color: $rgb(24, 24, 24);
     font-family: 'Open Sans', sans-serif;
     text-align: left;
+	h4 {
+        font-size: .9em;
+        margin-bottom: .2em;
+        font-weight: bold;
+    }
 `;
 
 const LeftColumn = styled.div`
