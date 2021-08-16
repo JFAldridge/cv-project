@@ -55,9 +55,9 @@ function Section({children, formDisplay, sectionName}) {
                 classNames="edit-icon"
                 unmountOnExit
             >
-                <EditIconContainer ref={editIconContainer}>
+                <EditIconContainer ref={editIconContainer} className="edit-icon-container">
                     <EditIcon
-                        className="bi bi-pencil-square edit-section"
+                        className="bi bi-pencil-square"
                         onClick={displayForm}
                     ></EditIcon>
                 </EditIconContainer>

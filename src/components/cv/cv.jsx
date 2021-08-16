@@ -19,7 +19,20 @@ const CVWrapper = styled.div`
     color: $rgb(24, 24, 24);
     font-family: 'Open Sans', sans-serif;
     text-align: left;
+	h1, h2, h3, h4, h5 {
+        font-family: $primary-font;
+        color: $accent-bg;
+    }
+	h2 {
+        font-size: 1.4em;
+        letter-spacing: .1em;
+        border-bottom: 1.5px solid $accent-bg;
+        padding: .3em 0;
+        margin-bottom: 1em;
+    }
+
 	h4 {
+		font-family: 'Noto Sans JP', sans-serif;
         font-size: .9em;
         margin-bottom: .2em;
         font-weight: bold;
@@ -29,9 +42,12 @@ const CVWrapper = styled.div`
 const LeftColumn = styled.div`
 	width: 32%;
 	background-color: rgb(50, 59, 76);
-	color: rgb(184, 184, 189);
+	color: rgb(206, 206, 206);
 	padding-left: .6in;
 	padding-bottom: .6in;
+	.edit-icon-container {
+		margin-right: .5em;
+	}
 `;
 
 const RightColumn = styled.div`
@@ -53,10 +69,10 @@ class CV extends React.Component {
 							fields={portrait}
 							formDisplay={formDisplay}
 						/>
-						<Contact 
-							fields={contact}
-							formDisplay={formDisplay}
-						/>
+						<Section formDisplay={formDisplay} sectionName="contact">
+							<Contact fields={contact} />
+						</Section>
+						
 						<Education 
 							fields={education}
 							formDisplay={formDisplay}

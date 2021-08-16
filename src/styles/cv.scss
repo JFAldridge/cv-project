@@ -381,19 +381,6 @@ body {
     // Left Column
 
     .left-column {
-        .edit-icon-container{
-            box-shadow: 0 0 3px $bg;
-            margin-right: .5em;
-            &:hover {
-                background-color: $bg;
-            }
-            i {
-                color: $bg;
-                &:hover {
-                    color: $accent-bg;
-                }
-            }
-        }
 
         h1, h2, h3, h4, h5 {
             font-family: $primary-font;

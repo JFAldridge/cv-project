@@ -1,5 +1,4 @@
-import React, {useState, useRef} from 'react';
-import { CSSTransition } from 'react-transition-group';
+import React from 'react';
 
 function ContactItem({type, value}) {
 
@@ -30,33 +29,9 @@ function ContactItem({type, value}) {
 }
 
 function Contact({fields, formDisplay}) {
-	const [displayEditIcon, setDisplayEditIcon] = useState(false);
-    const editIconContainer = useRef(null);
-
-	const displayForm = () => {
-		formDisplay('contact');
-	}
 
 	return (
-		<section 
-			className="contact"
-			onMouseEnter={() => setDisplayEditIcon(true)}
-            onMouseLeave={() => setDisplayEditIcon(false)}
-		>
-			<CSSTransition 
-                nodeRef={editIconContainer}
-                in={displayEditIcon}
-                timeout={300}
-                classNames="edit-icon"
-                unmountOnExit
-            >
-                <div className="edit-icon-container" ref={editIconContainer}>
-                    <i 
-                        className="bi bi-pencil-square edit-section"
-                        onClick={displayForm}
-                    ></i>
-                </div>
-            </CSSTransition>
+		<>
 			<h2>Contact</h2>
 			<ul className="contact-list">
 				{ Object.entries(fields).map(([key, inputInfo]) => {
@@ -69,7 +44,7 @@ function Contact({fields, formDisplay}) {
 					);
 				})}
 			</ul>
-		</section>
+		</>
 	);
 }
 
