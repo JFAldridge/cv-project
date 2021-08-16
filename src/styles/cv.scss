@@ -391,18 +391,6 @@ body {
             border-bottom: 1.5px solid $bg;
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
-
-            li {
-                margin: .5em 0;
-            }
-            
-            i {
-                margin-right: .5em;
-            }           
-        }
 
         .portrait-container {
             display: flex;
@@ -429,11 +417,6 @@ body {
             }
         }
 
-        .skills {
-            li {
-                margin: 0;
-            }
-        }
     }
 
 }

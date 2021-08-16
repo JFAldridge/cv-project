@@ -48,6 +48,19 @@ const LeftColumn = styled.div`
 	.edit-icon-container {
 		margin-right: .5em;
 	}
+	
+	ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                margin: .5em 0;
+            }
+            
+            i {
+                margin-right: .5em;
+            }           
+        }
 `;
 
 const RightColumn = styled.div`
@@ -75,10 +88,9 @@ class CV extends React.Component {
 						<Section formDisplay={formDisplay} sectionName="education">
 							<Education fields={education} />
 						</Section>
-						<Skills 
-							fields={skills}
-							formDisplay={formDisplay}
-						/>
+						<Section formDisplay={formDisplay} sectionName="skills">
+							<Skills fields={skills} />
+						</Section>
 					</LeftColumn>
 					<RightColumn className="right-column">
 						<Section formDisplay={formDisplay} sectionName="introduction">

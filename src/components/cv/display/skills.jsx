@@ -1,9 +1,16 @@
-import React, {useState, useRef} from 'react';
-import { CSSTransition } from 'react-transition-group';
+import React from 'react';
+import styled from 'styled-components';
+
+const Skill = styled.li`
+    && {
+        margin: 0;
+    }
+`;
 
 function SkillGroup({fieldGroup, groupNum}) {
     
     function winnowAndSortListitems(fields) {
+        // Removes any empty list items
         let listItems = [];
 
         Object.keys(fields).forEach((field) => {
@@ -12,7 +19,7 @@ function SkillGroup({fieldGroup, groupNum}) {
                 const listItem = fieldGroup[field];
 
                 if (listItem !== null && listItem !== '') {
-                    listItems.push(<li key={listItemIdentifier}>{listItem}</li>);
+                    listItems.push(<Skill key={listItemIdentifier}>{listItem}</Skill>);
                 }
             }
         });
@@ -31,13 +38,7 @@ function SkillGroup({fieldGroup, groupNum}) {
     );
 }
 
-function Skills({fields, formDisplay}) {
-	const [displayEditIcon, setDisplayEditIcon] = useState(false);
-    const editIconContainer = useRef(null);
-
-	const displayForm = () => {
-		formDisplay('skills');
-	}
+function Skills({fields}) {
 
 	function groupTheFields(fields) {
         let groupedFields = [];
@@ -54,25 +55,7 @@ function Skills({fields, formDisplay}) {
     }
 
     return (
-        <section 
-			className="skills"
-			onMouseEnter={() => setDisplayEditIcon(true)}
-            onMouseLeave={() => setDisplayEditIcon(false)}
-		>
-			<CSSTransition 
-                nodeRef={editIconContainer}
-                in={displayEditIcon}
-                timeout={300}
-                classNames="edit-icon"
-                unmountOnExit
-            >
-                <div className="edit-icon-container" ref={editIconContainer}>
-                    <i 
-                        className="bi bi-pencil-square edit-section"
-                        onClick={displayForm}
-                    ></i>
-                </div>
-            </CSSTransition>
+        <>
             <h2>Skills</h2>
 				{
                     groupTheFields(fields).map((group, i) => {
@@ -85,7 +68,7 @@ function Skills({fields, formDisplay}) {
                         );
                     })
                 }
-        </section>
+        </>
     );
 }
 
