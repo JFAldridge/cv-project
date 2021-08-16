@@ -20,6 +20,8 @@ const EditIconContainer = styled.div`
     box-shadow: 0 0 3px rgb(88,88,88);
     background-color: rgb(248, 248, 248);
 
+    ${props => props.section === 'portrait' && "margin-top: .6in;"}
+
     &:hover {
         background-color: rgb(88,88,88);
     }
@@ -55,7 +57,7 @@ function Section({children, formDisplay, sectionName}) {
                 classNames="edit-icon"
                 unmountOnExit
             >
-                <EditIconContainer ref={editIconContainer} className="edit-icon-container">
+                <EditIconContainer ref={editIconContainer} className="edit-icon-container" section={sectionName}>
                     <EditIcon
                         className="bi bi-pencil-square"
                         onClick={displayForm}

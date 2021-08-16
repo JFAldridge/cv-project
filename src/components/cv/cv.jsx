@@ -78,10 +78,9 @@ class CV extends React.Component {
 		return (
 			<CVWrapper className="cv">
 					<LeftColumn className="left-column">
-						<Portrait 
-							fields={portrait}
-							formDisplay={formDisplay}
-						/>
+						<Section formDisplay={formDisplay} sectionName="portrait">
+							<Portrait fields={portrait} />
+						</Section>
 						<Section formDisplay={formDisplay} sectionName="contact">
 							<Contact fields={contact} />
 						</Section>

@@ -1,41 +1,36 @@
-import React, {useState, useRef} from 'react';
-import { CSSTransition } from 'react-transition-group';
+import React from 'react';
+import styled from 'styled-components';
 
-function Portrait({fields, formDisplay}) {
-    const [displayEditIcon, setDisplayEditIcon] = useState(false);
-    const editIconContainer = useRef(null);
+const PortraitContainer = styled.div`
+    display: flex;
+    align-items: center;
+    height: 2.4in;
+`;
 
-    const displayForm = () => {
-		formDisplay('portrait');
-	}
+const PortraitWrapper = styled.div`
+    background-color: rgb(189, 189, 189);
+    width: 1.61in;
+    height: 1.61in;
+    border-radius: 50%;
+    margin-top: 1em;
+`;
 
-    console.log(fields.portrait_image)
+const PortraitImage = styled.img`
+    width: 1.62in;
+    height: 1.62in;
+    border-radius: 50%;
+    background-color: $accent-bg;
+`;
+
+function Portrait({fields}) {
 
     return (
-        <section 
-            className="portrait-container"
-            onMouseEnter={() => setDisplayEditIcon(true)}
-            onMouseLeave={() => setDisplayEditIcon(false)}
-        >
-            <CSSTransition 
-                nodeRef={editIconContainer}
-                in={displayEditIcon}
-                timeout={300}
-                classNames="edit-icon"
-                unmountOnExit
-            >
-                <div className="edit-icon-container" ref={editIconContainer}>
-                    <i 
-                        className="bi bi-pencil-square edit-section"
-                        onClick={displayForm}
-                    ></i>
-                </div>
-            </CSSTransition>
-            <div className="portrait">
+        <PortraitContainer>
+            <PortraitWrapper>
                 {fields.portrait_image !== '' &&
-                    <img src={fields.portrait_image} alt="Portrait" />}
-            </div>
-        </section>
+                    <PortraitImage src={fields.portrait_image} alt="Portrait" />}
+            </PortraitWrapper>
+        </PortraitContainer>
     );
 }
 
