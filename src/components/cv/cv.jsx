@@ -42,7 +42,7 @@ const CVWrapper = styled.div`
 const LeftColumn = styled.div`
 	width: 32%;
 	background-color: rgb(50, 59, 76);
-	color: rgb(206, 206, 206);
+	color: rgb(198, 198, 198);
 	padding-left: .6in;
 	padding-bottom: .6in;
 	.edit-icon-container {
@@ -72,11 +72,9 @@ class CV extends React.Component {
 						<Section formDisplay={formDisplay} sectionName="contact">
 							<Contact fields={contact} />
 						</Section>
-						
-						<Education 
-							fields={education}
-							formDisplay={formDisplay}
-						/>
+						<Section formDisplay={formDisplay} sectionName="education">
+							<Education fields={education} />
+						</Section>
 						<Skills 
 							fields={skills}
 							formDisplay={formDisplay}
