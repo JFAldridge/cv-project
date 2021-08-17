@@ -29,7 +29,7 @@ const CVWrapper = styled.div`
     font-family: "Open Sans", sans-serif;
     text-align: left;
 	h1, h2, h3, h4, h5 {
-        font-family: "Noto Sans JP", sans-serif;;
+        font-family: "Noto Sans JP", sans-serif;
         color: rgb(50, 59, 76);
     }
 	h2 {

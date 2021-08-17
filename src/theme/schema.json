@@ -1,0 +1,23 @@
+{
+  "data": {
+    "avi": {
+      "id": "L_001",
+      "navyAccent": {
+        "id": "T_001",
+        "name": "Navy Accent",
+        "colors": {
+          "fg": "rgb(24, 24, 24)",
+          "bg": "rgb(248, 248, 248)",
+          "accent": {
+            "fg": "rgb(184, 184, 189)",
+            "bg": "rgb(50, 59, 76);"
+          }
+        },
+        "fonts": {
+          "header": "'Noto Sans JP', sans-serif;",
+          "content": "'Open Sans', sans-serif;"
+        }
+      }
+    }
+  }
+}
