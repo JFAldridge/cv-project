@@ -1,13 +1,25 @@
-import React, { useState, useRef } from 'react';
-import { useReactToPrint } from 'react-to-print';
+import React, { useState, useRef, useEffect } from 'react';
 import CV from './cv';
+
+// Form imports
 import CVForm from './form/cv-form';
 import CVDynamicFrom from './form/cv-dynamic-form';
 import CVImageForm from './form/cv-image-form';
 
+// React to print
+import { useReactToPrint } from 'react-to-print';
+
+// Theme imports
+import { ThemeProvider } from 'styled-components';
+import { useTheme } from '../../theme/useTheme.jsx';
+
 function CVCreator(props) {
 	// Ref used for ReactToPrint
 	const CVRef = useRef();
+
+	// Pull from usedTheme hook, created needed local states
+	const {theme, themeLoaded, getFonts} = useTheme();
+	const [selectedTheme, setSelectedTheme] = useState(theme);
 
 	// All user info is held here.
 
@@ -206,16 +218,18 @@ function CVCreator(props) {
 					onClick={handlePrint}>
 				Print / Save PDF
 				</button>
-				<CV 
-					portrait={displayData.portrait}
-					contact={displayData.contact}
-					education={displayData.education}
-					skills={displayData.skills}
-					introduction={displayData.introduction}
-					workExperience={displayData.workExperience}
-					formDisplay={displaySectionForm}
-					ref={CVRef}
-				/>
+				<ThemeProvider theme={selectedTheme}>
+					<CV 
+						portrait={displayData.portrait}
+						contact={displayData.contact}
+						education={displayData.education}
+						skills={displayData.skills}
+						introduction={displayData.introduction}
+						workExperience={displayData.workExperience}
+						formDisplay={displaySectionForm}
+						ref={CVRef}
+					/>
+				</ThemeProvider>
 				{formType === 'form' &&
 					<CVForm 
 						fields={sectionedFields[displayForm]}

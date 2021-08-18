@@ -10,32 +10,23 @@ import styled from 'styled-components';
 
 //react-to-print only prints class components
 
-const headerFont = '"Noto Sans JP", sans-serif;';
-const contentFont = '"Open Sans", sans-serif';
-
-const fg = 'rgb(24, 24, 24)';
-const bg = 'rgb(248, 248, 248)';
-
-const accentFg = 'rgb(184, 184, 189)';
-const accentBg = 'rgb(50, 59, 76)';
-
 const CVWrapper = styled.div`
 	word-wrap: break-word;
     display: flex;
     width: 8.5in;
     height: 11in;
-    background-color: rgb(248, 248, 248);
-    color: rgb(24, 24, 24);
-    font-family: "Open Sans", sans-serif;
+    background-color: ${props => props.theme.colors.bg};
+    color: ${props => props.theme.colors.fg};
+    font-family: ${props => props.theme.fonts.content};
     text-align: left;
 	h1, h2, h3, h4, h5 {
-        font-family: "Noto Sans JP", sans-serif;
-        color: rgb(50, 59, 76);
+        font-family: ${props => props.theme.fonts.header};
+        color: ${props => props.theme.colors.accent.bg};
     }
 	h2 {
         font-size: 1.4em;
         letter-spacing: .1em;
-        border-bottom: 1.5px solid rgb(50, 59, 76);
+        border-bottom: ${props => props.theme.colors.accent.bg};
         padding: .3em 0;
         margin-bottom: 1em;
     }
@@ -58,8 +49,8 @@ const CVWrapper = styled.div`
 
 const LeftColumn = styled.div`
 	width: 32%;
-	background-color: rgb(50, 59, 76);
-	color: rgb(198, 198, 198);
+	background-color: ${props => props.theme.colors.accent.bg};
+	color: ${props => props.theme.colors.accent.fg};
 	padding-left: .6in;
 	padding-bottom: .6in;
 	.edit-icon-container {
@@ -67,11 +58,11 @@ const LeftColumn = styled.div`
 	}
 
 	h1, h2, h3, h4, h5 {
-            color: rgb(248, 248, 248);
+            color: ${props => props.theme.colors.bg};
         }
 
     h2 {
-        border-bottom: 1.5px solid rgb(248, 248, 248);
+        border-bottom: 1.5px solid ${props => props.theme.colors.bg};
     }
 	
 	ul {
