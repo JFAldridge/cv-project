@@ -16,7 +16,40 @@
         "header": "'Noto Sans JP', sans-serif;",
         "content": "'Open Sans', sans-serif;"
       }
+    },
+    "greenAvi": {
+      "id": "T_001",
+      "parentTheme": "avi",
+      "name": "Green Avi",
+      "colors": {
+        "fg": "rgb(24, 24, 24)",
+        "bg": "rgb(248, 248, 248)",
+        "accent": {
+          "fg": "rgb(184, 184, 189)",
+          "bg": "rgb(62, 90, 72);"
+        }
+      },
+      "fonts": {
+        "header": "'Noto Sans JP', sans-serif;",
+        "content": "'Open Sans', sans-serif;"
+      }
+    },
+    "redAvi": {
+      "id": "T_001",
+      "parentTheme": "avi",
+      "name": "Red Avi",
+      "colors": {
+        "fg": "rgb(24, 24, 24)",
+        "bg": "rgb(248, 248, 248)",
+        "accent": {
+          "fg": "rgb(184, 184, 189)",
+          "bg": "rgb(74, 19, 19);"
+        }
+      },
+      "fonts": {
+        "header": "'Noto Sans JP', sans-serif;",
+        "content": "'Open Sans', sans-serif;"
+      }
     }
-    
   }
 }
