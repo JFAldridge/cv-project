@@ -6,7 +6,8 @@ export const useTheme = () => {
     const [theme, setTheme] = useState(themes.data.navyAvi);
     const [themeLoaded, setThemeLoaded] = useState(false);
 
-    const setMode = mode => {
+    const setMode = (mode) => {
+        console.log(mode);
         setToLS('theme', mode);
         setTheme(mode);
     }

@@ -10,6 +10,7 @@ import CVImageForm from './form/cv-image-form';
 import { useReactToPrint } from 'react-to-print';
 
 // Theme imports
+import ThemeSelector from './form/theme-selector';
 import { ThemeProvider } from 'styled-components';
 import { useTheme } from '../../theme/useTheme.jsx';
 
@@ -21,6 +22,9 @@ function CVCreator(props) {
 	const {theme, themeLoaded, getFonts} = useTheme();
 	const [selectedTheme, setSelectedTheme] = useState(theme);
 
+	useEffect(() => {
+		setSelectedTheme(theme)
+	}, [themeLoaded, theme]);
 	// All user info is held here.
 
 	const [inputFields, setInputFields] = useState({
@@ -218,6 +222,7 @@ function CVCreator(props) {
 					onClick={handlePrint}>
 				Print / Save PDF
 				</button>
+				<ThemeSelector selectedThemeSet={setSelectedTheme} />
 				<ThemeProvider theme={selectedTheme}>
 					<CV 
 						portrait={displayData.portrait}

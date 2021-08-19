@@ -18,7 +18,7 @@
       }
     },
     "greenAvi": {
-      "id": "T_001",
+      "id": "T_002",
       "parentTheme": "avi",
       "name": "Green Avi",
       "colors": {
@@ -35,7 +35,7 @@
       }
     },
     "redAvi": {
-      "id": "T_001",
+      "id": "T_003",
       "parentTheme": "avi",
       "name": "Red Avi",
       "colors": {
