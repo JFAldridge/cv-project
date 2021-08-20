@@ -1,11 +1,11 @@
 import React from 'react';
-import Section from './display/section'
-import Portrait from './display/portrait';
-import Contact from './display/contact';
-import Education from './display/education';
-import Skills from './display/skills';
-import Introduction from './display/introduction';
-import WorkExperience from './display/work-experience';
+import Section from './sections/section'
+import Portrait from './sections/portrait';
+import Contact from './sections/contact';
+import Education from './sections/education';
+import Skills from './sections/skills';
+import Introduction from './sections/introduction';
+import WorkExperience from './sections/work-experience';
 import styled from 'styled-components';
 
 //react-to-print only prints class components
