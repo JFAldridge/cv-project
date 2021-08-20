@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import CV from './cv';
+import Dashboard from './dashboard';
 
 // Form imports
 import CVForm from './forms/cv-form';
@@ -9,13 +10,13 @@ import CVImageForm from './forms/cv-image-form';
 // React to print
 import { useReactToPrint } from 'react-to-print';
 
-// Theme imports
-import ThemeSelector from './forms/theme-selector';
-import { ThemeProvider } from 'styled-components';
+// Theme hook
 import { useTheme } from '../../theme/useTheme.jsx';
 
 // Styled-components
 import styled from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+
 
 const CVCreatorWrapper = styled.div`
 	display: flex;
@@ -235,13 +236,11 @@ function CVCreator(props) {
 	return (
 		<CVCreatorWrapper>
 			<Creator>
-				<button 
-					className="btn btn-print-cv"
-					onClick={handlePrint}>
-				Print / Save PDF
-				</button>
-				<ThemeSelector selectedThemeSet={setSelectedTheme} />
-				<ThemeProvider theme={selectedTheme}>
+				<Dashboard 
+					printHandle={handlePrint} 
+					selectedThemeSet={setSelectedTheme}
+				/>
+					<ThemeProvider theme={selectedTheme}>
 					<CV 
 						portrait={displayData.portrait}
 						contact={displayData.contact}
