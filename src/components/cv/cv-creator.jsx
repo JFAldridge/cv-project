@@ -23,6 +23,15 @@ const CVCreatorWrapper = styled.div`
     z-index: 10;
 `;
 
+const Creator = styled.div`
+	margin: 120px auto 0 auto;
+    z-index: 5;
+    background-color: #1e4356b0;
+    border-radius: 8px;
+    box-shadow: 0 0 3px #ffffff4d;
+    text-align: center;
+`;
+
 function CVCreator(props) {
 	// Ref used for ReactToPrint
 	const CVRef = useRef();
@@ -225,7 +234,7 @@ function CVCreator(props) {
 
 	return (
 		<CVCreatorWrapper>
-			<div className="cv-creator">
+			<Creator>
 				<button 
 					className="btn btn-print-cv"
 					onClick={handlePrint}>
@@ -269,7 +278,7 @@ function CVCreator(props) {
 						formDisplay={displaySectionForm}
 					/>
 				}
-			</div>
+			</Creator>
 		</CVCreatorWrapper>
 	);
 	
