@@ -7,7 +7,6 @@ export const useTheme = () => {
     const [themeLoaded, setThemeLoaded] = useState(false);
 
     const setMode = (mode) => {
-        console.log(mode);
         setToLS('theme', mode);
         setTheme(mode);
     }
