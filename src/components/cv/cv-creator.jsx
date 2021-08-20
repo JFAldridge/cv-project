@@ -14,6 +14,15 @@ import ThemeSelector from './form/theme-selector';
 import { ThemeProvider } from 'styled-components';
 import { useTheme } from '../../theme/useTheme.jsx';
 
+// Styled-components
+import styled from 'styled-components';
+
+const CVCreatorWrapper = styled.div`
+	display: flex;
+    background-color: $secondary;
+    z-index: 10;
+`;
+
 function CVCreator(props) {
 	// Ref used for ReactToPrint
 	const CVRef = useRef();
@@ -215,7 +224,7 @@ function CVCreator(props) {
 	const formType = getFormType(displayForm);
 
 	return (
-		<div className="cv-creator-container">
+		<CVCreatorWrapper>
 			<div className="cv-creator">
 				<button 
 					className="btn btn-print-cv"
@@ -261,7 +270,7 @@ function CVCreator(props) {
 					/>
 				}
 			</div>
-		</div>
+		</CVCreatorWrapper>
 	);
 	
 }

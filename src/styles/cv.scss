@@ -292,10 +292,7 @@ body {
 # Resume
 --------------------------------------------------------------*/
 // General styles
-.cv-creator-container {
-    display: flex;
-    background-color: $secondary;
-    z-index: 10;
+
     
     .btn-print-cv {
         font-family: $font-primary;
@@ -317,7 +314,7 @@ body {
             text-decoration: none;
         }
     }
-}
+
 .cv-creator {
     margin: 120px auto 0 auto;
     z-index: 5;
@@ -326,6 +323,7 @@ body {
     box-shadow: 0 0 3px #ffffff4d;
     text-align: center;
 }
+
 
 /* Form Button Transition */
 
