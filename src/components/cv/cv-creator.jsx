@@ -2,15 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import CV from './cv';
 
 // Form imports
-import CVForm from './form/cv-form';
-import CVDynamicFrom from './form/cv-dynamic-form';
-import CVImageForm from './form/cv-image-form';
+import CVForm from './forms/cv-form';
+import CVDynamicFrom from './forms/cv-dynamic-form';
+import CVImageForm from './forms/cv-image-form';
 
 // React to print
 import { useReactToPrint } from 'react-to-print';
 
 // Theme imports
-import ThemeSelector from './form/theme-selector';
+import ThemeSelector from './forms/theme-selector';
 import { ThemeProvider } from 'styled-components';
 import { useTheme } from '../../theme/useTheme.jsx';
 
