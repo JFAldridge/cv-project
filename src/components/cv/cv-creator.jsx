@@ -20,7 +20,7 @@ import { ThemeProvider } from 'styled-components';
 
 const CVCreatorWrapper = styled.div`
 	display: flex;
-    background-color: $secondary;
+    background-color: #1e4356;
     z-index: 10;
 `;
 
