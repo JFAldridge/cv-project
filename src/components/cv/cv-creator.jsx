@@ -239,6 +239,7 @@ function CVCreator(props) {
 				<Dashboard 
 					printHandle={handlePrint} 
 					selectedThemeSet={setSelectedTheme}
+					selectedThemeID={selectedTheme.id}
 				/>
 					<ThemeProvider theme={selectedTheme}>
 					<CV 

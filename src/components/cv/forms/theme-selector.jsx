@@ -2,19 +2,40 @@ import React from 'react';
 import { getFromLS } from '../../../utils/storage';
 import { useTheme } from '../../../theme/useTheme';
 import styled from 'styled-components';
+import Dropdown from 'react-bootstrap/Dropdown';
 
-const ThemeBtn = styled.button`
+const ThemeMenu = styled(Dropdown.Menu)`
+    background-color: rgba(30, 67, 86, 84%);
+    min-width: 12rem;
+`;
+
+const ThemeOption = styled(Dropdown.Item)`
+    &&.btn.dropdown-item {
+        display: flex;
+        align-items: center;
+        width: auto;
+        padding: 8px 8px;
+        margin: 3;
+        border: none;
+        &.active {
+        border: 2px solid #68A4C4;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+    }
 `;
 
 const ThemeIcon = styled.div`
     width: 30px;
     height: 30px;
     background: ${props => `linear-gradient( 90deg, ${props.accentBg}, ${props.accentBg} 50%, ${props.bg} 51% )`};
-    border: 2px solid rgb(102, 102, 102); 
+    box-shadow: 0 0 1px #eaeaea;
     border-radius: 50%;
+    margin-right: 8px;
 `;
 
-function ThemeSelector({selectedThemeSet}) {
+function ThemeSelector({selectedThemeSet, selectedThemeID}) {
     const themesFromStore = getFromLS('all-themes');
     const {setMode} = useTheme();
 
@@ -24,20 +45,31 @@ function ThemeSelector({selectedThemeSet}) {
     }
 
     return (
-        Object.values(themesFromStore.data).map(theme => {
-            return (
-                <ThemeBtn 
-                    className="btn btn-dark me-3"
-                    onClick={(selectedTheme) => setSelectedTheme(theme)}
-                    key={theme.id}>
-                    <ThemeIcon 
-                        bg={theme.colors.bg}
-                        accentBg={theme.colors.accent.bg}
-                    />
-                    {theme.name}
-                </ThemeBtn>
-            );
-        })
+        <Dropdown autoClose="outside">
+            <Dropdown.Toggle id="dropdown-basic" varient="outline-primary">
+                Theme Options
+            </Dropdown.Toggle>
+
+            <ThemeMenu varient="dark">
+                {
+                    Object.values(themesFromStore.data).map(theme => {
+                        return (
+                            <ThemeOption
+                                className="btn"
+                                onClick={(selectedTheme) => setSelectedTheme(theme)}
+                                active={theme.id === selectedThemeID}
+                                key={theme.id}>
+                                <ThemeIcon 
+                                    bg={theme.colors.bg}
+                                    accentBg={theme.colors.accent.bg}
+                                />
+                                {theme.name}
+                            </ThemeOption>
+                        );
+                    })
+                }
+            </ThemeMenu>
+        </Dropdown>
     );
 }
 
