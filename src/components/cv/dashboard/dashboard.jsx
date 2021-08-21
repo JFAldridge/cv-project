@@ -45,7 +45,6 @@ function Dashboard({printHandle, selectedThemeSet, selectedThemeID}) {
 			</button>
 			<ThemeSelector 
                 selectedThemeSet={selectedThemeSet} 
-                selectedThemeID={selectedThemeID}
             />
         </DashboardWrapper>
     );

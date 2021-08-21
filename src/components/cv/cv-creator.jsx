@@ -236,12 +236,11 @@ function CVCreator(props) {
 	return (
 		<CVCreatorWrapper>
 			<Creator>
-				<Dashboard 
+				<ThemeProvider theme={selectedTheme}>
+					<Dashboard 
 					printHandle={handlePrint} 
 					selectedThemeSet={setSelectedTheme}
-					selectedThemeID={selectedTheme.id}
-				/>
-					<ThemeProvider theme={selectedTheme}>
+					/>
 					<CV 
 						portrait={displayData.portrait}
 						contact={displayData.contact}

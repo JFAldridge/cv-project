@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { getFromLS } from '../../../utils/storage';
 import { useTheme } from '../../../theme/useTheme';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 const ThemeMenu = styled(Dropdown.Menu)`
@@ -35,9 +35,10 @@ const ThemeIcon = styled.div`
     margin-right: 8px;
 `;
 
-function ThemeSelector({selectedThemeSet, selectedThemeID}) {
+function ThemeSelector({selectedThemeSet}) {
     const themesFromStore = getFromLS('all-themes');
     const {setMode} = useTheme();
+    const themeContext = useContext(ThemeContext);
 
     const setSelectedTheme = (theme) => {
         setMode(theme);
@@ -57,7 +58,7 @@ function ThemeSelector({selectedThemeSet, selectedThemeID}) {
                             <ThemeOption
                                 className="btn"
                                 onClick={(selectedTheme) => setSelectedTheme(theme)}
-                                active={theme.id === selectedThemeID}
+                                active={theme.id === themeContext.id}
                                 key={theme.id}>
                                 <ThemeIcon 
                                     bg={theme.colors.bg}
