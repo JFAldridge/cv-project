@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import CV from './cv';
-import Dashboard from './dashboard';
+import Dashboard from './dashboard/dashboard';
 
 // Form imports
-import CVForm from './forms/cv-form';
-import CVDynamicFrom from './forms/cv-dynamic-form';
-import CVImageForm from './forms/cv-image-form';
+import CVForm from './user-info-forms/cv-form';
+import CVDynamicFrom from './user-info-forms/cv-dynamic-form';
+import CVImageForm from './user-info-forms/cv-image-form';
 
 // React to print
 import { useReactToPrint } from 'react-to-print';

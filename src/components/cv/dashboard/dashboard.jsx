@@ -1,5 +1,5 @@
 import React from 'react';
-import ThemeSelector from './forms/theme-selector';
+import ThemeSelector from './theme-selector';
 import styled from 'styled-components';
 
 const DashboardWrapper = styled.div`
