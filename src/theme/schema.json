@@ -8,8 +8,8 @@
       "bg": "#f8f8f8",
       "accentFg": "#BDB8B8",
       "accentBg": "#323B4C",
-      "headerFont": "'Noto Sans JP', sans-serif;",
-      "contentFont": "'Open Sans', sans-serif;"
+      "headerFont": "Noto Sans JP",
+      "contentFont": "Open Sans"
     },
     "greenAvi": {
       "id": "T_002",
@@ -19,8 +19,8 @@
       "bg": "#f8f8f8",
       "accentFg": "#BDB8B8",
       "accentBg": "#3E5A48",
-      "headerFont": "'Noto Sans JP', sans-serif;",
-      "contentFont": "'Open Sans', sans-serif;"
+      "headerFont": "Noto Sans JP",
+      "contentFont": "Open Sans"
     },
     "brownAvi": {
       "id": "T_003",
@@ -30,8 +30,8 @@
       "bg": "#f8f8f8",
       "accentFg": "#BDB8B8",
       "accentBg": "#48342D",
-      "headerFont": "'Noto Sans JP', sans-serif;",
-      "contentFont": "'Open Sans', sans-serif;"
+      "headerFont": "Noto Sans JP",
+      "contentFont": "Open Sans"
     }
   }
 }
