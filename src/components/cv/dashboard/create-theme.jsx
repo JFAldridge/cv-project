@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled, { ThemeContext } from "styled-components";
-import _ from 'lodash';
 import { useTheme } from '../../../theme/useTheme';
-import { v4 as uuidv4 } from 'uuid';
 import { Dropdown } from 'react-bootstrap';
 import { Form, FloatingLabel } from 'react-bootstrap';
 
@@ -57,6 +55,8 @@ const CreatorOption = styled.option`
 
 function CreateTheme({themeChangeHandle}) {
     const themeContext = useContext(ThemeContext);
+    const {getFonts} = useTheme();
+    const allFonts = getFonts();
 
     return(
         <Dropdown autoClose="outside">
@@ -153,8 +153,16 @@ function CreateTheme({themeChangeHandle}) {
                                     controlId="header-font"
                                     label="Header Font">
                                     <CreatorSelect>
-                                        <CreatorOption value="dog">Dog</CreatorOption>
-                                        <CreatorOption value="cat">Cat</CreatorOption>
+                                        {
+                                            allFonts.map((font) => {
+                                                return (
+                                                <CreatorOption 
+                                                    value={font}>
+                                                    {font}
+                                                </CreatorOption>
+                                                );
+                                            })
+                                        }
                                     </CreatorSelect>
                                 </FloatingLabel>
                             </div>
@@ -165,8 +173,16 @@ function CreateTheme({themeChangeHandle}) {
                                     controlId="content-font"
                                     label="Content Font">
                                     <CreatorSelect>
-                                        <CreatorOption value="dog">Dog</CreatorOption>
-                                        <CreatorOption value="cat">Cat</CreatorOption>
+                                        {
+                                            allFonts.map((font) => {
+                                                return (
+                                                <CreatorOption 
+                                                    value={font}>
+                                                    {font}
+                                                </CreatorOption>
+                                                );
+                                            })
+                                        }
                                     </CreatorSelect>
                                 </FloatingLabel>
                             </div>
