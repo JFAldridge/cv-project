@@ -4,52 +4,34 @@
       "id": "T_001",
       "parentTheme": "avi",
       "name": "Navy Avi",
-      "colors": {
-        "fg": "#181818",
-        "bg": "#f8f8f8",
-        "accent": {
-          "fg": "#BDB8B8",
-          "bg": "#323B4C"
-        }
-      },
-      "fonts": {
-        "header": "'Noto Sans JP', sans-serif;",
-        "content": "'Open Sans', sans-serif;"
-      }
+      "fg": "#181818",
+      "bg": "#f8f8f8",
+      "accentFg": "#BDB8B8",
+      "accentBg": "#323B4C",
+      "headerFont": "'Noto Sans JP', sans-serif;",
+      "contentFont": "'Open Sans', sans-serif;"
     },
     "greenAvi": {
       "id": "T_002",
       "parentTheme": "avi",
       "name": "Green Avi",
-      "colors": {
-        "fg": "#181818",
-        "bg": "#f8f8f8",
-        "accent": {
-          "fg": "#BDB8B8",
-          "bg": "#3E5A48"
-        }
-      },
-      "fonts": {
-        "header": "'Noto Sans JP', sans-serif;",
-        "content": "'Open Sans', sans-serif;"
-      }
+      "fg": "#181818",
+      "bg": "#f8f8f8",
+      "accentFg": "#BDB8B8",
+      "accentBg": "#3E5A48",
+      "headerFont": "'Noto Sans JP', sans-serif;",
+      "contentFont": "'Open Sans', sans-serif;"
     },
     "brownAvi": {
       "id": "T_003",
       "parentTheme": "avi",
       "name": "Brown Avi",
-      "colors": {
-        "fg": "#181818",
-        "bg": "#f8f8f8",
-        "accent": {
-          "fg": "#BDB8B8",
-          "bg": "#48342D"
-        }
-      },
-      "fonts": {
-        "header": "'Noto Sans JP', sans-serif;",
-        "content": "'Open Sans', sans-serif;"
-      }
+      "fg": "#181818",
+      "bg": "#f8f8f8",
+      "accentFg": "#BDB8B8",
+      "accentBg": "#48342D",
+      "headerFont": "'Noto Sans JP', sans-serif;",
+      "contentFont": "'Open Sans', sans-serif;"
     }
   }
 }
