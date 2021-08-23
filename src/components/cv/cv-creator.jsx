@@ -40,11 +40,6 @@ function CVCreator(props) {
 	// Pull from usedTheme hook, created needed local states
 	const {theme, themeLoaded, getFonts} = useTheme();
 	const [selectedTheme, setSelectedTheme] = useState(theme);
-
-	useEffect(() => {
-		setSelectedTheme(theme)
-	}, [themeLoaded, theme]);
-
 	
 	// All user info is held here.
 
