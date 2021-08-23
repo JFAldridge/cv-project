@@ -12,9 +12,9 @@ export const useTheme = () => {
     }
 
     const getFonts = () => {
-        const allFonts = Object.entries(themes.data).map(([_themeName, themeData]) => Object.values(themeData.fonts)).flat()
-        const allUniqueFonts = allFonts.filter((v, i, a) => a.indexOf(v) === i);
-        return allUniqueFonts;
+        const allFonts = getFromLS('all-fonts');
+        const googleFonts = allFonts.data.google;
+        return googleFonts;
     }
 
     useEffect(() => {
