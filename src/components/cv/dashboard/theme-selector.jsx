@@ -35,14 +35,14 @@ const ThemeIcon = styled.div`
     margin-right: 8px;
 `;
 
-function ThemeSelector({selectedThemeSet}) {
+function ThemeSelector({workingThemeSet}) {
     const themesFromStore = getFromLS('all-themes');
     const {setMode} = useTheme();
     const themeContext = useContext(ThemeContext);
 
-    const setSelectedTheme = (theme) => {
+    const setWorkingTheme = (theme) => {
         setMode(theme);
-        selectedThemeSet(theme);
+        workingThemeSet(theme);
     }
 
     return (
@@ -57,7 +57,7 @@ function ThemeSelector({selectedThemeSet}) {
                         return (
                             <ThemeOption
                                 className="btn"
-                                onClick={(selectedTheme) => setSelectedTheme(theme)}
+                                onClick={(workingTheme) => setWorkingTheme(theme)}
                                 active={theme.id === themeContext.id}
                                 key={theme.id}>
                                 <ThemeIcon 

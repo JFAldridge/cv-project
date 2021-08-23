@@ -55,7 +55,7 @@ const CreatorOption = styled.option`
     background-color: rgba(30, 67, 86);
 `;
 
-function CreateTheme(props) {
+function CreateTheme({themeChangeHandle}) {
     const themeContext = useContext(ThemeContext);
 
     return(
@@ -75,6 +75,8 @@ function CreateTheme(props) {
                                 <CreatorTextInput
                                     type="text"
                                     placeholder="Theme Name"
+                                    name="name"
+                                    onChange={(event) => themeChangeHandle(event)}
                                 />
                                 </FloatingLabel>
                             </div>
@@ -94,6 +96,8 @@ function CreateTheme(props) {
                                         id="main-background-color"
                                         title="Main Background Color"
                                         value={themeContext.bg}
+                                        name="bg"
+                                        onChange={(event) => themeChangeHandle(event)}
                                     />
                                 </div>
                                 <div className="col-5">
@@ -104,6 +108,8 @@ function CreateTheme(props) {
                                         id="main-foreground-color"
                                         title="Main Foreground Color"
                                         value={themeContext.fg}
+                                        name="fg"
+                                        onChange={(event) => themeChangeHandle(event)}
                                     />
                                 </div>
                             </div>
@@ -123,6 +129,8 @@ function CreateTheme(props) {
                                         id="accent-background-color"
                                         title="Accent Background Color"
                                         value={themeContext.accentBg}
+                                        name="accentBg"
+                                        onChange={(event) => themeChangeHandle(event)}
                                     />
                                 </div>
                                 <div className="col-5">
@@ -133,6 +141,8 @@ function CreateTheme(props) {
                                         id="accent-foreground-color"
                                         title="Accent Foreground Color"
                                         value={themeContext.accentFg}
+                                        name="accentFg"
+                                        onChange={(event) => themeChangeHandle(event)}
                                     />
                                 </div>
                             </div>

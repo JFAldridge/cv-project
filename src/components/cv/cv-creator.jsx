@@ -39,7 +39,7 @@ function CVCreator(props) {
 
 	// Pull from usedTheme hook, created needed local states
 	const {theme, themeLoaded, getFonts} = useTheme();
-	const [selectedTheme, setSelectedTheme] = useState(theme);
+	const [workingTheme, setWorkingTheme] = useState(theme);
 	
 	// All user info is held here.
 
@@ -106,6 +106,17 @@ function CVCreator(props) {
 	const [displayForm, setDisplayForm] = useState(null);
 
 	// Event handlers
+
+	const handleThemeChange = (event) => {
+		const name = event.target.name;
+		const value = event.target.value;
+
+		const newInputObject = {[name]: value};
+
+		setWorkingTheme((prevState) => {
+			return {...prevState, ...newInputObject};
+		});
+	}
 
 	const handleInputChange = (event) => {
 		const name = event.target.name;
@@ -233,10 +244,11 @@ function CVCreator(props) {
 	return (
 		<CVCreatorWrapper>
 			<Creator>
-				<ThemeProvider theme={selectedTheme}>
+				<ThemeProvider theme={workingTheme}>
 					<Dashboard 
 					printHandle={handlePrint} 
-					selectedThemeSet={setSelectedTheme}
+					workingThemeSet={setWorkingTheme}
+					themeChangeHandle={handleThemeChange}
 					/>
 					<CV 
 						portrait={displayData.portrait}

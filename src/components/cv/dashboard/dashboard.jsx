@@ -36,7 +36,7 @@ const DashboardWrapper = styled.div`
     }
 `;
 
-function Dashboard({printHandle, selectedThemeSet, selectedThemeID}) {
+function Dashboard({printHandle, workingThemeSet, themeChangeHandle}) {
     return (
         <DashboardWrapper>
             <button 
@@ -45,9 +45,11 @@ function Dashboard({printHandle, selectedThemeSet, selectedThemeID}) {
 				Print / Save PDF
 			</button>
 			<ThemeSelector 
-                selectedThemeSet={selectedThemeSet} 
+                workingThemeSet={workingThemeSet} 
             />
-            <CreateTheme />
+            <CreateTheme 
+                themeChangeHandle={themeChangeHandle}
+            />
         </DashboardWrapper>
     );
 }
