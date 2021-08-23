@@ -19,7 +19,7 @@ export const useTheme = () => {
 
     useEffect(() => {
         const localTheme = getFromLS('theme');
-        localTheme ? setTheme(localTheme) : setTheme(themes.data.navyAvi);
+        localTheme ? setTheme(localTheme) : setMode(themes.data.navyAvi);
         setThemeLoaded(true);
     }, []);
 
