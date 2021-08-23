@@ -4,10 +4,12 @@ import App from './App';
 import './styles/cv.scss';
 
 import * as themes from './theme/schema.json';
+import * as allFonts from './theme/allFonts.json';
 import { setToLS } from './utils/storage';
 
 const Index = () => {
   setToLS('all-themes', themes.default);
+  setToLS('all-fonts', allFonts.default);
   return(
     <App />
   );
