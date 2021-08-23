@@ -15,18 +15,18 @@ const CVWrapper = styled.div`
     display: flex;
     width: 8.5in;
     height: 11in;
-    background-color: ${props => props.theme.colors.bg};
-    color: ${props => props.theme.colors.fg};
-    font-family: ${props => props.theme.fonts.content};
+    background-color: ${props => props.theme.bg};
+    color: ${props => props.theme.fg};
+    font-family: ${props => props.theme.contentFont};
     text-align: left;
 	h1, h2, h3, h4, h5 {
-        font-family: ${props => props.theme.fonts.header};
-        color: ${props => props.theme.colors.accent.bg};
+        font-family: ${props => props.theme.headerFont};
+        color: ${props => props.theme.accentBg};
     }
 	h2 {
         font-size: 1.4em;
         letter-spacing: .1em;
-        border-bottom: ${props => props.theme.colors.accent.bg};
+        border-bottom: ${props => props.theme.accentBg};
         padding: .3em 0;
         margin-bottom: 1em;
     }
@@ -49,8 +49,8 @@ const CVWrapper = styled.div`
 
 const LeftColumn = styled.div`
 	width: 32%;
-	background-color: ${props => props.theme.colors.accent.bg};
-	color: ${props => props.theme.colors.accent.fg};
+	background-color: ${props => props.theme.accentBg};
+	color: ${props => props.theme.fg};
 	padding-left: .6in;
 	padding-bottom: .6in;
 	.edit-icon-container {
@@ -58,11 +58,11 @@ const LeftColumn = styled.div`
 	}
 
 	h1, h2, h3, h4, h5 {
-            color: ${props => props.theme.colors.bg};
+            color: ${props => props.theme.bg};
         }
 
     h2 {
-        border-bottom: 1.5px solid ${props => props.theme.colors.bg};
+        border-bottom: 1.5px solid ${props => props.theme.bg};
     }
 	
 	ul {

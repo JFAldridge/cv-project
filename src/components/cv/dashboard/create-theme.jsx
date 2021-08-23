@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import styled from "styled-components";
+import React, { useState, useEffect, useContext } from 'react';
+import styled, { ThemeContext } from "styled-components";
 import _ from 'lodash';
 import { useTheme } from '../../../theme/useTheme';
 import { v4 as uuidv4 } from 'uuid';
 import { Dropdown } from 'react-bootstrap';
 import { Form, FloatingLabel } from 'react-bootstrap';
-
 
 const ThemeCreatorMenu = styled(Dropdown.Menu)`
     background-color: rgba(30, 67, 86, 89%);
@@ -57,6 +56,7 @@ const CreatorOption = styled.option`
 `;
 
 function CreateTheme(props) {
+    const themeContext = useContext(ThemeContext);
 
     return(
         <Dropdown autoClose="outside">
@@ -92,8 +92,8 @@ function CreateTheme(props) {
                                     <Form.Control
                                         type="color"
                                         id="main-background-color"
-                                        defaultValue="#563d7c"
                                         title="Main Background Color"
+                                        value={themeContext.bg}
                                     />
                                 </div>
                                 <div className="col-5">
@@ -102,8 +102,8 @@ function CreateTheme(props) {
                                     <Form.Control
                                         type="color"
                                         id="main-foreground-color"
-                                        defaultValue="#563d7c"
                                         title="Main Foreground Color"
+                                        value={themeContext.fg}
                                     />
                                 </div>
                             </div>
@@ -121,8 +121,8 @@ function CreateTheme(props) {
                                     <Form.Control
                                         type="color"
                                         id="accent-background-color"
-                                        defaultValue="#563d7c"
                                         title="Accent Background Color"
+                                        value={themeContext.accentBg}
                                     />
                                 </div>
                                 <div className="col-5">
@@ -131,8 +131,8 @@ function CreateTheme(props) {
                                     <Form.Control
                                         type="color"
                                         id="accent-foreground-color"
-                                        defaultValue="#563d7c"
                                         title="Accent Foreground Color"
+                                        value={themeContext.accentFg}
                                     />
                                 </div>
                             </div>

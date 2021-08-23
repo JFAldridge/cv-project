@@ -44,6 +44,8 @@ function CVCreator(props) {
 	useEffect(() => {
 		setSelectedTheme(theme)
 	}, [themeLoaded, theme]);
+
+	
 	// All user info is held here.
 
 	const [inputFields, setInputFields] = useState({

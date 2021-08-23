@@ -61,8 +61,8 @@ function ThemeSelector({selectedThemeSet}) {
                                 active={theme.id === themeContext.id}
                                 key={theme.id}>
                                 <ThemeIcon 
-                                    bg={theme.colors.bg}
-                                    accentBg={theme.colors.accent.bg}
+                                    bg={theme.bg}
+                                    accentBg={theme.accentBg}
                                 />
                                 {theme.name}
                             </ThemeOption>
