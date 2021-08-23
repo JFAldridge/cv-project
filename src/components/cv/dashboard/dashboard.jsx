@@ -1,6 +1,7 @@
 import React from 'react';
 import ThemeSelector from './theme-selector';
 import styled from 'styled-components';
+import CreateTheme from './create-theme';
 
 const DashboardWrapper = styled.div`
     display: flex;
@@ -46,6 +47,7 @@ function Dashboard({printHandle, selectedThemeSet, selectedThemeID}) {
 			<ThemeSelector 
                 selectedThemeSet={selectedThemeSet} 
             />
+            <CreateTheme />
         </DashboardWrapper>
     );
 }

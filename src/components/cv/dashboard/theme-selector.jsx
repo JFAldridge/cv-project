@@ -5,7 +5,7 @@ import styled, { ThemeContext } from 'styled-components';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 const ThemeMenu = styled(Dropdown.Menu)`
-    background-color: rgba(30, 67, 86, 84%);
+    background-color: rgba(30, 67, 86, 89%);
     min-width: 12rem;
 `;
 
