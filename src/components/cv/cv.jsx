@@ -50,7 +50,7 @@ const CVWrapper = styled.div`
 const LeftColumn = styled.div`
 	width: 32%;
 	background-color: ${props => props.theme.accentBg};
-	color: ${props => props.theme.fg};
+	color: ${props => props.theme.accentFg};
 	padding-left: .6in;
 	padding-bottom: .6in;
 	.edit-icon-container {
