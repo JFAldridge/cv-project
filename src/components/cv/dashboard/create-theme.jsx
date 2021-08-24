@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import styled, { ThemeContext } from "styled-components";
 import { useTheme } from '../../../theme/useTheme';
 import { Dropdown } from 'react-bootstrap';
 import { Form, FloatingLabel } from 'react-bootstrap';
+import WebFont from 'webfontloader';
 
 const ThemeCreatorMenu = styled(Dropdown.Menu)`
     background-color: rgba(30, 67, 86, 89%);
@@ -57,6 +58,32 @@ function CreateTheme({themeChangeHandle}) {
     const themeContext = useContext(ThemeContext);
     const {getFonts} = useTheme();
     const allFonts = getFonts();
+    // Font value refs for fontloader
+    let hFontVal = useRef(themeContext.headerFont);
+    let cFontVal = useRef(themeContext.contentFont);
+
+    useEffect(() => {
+        WebFont.load({
+            google: {
+              families: [hFontVal.current, cFontVal.current]
+            }
+        });
+    }, []);
+
+    const handleFontChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        console.log([hFontVal, cFontVal])
+        name === 'headerFont' ? hFontVal.current = value : cFontVal.current = value;
+        console.log([hFontVal, cFontVal])
+        WebFont.load({
+            google: {
+              families: [hFontVal.current, cFontVal.current]
+            }
+        });
+
+        themeChangeHandle(event);
+    }
 
     return(
         <Dropdown autoClose="outside">
@@ -155,7 +182,7 @@ function CreateTheme({themeChangeHandle}) {
                                     <CreatorSelect 
                                         name="headerFont"
                                         value={themeContext.headerFont}
-                                        onChange={(event) => themeChangeHandle(event)}>
+                                        onChange={(event) => handleFontChange(event)}>
                                         {
                                             allFonts.map((font, i) => {
                                                 return (
@@ -179,7 +206,7 @@ function CreateTheme({themeChangeHandle}) {
                                     <CreatorSelect 
                                         name="contentFont"
                                         value={themeContext.contentFont}
-                                        onChange={(event) => themeChangeHandle(event)}>
+                                        onChange={(event) => handleFontChange(event)}>
                                         {
                                             allFonts.map((font, i) => {
                                                 return (
