@@ -152,12 +152,16 @@ function CreateTheme({themeChangeHandle}) {
                                 <FloatingLabel
                                     controlId="header-font"
                                     label="Header Font">
-                                    <CreatorSelect>
+                                    <CreatorSelect 
+                                        name="headerFont"
+                                        value={themeContext.headerFont}
+                                        onChange={(event) => themeChangeHandle(event)}>
                                         {
-                                            allFonts.map((font) => {
+                                            allFonts.map((font, i) => {
                                                 return (
                                                 <CreatorOption 
-                                                    value={font}>
+                                                    value={font}
+                                                    key={i}>
                                                     {font}
                                                 </CreatorOption>
                                                 );
@@ -172,12 +176,16 @@ function CreateTheme({themeChangeHandle}) {
                                 <FloatingLabel
                                     controlId="content-font"
                                     label="Content Font">
-                                    <CreatorSelect>
+                                    <CreatorSelect 
+                                        name="contentFont"
+                                        value={themeContext.contentFont}
+                                        onChange={(event) => themeChangeHandle(event)}>
                                         {
-                                            allFonts.map((font) => {
+                                            allFonts.map((font, i) => {
                                                 return (
                                                 <CreatorOption 
-                                                    value={font}>
+                                                    value={font}
+                                                    key={i}>
                                                     {font}
                                                 </CreatorOption>
                                                 );
