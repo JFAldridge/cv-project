@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef} from 'react';
 import CV from './cv';
 import Dashboard from './dashboard/dashboard';
 
@@ -38,7 +38,7 @@ function CVCreator(props) {
 	const CVRef = useRef();
 
 	// Pull from usedTheme hook, created needed local states
-	const {theme, themeLoaded, getFonts} = useTheme();
+	const {theme} = useTheme();
 	const [workingTheme, setWorkingTheme] = useState(theme);
 	
 	// All user info is held here.
