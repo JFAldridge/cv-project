@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import ThemeSelector from './theme-selector';
 import styled, { ThemeContext } from 'styled-components';
 import CreateTheme from './create-theme';
@@ -42,17 +42,6 @@ function Dashboard({printHandle, workingThemeSet, themeChangeHandle}) {
     const themeContext = useContext(ThemeContext);
     const [allThemes, setAllThemes] = useState(getFromLS('all-themes').data);
 
-    useEffect(() => {
-        // Set workingTheme's name on each save
-        let event = {};
-        event['target'] = {
-            name: 'name',
-            value: 'New Theme',
-        }
-        themeChangeHandle(event);
-    },[allThemes]);
-
-
     function camelize(str) {
         return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
           return index === 0 ? word.toLowerCase() : word.toUpperCase();
@@ -68,9 +57,9 @@ function Dashboard({printHandle, workingThemeSet, themeChangeHandle}) {
         let newThemeData = {};
         newThemeData[camelize(themeContext["name"])] = {...workingTheme};
    
-        // Add to all themes and set
+        // Add to all themes and set with default name
         setAllThemes({...allThemes, ...newThemeData});
-        workingThemeSet(workingTheme);
+        workingThemeSet({...workingTheme, ...{name: "New Theme"}});
     }
 
     return (

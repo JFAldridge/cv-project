@@ -1,4 +1,4 @@
-import React, { useState, useRef} from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import CV from './cv';
 import Dashboard from './dashboard/dashboard';
 
@@ -41,6 +41,11 @@ function CVCreator(props) {
 	const {theme} = useTheme();
 	const [workingTheme, setWorkingTheme] = useState(theme);
 	
+	useEffect(() => {
+		// Working theme should be name New Theme when first loaded
+		setWorkingTheme({...theme, ...{name: 'New Theme'}});
+	}, [theme]);
+
 	// All user info is held here.
 
 	const [inputFields, setInputFields] = useState({

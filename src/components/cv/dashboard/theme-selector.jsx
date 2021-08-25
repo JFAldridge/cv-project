@@ -39,9 +39,10 @@ function ThemeSelector({workingThemeSet, allThemes}) {
     const {setMode} = useTheme();
     const themeContext = useContext(ThemeContext);
 
-    const setWorkingTheme = (theme) => {
-        setMode(theme);
-        workingThemeSet(theme);
+    const setWorkingTheme = (chosenTheme) => {
+        setMode(chosenTheme);
+        // Give working theme default name
+        workingThemeSet({...chosenTheme, ...{name: 'New Theme'}});
     }
 
     return (
