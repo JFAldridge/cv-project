@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { getFromLS } from '../../../utils/storage';
 import { useTheme } from '../../../theme/useTheme';
 import styled, { ThemeContext } from 'styled-components';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -7,6 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 const ThemeMenu = styled(Dropdown.Menu)`
     background-color: rgba(30, 67, 86, 89%);
     min-width: 12rem;
+    transform: translate3d(12px, 65px, 0px)!important;
 `;
 
 const ThemeOption = styled(Dropdown.Item)`
@@ -35,8 +35,7 @@ const ThemeIcon = styled.div`
     margin-right: 8px;
 `;
 
-function ThemeSelector({workingThemeSet}) {
-    const themesFromStore = getFromLS('all-themes');
+function ThemeSelector({workingThemeSet, allThemes}) {
     const {setMode} = useTheme();
     const themeContext = useContext(ThemeContext);
 
@@ -53,11 +52,11 @@ function ThemeSelector({workingThemeSet}) {
 
             <ThemeMenu varient="dark">
                 {
-                    Object.values(themesFromStore.data).map(theme => {
+                    Object.values(allThemes).map(theme => {
                         return (
                             <ThemeOption
                                 className="btn"
-                                onClick={(workingTheme) => setWorkingTheme(theme)}
+                                onClick={() => setWorkingTheme(theme)}
                                 active={theme.id === themeContext.id}
                                 key={theme.id}>
                                 <ThemeIcon 

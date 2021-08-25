@@ -101,7 +101,9 @@ function CVCreator(props) {
 		workExperience_achievementE1: [null, 'text', 'Achievement', ''],
 		workExperience_achievementF1: [null, 'text', 'Achievement', ''],
 		portrait_image: [''],
-	}); 
+	});
+
+	// Form Toggle
 
 	const [displayForm, setDisplayForm] = useState(null);
 

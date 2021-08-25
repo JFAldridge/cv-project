@@ -9,6 +9,7 @@ const ThemeCreatorMenu = styled(Dropdown.Menu)`
     background-color: rgba(30, 67, 86, 89%);
     width: 16em;
     color: #f9f9f9;
+    transform: translate3d(12px, 65px, 0px)!important;
 `;
 
 const CreatorLegend = styled.legend`
@@ -54,7 +55,19 @@ const CreatorOption = styled.option`
     background-color: rgba(30, 67, 86);
 `;
 
-function CreateTheme({themeChangeHandle}) {
+const SaveButton = styled.button`
+    &&.btn.create-theme {
+        background: #68A4C4;
+        margin: 0;
+        width: auto;
+        
+        &:hover {
+            background: #a2cce3;
+        }
+    }
+`;
+
+function CreateTheme({themeChangeHandle, createdThemeSave}) {
     const themeContext = useContext(ThemeContext);
     const {getFonts} = useTheme();
     const allFonts = getFonts();
@@ -73,9 +86,8 @@ function CreateTheme({themeChangeHandle}) {
     const handleFontChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        console.log([hFontVal, cFontVal])
         name === 'headerFont' ? hFontVal.current = value : cFontVal.current = value;
-        console.log([hFontVal, cFontVal])
+
         WebFont.load({
             google: {
               families: [hFontVal.current, cFontVal.current]
@@ -85,14 +97,19 @@ function CreateTheme({themeChangeHandle}) {
         themeChangeHandle(event);
     }
 
+    const saveCreatedTheme = (event) => {
+        event.preventDefault();
+        createdThemeSave();
+    }
+
     return(
-        <Dropdown autoClose="outside">
+        <Dropdown>
             <Dropdown.Toggle id="dropdown-basic" varient="outline-primary">
                 Theme Creator
             </Dropdown.Toggle>
 
             <ThemeCreatorMenu varient="dark">
-                <Form>
+                <Form onSubmit={(event) => saveCreatedTheme(event)}>
                     <div className="container">
                         <div className="row mb-3">
                             <div className="col-10 offset-1">
@@ -102,6 +119,7 @@ function CreateTheme({themeChangeHandle}) {
                                 <CreatorTextInput
                                     type="text"
                                     placeholder="Theme Name"
+                                    value={themeContext.name}
                                     name="name"
                                     onChange={(event) => themeChangeHandle(event)}
                                 />
@@ -220,6 +238,13 @@ function CreateTheme({themeChangeHandle}) {
                                         }
                                     </CreatorSelect>
                                 </FloatingLabel>
+                            </div>
+                            <div className="row mb-3">
+                                <div className="col-10 offset-1">
+                                    <Dropdown.Item as={SaveButton} className="mt-4 btn create-theme">
+                                        Save Theme
+                                    </Dropdown.Item>
+                                </div>
                             </div>
                         </div>
                     </div>
