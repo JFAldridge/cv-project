@@ -42,20 +42,38 @@ function Dashboard({printHandle, workingThemeSet, themeChangeHandle}) {
     const themeContext = useContext(ThemeContext);
     const [allThemes, setAllThemes] = useState(getFromLS('all-themes').data);
 
-    function camelize(str) {
+    const camelize = (str) => {
         return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
           return index === 0 ? word.toLowerCase() : word.toUpperCase();
         }).replace(/\s+/g, '');
     }
 
+    const ensureNameUniqueness = (name) => {
+        const allThemeNames = Object.values(allThemes).map((theme) => theme.name);
+
+        if (!allThemeNames.includes(name)) {
+            return name;
+        }
+
+        // Add incrementing number to name until it is unique
+        let i = 1;
+
+        while (allThemeNames.includes(name + i.toString())) {
+            i += 1;
+        }
+
+        return name + i.toString();
+    }
+
     const saveCreatedTheme = () => {
-        // Duplicate working theme and give it unique id
+        // Duplicate working theme, give it unique id, ensure name uniqueness
         let workingTheme = {...themeContext};
         workingTheme.id = uuidv4();
+        workingTheme.name = ensureNameUniqueness(workingTheme.name);
 
         // Format it to fit allThemes and combine
         let newThemeData = {};
-        newThemeData[camelize(themeContext["name"])] = {...workingTheme};
+        newThemeData[camelize(workingTheme["name"])] = {...workingTheme};
    
         // Add to all themes and set with default name
         setAllThemes({...allThemes, ...newThemeData});
