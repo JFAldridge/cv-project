@@ -19,7 +19,7 @@ function CVForm({fields, section, inputChangeHandle, formDisplay}) {
                     onClick={displayForm}
                 ></i>
                 <h2>{capitalizeFirstLetter(section)}</h2>
-                <p className="from-text mb-3">(Unused fields will not show up on the CV)</p>
+                <p className="mb-3">(Unused fields will not show up on the CV)</p>
                 <form>
                     {
                         Object.entries(fields).map(([inputName, inputInfo]) => {

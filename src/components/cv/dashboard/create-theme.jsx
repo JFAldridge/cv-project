@@ -9,7 +9,7 @@ const ThemeCreatorMenu = styled(Dropdown.Menu)`
     background-color: rgba(30, 67, 86, 89%);
     width: 16em;
     color: #f9f9f9;
-    transform: translate3d(12px, 65px, 0px)!important;
+    transform: translate3d(-20px, 65px, 0px)!important;
 `;
 
 const CreatorLegend = styled.legend`
@@ -60,7 +60,7 @@ const SaveButton = styled.button`
         background: #68A4C4;
         margin: 0;
         width: auto;
-        
+
         &:hover {
             background: #a2cce3;
         }
@@ -105,7 +105,7 @@ function CreateTheme({themeChangeHandle, createdThemeSave}) {
     return(
         <Dropdown>
             <Dropdown.Toggle id="dropdown-basic" varient="outline-primary">
-                Theme Creator
+                Create Theme
             </Dropdown.Toggle>
 
             <ThemeCreatorMenu varient="dark">

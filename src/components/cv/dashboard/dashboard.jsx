@@ -7,6 +7,8 @@ import { v4 as uuidv4  } from 'uuid';
 
 const DashboardWrapper = styled.div`
     display: flex;
+    padding-left: 2em;
+    padding-right: 2em;
 
     && .btn {
         font-family: 'Noto Sans JP', sans-serif;
@@ -35,6 +37,12 @@ const DashboardWrapper = styled.div`
             border: 2px solid #68A4C4;
             box-shadow: 0 0 3px 1px #ffffff4d;
         }
+    }
+`;
+
+const PrintButton = styled.button`
+    &&.btn {
+        margin-right: auto;
     }
 `;
 
@@ -82,11 +90,11 @@ function Dashboard({printHandle, workingThemeSet, themeChangeHandle}) {
 
     return (
         <DashboardWrapper>
-            <button 
+            <PrintButton 
 				className="btn btn-print-cv"
 				onClick={printHandle}>
 				Print / Save PDF
-			</button>
+			</PrintButton>
 			<ThemeSelector 
                 workingThemeSet={workingThemeSet} 
                 allThemes={allThemes}

@@ -6,7 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 const ThemeMenu = styled(Dropdown.Menu)`
     background-color: rgba(30, 67, 86, 89%);
     min-width: 12rem;
-    transform: translate3d(12px, 65px, 0px)!important;
+    transform: translate3d(4px, 65px, 0px)!important;
 `;
 
 const ThemeOption = styled(Dropdown.Item)`
@@ -48,7 +48,7 @@ function ThemeSelector({workingThemeSet, allThemes}) {
     return (
         <Dropdown autoClose="outside">
             <Dropdown.Toggle id="dropdown-basic" varient="outline-primary">
-                Theme Options
+                Select Theme
             </Dropdown.Toggle>
 
             <ThemeMenu varient="dark">

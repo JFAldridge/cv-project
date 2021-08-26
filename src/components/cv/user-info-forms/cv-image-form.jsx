@@ -32,12 +32,16 @@ function CVImageForm({section, imageChangeHandle, formDisplay}) {
                 ></i>
                 <h2>{capitalizeFirstLetter(section)}</h2>
                 <form>
+                <div class="mb-3">
+                    <label htmlFor="portait-file" class="form-label mb-3">(Recommended size {'\u2248'} 400 x 400 pixels)</label>
                     <input 
                         type="file" 
+                        className="form-control"
                         name="portrait-file" 
-                        id="portrai-file" 
+                        id="portrait-file" 
                         onChange={(e) => handleImageChange(e)}
                     />
+                </div>
                     <button
                         className="btn btn-primary"
                         onClick={displayForm}

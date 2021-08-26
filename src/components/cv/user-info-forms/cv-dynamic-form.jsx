@@ -58,7 +58,7 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fi
                     onClick={displayForm}
                 ></i>
                 <h2>{prettifiedSectionName}</h2>
-                <p className="from-text mb-3">(Unused fields will not show up on the CV)</p>
+                <p className="mb-3">(Unused fields will not show up on the CV)</p>
                 <form>
                     {
                         groupedFields.map((group, groupNum) => {
