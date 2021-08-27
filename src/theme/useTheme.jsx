@@ -4,7 +4,6 @@ import { setToLS, getFromLS } from '../utils/storage';
 export const useTheme = () => {
     const  themes = getFromLS('all-themes');
     const [theme, setTheme] = useState(themes.data.navyAvi);
-    const [themeLoaded, setThemeLoaded] = useState(false);
 
     const setMode = (mode) => {
         setToLS('theme', mode);
@@ -21,8 +20,7 @@ export const useTheme = () => {
         const allThemes = getFromLS('all-themes');
         const localTheme = getFromLS('theme');
         localTheme ? setTheme(localTheme) : setMode(allThemes.data.navyAvi);
-        setThemeLoaded(true);
     }, []);
 
-    return { theme, themeLoaded, setMode, getFonts };
+    return { theme, setMode, getFonts };
 }

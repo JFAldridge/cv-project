@@ -9,6 +9,7 @@ import { setToLS } from './utils/storage';
 
 const Index = () => {
   setToLS('all-themes', themes.default);
+  setToLS('theme', themes.default.data.navyAvi);
   setToLS('all-fonts', allFonts.default);
   return(
     <App />
