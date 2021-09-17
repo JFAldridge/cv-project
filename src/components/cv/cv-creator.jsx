@@ -82,7 +82,7 @@ function CVCreator(props) {
 		skills_itemF1: [null, 'text', 'Skill', ''],
 		skills_itemG1: [null, 'text', 'Skill', ''],
 		skills_itemH1: [null, 'text', 'Skill', ''],
-		introduction_given: [null, 'text', 'First Name', 'Given'],
+		introduction_givenName: [null, 'text', 'First Name', 'Given'],
 		introduction_surname: [null, 'text', 'Last Name', 'Surname'],
 		introduction_title: [null, 'text', 'Professional Title', 'Professional Title'],
 		introduction_about: [null, 'textarea', 'About', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
@@ -107,6 +107,14 @@ function CVCreator(props) {
 		workExperience_achievementF1: [null, 'text', 'Achievement', ''],
 		portrait_image: [''],
 	});
+
+	// Build and save new state when given userInfo from database
+
+	useEffect(() => {
+		if (props.location && props.location.state.userInfo) {
+
+		}
+	}, [])
 
 	// Form Toggle
 

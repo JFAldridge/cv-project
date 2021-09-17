@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './styles/cv.scss';
+import { HashRouter } from "react-router-dom";
+
 
 import * as themes from './theme/schema.json';
 import * as allFonts from './theme/allFonts.json';
@@ -18,7 +20,9 @@ const Index = () => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Index />
+    <HashRouter>
+      <Index />
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

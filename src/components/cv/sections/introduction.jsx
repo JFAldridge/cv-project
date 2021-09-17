@@ -16,7 +16,7 @@ function Introduction({fields}) {
     return (
         <>
             <h1>
-                <FirstName>{fields.introduction_given}</FirstName> 
+                <FirstName>{fields.introduction_givenName}</FirstName> 
                 {fields.introduction_surname}
             </h1>
             <ProfessionalTitle className="pro-title">{fields.introduction_title}</ProfessionalTitle>
