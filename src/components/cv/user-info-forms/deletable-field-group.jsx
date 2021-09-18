@@ -1,10 +1,10 @@
 import React from 'react';
 import CVInput from './cv-input';
 
-function DeletableFieldGroup({fields, groupNum, inputChangeHandle, fieldGroupDelete}) {
+function DeletableFieldGroup({fields, section, groupNum, inputChangeHandle, fieldGroupDelete}) {
 
     const deleteFieldGroup = () => {
-        fieldGroupDelete(fields)
+        fieldGroupDelete(fields, section)
     }
         
     return (
@@ -22,7 +22,7 @@ function DeletableFieldGroup({fields, groupNum, inputChangeHandle, fieldGroupDel
                             currentValue={inputInfo[0]}
                             inputType={inputInfo[1]}
                             labelContent={inputInfo[2]}
-                            placeholder={inputInfo[3]}
+                            section={section}
                             key={inputName}
                             inputChangeHandle={inputChangeHandle}
                         />                 

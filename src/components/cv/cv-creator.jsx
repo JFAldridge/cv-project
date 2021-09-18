@@ -38,6 +38,7 @@ function CVCreator(props) {
 	const CVRef = useRef();
 
 	// Pull from usedTheme hook, created needed local states
+
 	const {theme} = useTheme();
 	const [workingTheme, setWorkingTheme] = useState(theme);
 	
@@ -46,67 +47,100 @@ function CVCreator(props) {
 		setWorkingTheme({...theme, ...{name: 'New Theme'}});
 	}, [theme]);
 
-	// All user info is held here.
+	/* State for user info */
 
-	const [inputFields, setInputFields] = useState({
-		contact_phone: [null, 'tel', 'Phone', '555-555-5555'],
-		contact_email: [null, 'email', 'Email', 'email@me.com'],
-		contact_portfolio: [null, 'url', 'Portfolio', 'www.portfolio.com'],
-		contact_github: [null, 'url', 'Github', 'github.com/me'],
-		contact_linkedIn: [null, 'url', 'LinkedIn', ''],
-		contact_instagram: [null, 'url', 'Instagram', ''],
-		contact_youtube: [null, 'url', 'Youtube', ''],
-		contact_facebook: [null, 'url', 'Facebook', ''],
-		education_degree0: [null, 'text', 'Degree', 'Bachelors of a Field'],
-		education_institution0: [null, 'text', 'Institution', 'University of a State'],
-		education_timeToDegree0: [null, 'text', 'Time to Degree', '2014-2018'],
-		education_degree1: [null, 'text', 'Degree', 'Bachelors of a Field'],
-		education_institution1: [null, 'text', 'Institution', 'University of a State'],
-		education_timeToDegree1: [null, 'text', 'Time to Degree', '2014-2018'],
-		skills_heading0: [null, 'text', 'Skill Heading', '/ / Technical'],
-		skills_itemA0: [null, 'text', 'Skill', 'Making list items'],
-		skills_itemB0: [null, 'text', 'Skill', 'Making list items'],
-		skills_itemC0: [null, 'text', 'Skill', 'Making list items'],
-		skills_itemD0: [null, 'text', 'Skill', 'Making list items'],
-		skills_itemE0: [null, 'text', 'Skill', 'Making list items'],
-		skills_itemF0: [null, 'text', 'Skill', 'Making list items'],
-		skills_itemG0: [null, 'text', 'Skill', ''],
-		skills_itemH0: [null, 'text', 'Skill', ''],
-		skills_itemI0: [null, 'text', 'Skill', ''],
-		skills_heading1: [null, 'text', 'Skill Heading', '/ / Soft'],
-		skills_itemA1: [null, 'text', 'Skill', 'Being well liked'],
-		skills_itemB1: [null, 'text', 'Skill', 'Being well liked'],
-		skills_itemC1: [null, 'text', 'Skill', 'Being well liked'],
-		skills_itemD1: [null, 'text', 'Skill', 'Being well liked'],
-		skills_itemE1: [null, 'text', 'Skill', 'Being well liked'],
-		skills_itemF1: [null, 'text', 'Skill', ''],
-		skills_itemG1: [null, 'text', 'Skill', ''],
-		skills_itemH1: [null, 'text', 'Skill', ''],
-		introduction_givenName: [null, 'text', 'First Name', 'Given'],
-		introduction_surname: [null, 'text', 'Last Name', 'Surname'],
-		introduction_title: [null, 'text', 'Professional Title', 'Professional Title'],
-		introduction_about: [null, 'textarea', 'About', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-		workExperience_company0: [null, 'text', 'Company', 'Company Name'],
-		workExperience_position0: [null, 'text', 'Position', '/ Position Title'],
-		workExperience_duration0: [null, 'text', 'Tenure', 'From 2018 to 2020'],
-		workExperience_summary0: [null, 'text', 'Position Summary', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'],
-		workExperience_achievementA0: [null, 'text', 'Achievement', 'Made x money doing y things'],
-		workExperience_achievementB0: [null, 'text', 'Achievement', 'Made x money doing y things'],
-		workExperience_achievementC0: [null, 'text', 'Achievement', 'Made x money doing y things'],
-		workExperience_achievementD0: [null, 'text', 'Achievement', ''],
-		workExperience_achievementE0: [null, 'text', 'Achievement', ''],
-		workExperience_company1: [null, 'text', 'Company', 'Company Name'],
-		workExperience_position1: [null, 'text', 'Position', '/ Position Title'],
-		workExperience_duration1: [null, 'text', 'Tenure', 'From 2018 to 2020'],
-		workExperience_summary1: [null, 'text', 'Position Summary', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'],
-		workExperience_achievementA1: [null, 'text', 'Achievement', 'Made x money doing y things'],
-		workExperience_achievementB1: [null, 'text', 'Achievement', 'Made x money doing y things'],
-		workExperience_achievementC1: [null, 'text', 'Achievement', 'Made x money doing y things'],
-		workExperience_achievementD1: [null, 'text', 'Achievement', ''],
-		workExperience_achievementE1: [null, 'text', 'Achievement', ''],
-		workExperience_achievementF1: [null, 'text', 'Achievement', ''],
+	const [contactFields, setContactFields] = useState({
+		phone: [null, 'tel', 'Phone', '555-555-5555'],
+		email: [null, 'email', 'Email', 'email@me.com'],
+		portfolio: [null, 'url', 'Portfolio', 'www.portfolio.com'],
+		github: [null, 'url', 'Github', 'github.com/me'],
+		linkedIn: [null, 'url', 'LinkedIn', ''],
+		instagram: [null, 'url', 'Instagram', ''],
+		youtube: [null, 'url', 'Youtube', ''],
+		facebook: [null, 'url', 'Facebook', ''],
+	});
+	
+	const [educationFields, setEducationFields] = useState({
+		degree0: [null, 'text', 'Degree', 'Bachelors of a Field'],
+		institution0: [null, 'text', 'Institution', 'University of a State'],
+		timeToDegree0: [null, 'text', 'Time to Degree', '2014-2018'],
+		degree1: [null, 'text', 'Degree', 'Bachelors of a Field'],
+		institution1: [null, 'text', 'Institution', 'University of a State'],
+		timeToDegree1: [null, 'text', 'Time to Degree', '2014-2018'],
+	});
+
+	const [skillsFields, setSkillsFields] = useState({
+		heading0: [null, 'text', 'Skill Heading', '/ / Technical'],
+		itemA0: [null, 'text', 'Skill', 'Making list items'],
+		itemB0: [null, 'text', 'Skill', 'Making list items'],
+		itemC0: [null, 'text', 'Skill', 'Making list items'],
+		itemD0: [null, 'text', 'Skill', 'Making list items'],
+		itemE0: [null, 'text', 'Skill', 'Making list items'],
+		itemF0: [null, 'text', 'Skill', 'Making list items'],
+		itemG0: [null, 'text', 'Skill', ''],
+		itemH0: [null, 'text', 'Skill', ''],
+		itemI0: [null, 'text', 'Skill', ''],
+		heading1: [null, 'text', 'Skill Heading', '/ / Soft'],
+		itemA1: [null, 'text', 'Skill', 'Being well liked'],
+		itemB1: [null, 'text', 'Skill', 'Being well liked'],
+		itemC1: [null, 'text', 'Skill', 'Being well liked'],
+		itemD1: [null, 'text', 'Skill', 'Being well liked'],
+		itemE1: [null, 'text', 'Skill', 'Being well liked'],
+		itemF1: [null, 'text', 'Skill', ''],
+		itemG1: [null, 'text', 'Skill', ''],
+		itemH1: [null, 'text', 'Skill', ''],
+	});
+
+	const [introductionFields, setIntroductionFields] = useState({
+		givenName: [null, 'text', 'First Name', 'Given'],
+		surname: [null, 'text', 'Last Name', 'Surname'],
+		title: [null, 'text', 'Professional Title', 'Professional Title'],
+		about: [null, 'textarea', 'About', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
+	});
+
+	const [workExperienceFields, setWorkExperienceFields] = useState({
+		company0: [null, 'text', 'Company', 'Company Name'],
+		position0: [null, 'text', 'Position', '/ Position Title'],
+		duration0: [null, 'text', 'Tenure', 'From 2018 to 2020'],
+		summary0: [null, 'text', 'Position Summary', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'],
+		achievementA0: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		achievementB0: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		achievementC0: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		achievementD0: [null, 'text', 'Achievement', ''],
+		achievementE0: [null, 'text', 'Achievement', ''],
+		company1: [null, 'text', 'Company', 'Company Name'],
+		position1: [null, 'text', 'Position', '/ Position Title'],
+		duration1: [null, 'text', 'Tenure', 'From 2018 to 2020'],
+		summary1: [null, 'text', 'Position Summary', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'],
+		achievementA1: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		achievementB1: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		achievementC1: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		achievementD1: [null, 'text', 'Achievement', ''],
+		achievementE1: [null, 'text', 'Achievement', ''],
+		achievementF1: [null, 'text', 'Achievement', ''],
+	});
+	
+	const [portraitFields, setPortraitFields] = useState({
 		portrait_image: [''],
 	});
+
+	const allFields = {
+		contact: contactFields,
+		education: educationFields,
+		skills: skillsFields,
+		introduction: introductionFields,
+		workExperience: workExperienceFields,
+		portrait: portraitFields,
+	}
+
+	const allFieldSetters = {
+		contact: setContactFields,
+		education: setEducationFields,
+		skills: setSkillsFields,
+		introduction: setIntroductionFields,
+		workExperience: setWorkExperienceFields,
+		portrait: setPortraitFields,
+	}
 
 	// Build and save new state when given userInfo from database
 
@@ -120,7 +154,8 @@ function CVCreator(props) {
 
 	const [displayForm, setDisplayForm] = useState(null);
 
-	// Event handlers
+	/* Event handlers */
+	// For theme
 
 	const handleThemeChange = (event) => {
 		const name = event.target.name;
@@ -133,7 +168,10 @@ function CVCreator(props) {
 		});
 	}
 
-	const handleInputChange = (event) => {
+	// For userInfo
+
+	const handleInputChange = (event, section) => {
+		const sectionFields = allFields[section];
 		const name = event.target.name;
 		
 		// Convert empty string to null to remove unused fields
@@ -142,12 +180,12 @@ function CVCreator(props) {
 			value = null;
 		}
 
-		let inputField = inputFields[name].slice();
+		let inputField = sectionFields[name].slice();
 		inputField[0] = value;
 		
 		const newInputObject = {[name]: inputField};
 
-		setInputFields((prevState) => {
+		allFieldSetters[section]((prevState) => {
 			return {...prevState, ...newInputObject};
 		});
 	}
@@ -155,19 +193,21 @@ function CVCreator(props) {
 	const handleImageChange = (result) => {
 		const imageChangeObject = {portrait_image: [result]};
 	
-		setInputFields((prevState) => {
+		setPortraitFields((prevState) => {
 			return {...prevState, ...imageChangeObject};
 		});
 	}
 
-	const createFieldGroup = (group) => {
-		setInputFields((prevState) => {
+	// For dynamic forms
+
+	const createFieldGroup = (group, section) => {
+		allFieldSetters[section]((prevState) => {
 			return {...prevState, ...group}
 		})
 	}
 
-	const deleteFieldGroup = (fields) => {
-		setInputFields((prevState) => {
+	const deleteFieldGroup = (fields, section) => {
+		allFieldSetters[section]((prevState) => {
 			const newState = {...prevState};
 			
 			Object.keys(fields).forEach((field) => delete newState[field]);
@@ -176,36 +216,23 @@ function CVCreator(props) {
 		});
 	}
 
+	// Display form
+
 	const displaySectionForm = (section) => {
 		setDisplayForm(section);
 	}
+
+	// For printing
 
 	const handlePrint = useReactToPrint({
 		content: () => CVRef.current,
 	});
 
-	// State distribution functions
-
-	const sortStateIntoSections = (inputFlds) => {
-		/* {contact: {field1: [i, n, f, o], field2: [], ...}, education: {}, ...} */
-		const sectionSortedFields = {};
-
-		Object.keys(inputFlds).forEach((key) => {
-			const underscoreIndex = key.indexOf('_');
-			// Filter out non-section oriented states
-			if (underscoreIndex === -1) return;
-
-			const section = key.slice(0, underscoreIndex);
-		
-			if (!sectionSortedFields[section]) {
-				sectionSortedFields[section] = {};
-			}
-		
-			sectionSortedFields[section][key] = inputFlds[key];
-		});
-
-		return sectionSortedFields;
-	}
+	/*  When all field values are null, the cv is populated
+		by the placeholder [3] text instead of the input [0]. 
+		This provides a readily available design guide for 
+		the template.
+	*/
 
 	const allInputValuesNull = (flds) => {
 		return Object.values(flds).every((inputInfo) => {
@@ -213,25 +240,21 @@ function CVCreator(props) {
 		});
 	}
 
-	const distillDisplayData = (sortedState) => {
-		/* {contact: {field1: displayStr, field2: displayStr, ...}, education: {}, ...} */
+	const determineDataDisplayed = (fields) => {
+		/* {field1: displayStr, field2: displayStr, ...}*/
 		const displayData = {}
-		Object.keys(sortedState).forEach(section => {
-			displayData[section] = {}
+				
+		const inputValuesNull = allInputValuesNull(fields);
+		const displayIndex = inputValuesNull ? 3 : 0;
 
-			/* When all field values are null, the cv is populated
-			by the placeholder text instead of the input. This provides 
-			a readily available design guide for the template.
-			*/
-			const inputValuesNull = allInputValuesNull(sortedState[section]);
-			const displayIndex = inputValuesNull ? 3 : 0;
-
-			Object.keys(sortedState[section]).forEach((field) => { 
-			displayData[section][field] = sortedState[section][field][displayIndex];
-			})
+		Object.keys(fields).forEach((field) => { 
+		displayData[field] = fields[field][displayIndex];
 		})
+
 		return displayData;
 	}
+
+	/* Determine form for section calling it */
 
 	const getFormType = (section) => {
 		if (section === null) return null;
@@ -251,9 +274,6 @@ function CVCreator(props) {
 		}
     }
 
-	
-	const sectionedFields = sortStateIntoSections(inputFields);
-	const displayData = distillDisplayData(sectionedFields);
 	const formType = getFormType(displayForm);
 
 	return (
@@ -266,19 +286,19 @@ function CVCreator(props) {
 					themeChangeHandle={handleThemeChange}
 					/>
 					<CV 
-						portrait={displayData.portrait}
-						contact={displayData.contact}
-						education={displayData.education}
-						skills={displayData.skills}
-						introduction={displayData.introduction}
-						workExperience={displayData.workExperience}
+						portrait={determineDataDisplayed(portraitFields)}
+						contact={determineDataDisplayed(contactFields)}
+						education={determineDataDisplayed(educationFields)}
+						skills={determineDataDisplayed(skillsFields)}
+						introduction={determineDataDisplayed(introductionFields)}
+						workExperience={determineDataDisplayed(workExperienceFields)}
 						formDisplay={displaySectionForm}
 						ref={CVRef}
 					/>
 				</ThemeProvider>
 				{formType === 'form' &&
 					<CVForm 
-						fields={sectionedFields[displayForm]}
+						fields={allFields[displayForm]}
 						section={displayForm} 
 						inputChangeHandle={handleInputChange}
 						formDisplay={displaySectionForm}
@@ -286,7 +306,7 @@ function CVCreator(props) {
 				}
 				{formType === 'dynamic' &&
 					<CVDynamicFrom 
-						fields={sectionedFields[displayForm]}
+						fields={allFields[displayForm]}
 						section={displayForm} 
 						inputChangeHandle={handleInputChange}
 						formDisplay={displaySectionForm}
@@ -304,7 +324,6 @@ function CVCreator(props) {
 			</Creator>
 		</CVCreatorWrapper>
 	);
-	
 }
 
 export default CVCreator;

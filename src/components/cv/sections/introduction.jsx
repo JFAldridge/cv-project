@@ -16,11 +16,11 @@ function Introduction({fields}) {
     return (
         <>
             <h1>
-                <FirstName>{fields.introduction_givenName}</FirstName> 
-                {fields.introduction_surname}
+                <FirstName>{fields.givenName}</FirstName> 
+                {fields.surname}
             </h1>
-            <ProfessionalTitle className="pro-title">{fields.introduction_title}</ProfessionalTitle>
-            <p className="about">{fields.introduction_about}</p>
+            <ProfessionalTitle className="pro-title">{fields.title}</ProfessionalTitle>
+            <p className="about">{fields.about}</p>
         </>
     );
 }

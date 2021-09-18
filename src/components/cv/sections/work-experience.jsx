@@ -27,9 +27,9 @@ function Position({fieldGroup, groupNum}) {
 
     return (
         <div className="position">
-            <h4 className="company">{fieldGroup['workExperience_company' + groupNum]} <PositionTitle>{fieldGroup['workExperience_position' + groupNum]}</PositionTitle></h4>
-            <p className="duration">{fieldGroup['workExperience_duration' + groupNum]}</p>
-            <p className="position-summary">{fieldGroup['workExperience_summary' + groupNum]}</p>
+            <h4 className="company">{fieldGroup['company' + groupNum]} <PositionTitle>{fieldGroup['position' + groupNum]}</PositionTitle></h4>
+            <p className="duration">{fieldGroup['duration' + groupNum]}</p>
+            <p className="position-summary">{fieldGroup['summary' + groupNum]}</p>
             <ul className="achievements">
                 {winnowAndSortListitems(fieldGroup)}
             </ul>

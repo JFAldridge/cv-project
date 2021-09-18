@@ -29,7 +29,7 @@ function CVForm({fields, section, inputChangeHandle, formDisplay}) {
                                     currentValue={inputInfo[0]}
                                     inputType={inputInfo[1]}
                                     labelContent={inputInfo[2]}
-                                    placeholder={inputInfo[3]}
+                                    section={section}
                                     key={inputName}
                                     inputChangeHandle={inputChangeHandle}
                                 />                 

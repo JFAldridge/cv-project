@@ -16,6 +16,7 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fi
     }
 
     function groupTheFields(fields) {
+        /* [{field1: displayStr, alsoField1: displayStr}, {field2: displayStr, ...}, ...]*/
         let groupedFields = [];
 
         Object.keys(fields).forEach((field) => {
@@ -25,16 +26,18 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fi
             }
             groupedFields[groupNum][field] = fields[field];
         });
-
+        console.log(groupedFields)
         return groupedFields;
     }
 
     const createFieldGroup = (groupedFields) => {
+        console.log(groupedFields)
         // Creates new field group to add to state
+        /* {field3: ['', 'tel', 'Phone', '555-555-5555'], alsoField3: [...], ...}*/
         const newGroup = {};
         const newGroupNum = groupedFields.length;
 
-        const firstGroupCopy = {...groupedFields[0]};
+        const firstGroupCopy = JSON.parse(JSON.stringify(groupedFields[0]));
 
         Object.keys(firstGroupCopy).forEach((field) => {
             // Copy field name, but with new groupNum, and copy inputInfo
@@ -42,10 +45,10 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fi
             newGroup[newFieldName] = firstGroupCopy[field];
 
             // Clear input value of inputInfo
-            newGroup[newFieldName][0] = '';
+            newGroup[newFieldName][0] = null;
         })
 
-        fieldGroupCreate(newGroup);
+        fieldGroupCreate(newGroup, section);
     }
 
     const groupedFields = groupTheFields(fields)
@@ -68,6 +71,7 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fi
                                     groupNum={groupNum}
                                     inputChangeHandle={inputChangeHandle}
                                     fieldGroupDelete={fieldGroupDelete}
+                                    section={section}
                                     key={section + groupNum}
                                 />
                             );

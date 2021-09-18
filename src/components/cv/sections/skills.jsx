@@ -30,7 +30,7 @@ function SkillGroup({fieldGroup, groupNum}) {
 
     return (
 		<div className="skill-list-container">
-			<h4>{fieldGroup['skills_heading' + groupNum]}</h4>
+			<h4>{fieldGroup['heading' + groupNum]}</h4>
 			<ul className="skill-list">
 				{winnowAndSortListitems(fieldGroup)}
 			</ul>
