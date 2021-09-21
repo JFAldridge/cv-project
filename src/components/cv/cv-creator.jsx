@@ -151,6 +151,11 @@ function CVCreator(props) {
 	*/
 
 	function groupSansClassificationTags(section) {
+		/*	Grabs fields group from state of dynamic
+			section and strips tags so that the fields
+			array can be applied to mongodb data before
+			tags are added back on
+		*/
 		const sectionFields = allFields[section];
         let groupWithoutClassificationTags = {};
 
@@ -161,32 +166,13 @@ function CVCreator(props) {
 
         return groupWithoutClassificationTags;
     }
-
-	const mergeMongoDataToState = (mongoInfo, section) => {
-		const newState = {};
-
-		// Copy field array, replace [0] with user info, add to new state obj
-        Object.keys(mongoInfo).forEach((key) => {
-			if (key !== '_id') {
-				const sectionFields = allFields[section];
-
-				const newField = [...sectionFields[key]];
-				newField[0] = mongoInfo[key];
-
-				newState[key] = newField;
-			};
-        })
-
-		allFieldSetters[section]((prevState) => {
-			return({ ...prevState, ...newState });
-		})
-	}
-	
-	const mergeMongoDataToDynamicState = (mongoInfo, section) => {
-		const gWithoutClassification = groupSansClassificationTags(section);
+			
+	const updateStateWithMongoData = (mongoInfo, section) => {
 		const newState = {};
 
 		if (Array.isArray(mongoInfo)) {
+			const gWithoutClassification = groupSansClassificationTags(section);
+
 			mongoInfo.forEach((group, i) => {
 				const groupTag = i.toString();
 
@@ -208,6 +194,18 @@ function CVCreator(props) {
 					}
 				})
 			})
+		} else { // For nondynamic sections
+			// Copy field array, replace [0] with user info, add to new state obj
+			Object.keys(mongoInfo).forEach((key) => {
+				if (key !== '_id') {
+					const sectionFields = allFields[section];
+	
+					const newField = [...sectionFields[key]];
+					newField[0] = mongoInfo[key];
+	
+					newState[key] = newField;
+				};
+			})
 		}
 
 		allFieldSetters[section]((prevState) => {
@@ -222,11 +220,11 @@ function CVCreator(props) {
 		if (userInfoLoaded !== userInfo) {
 			console.log(props.location.state)
 			setUserInfoLoaded(userInfo)
-			mergeMongoDataToState(userInfo.contact, 'contact');
-			mergeMongoDataToDynamicState(userInfo.education, 'education');
-			mergeMongoDataToDynamicState(userInfo.skills, 'skills');
-			mergeMongoDataToState(userInfo.introduction, 'introduction');
-			mergeMongoDataToDynamicState(userInfo.workExperience, 'workExperience');
+			updateStateWithMongoData(userInfo.contact, 'contact');
+			updateStateWithMongoData(userInfo.education, 'education');
+			updateStateWithMongoData(userInfo.skills, 'skills');
+			updateStateWithMongoData(userInfo.introduction, 'introduction');
+			updateStateWithMongoData(userInfo.workExperience, 'workExperience');
 		}
 	}
 
