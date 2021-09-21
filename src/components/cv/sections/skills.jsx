@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const SkillType = styled.h4`
+    && {
+        font-size: 1.9em;
+    }
+`;
+
 const Skill = styled.li`
     && {
         margin: 0;
@@ -30,7 +36,7 @@ function SkillGroup({fieldGroup, groupNum}) {
 
     return (
 		<div className="skill-list-container">
-			<h4>{fieldGroup['heading' + groupNum]}</h4>
+			<SkillType>{fieldGroup['skillType' + groupNum]}</SkillType>
 			<ul className="skill-list">
 				{winnowAndSortListitems(fieldGroup)}
 			</ul>

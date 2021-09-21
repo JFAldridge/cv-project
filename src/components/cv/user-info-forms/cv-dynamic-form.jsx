@@ -26,12 +26,11 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fi
             }
             groupedFields[groupNum][field] = fields[field];
         });
-        console.log(groupedFields)
+
         return groupedFields;
     }
 
     const createFieldGroup = (groupedFields) => {
-        console.log(groupedFields)
         // Creates new field group to add to state
         /* {field3: ['', 'tel', 'Phone', '555-555-5555'], alsoField3: [...], ...}*/
         const newGroup = {};

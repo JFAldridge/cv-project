@@ -61,34 +61,34 @@ function CVCreator(props) {
 	});
 	
 	const [educationFields, setEducationFields] = useState({
-		degree0: [null, 'text', 'Degree', 'Bachelors of a Field'],
-		institution0: [null, 'text', 'Institution', 'University of a State'],
-		timeToDegree0: [null, 'text', 'Time to Degree', '2014-2018'],
-		degree1: [null, 'text', 'Degree', 'Bachelors of a Field'],
-		institution1: [null, 'text', 'Institution', 'University of a State'],
-		timeToDegree1: [null, 'text', 'Time to Degree', '2014-2018'],
+		degree_0: [null, 'text', 'Degree', 'Bachelors of a Field'],
+		institution_0: [null, 'text', 'Institution', 'University of a State'],
+		timeToDegree_0: [null, 'text', 'Time to Degree', '2014-2018'],
+		degree_1: [null, 'text', 'Degree', 'Bachelors of a Field'],
+		institution_1: [null, 'text', 'Institution', 'University of a State'],
+		timeToDegree_1: [null, 'text', 'Time to Degree', '2014-2018'],
 	});
 
 	const [skillsFields, setSkillsFields] = useState({
-		heading0: [null, 'text', 'Skill Heading', '/ / Technical'],
-		itemA0: [null, 'text', 'Skill', 'Making list items'],
-		itemB0: [null, 'text', 'Skill', 'Making list items'],
-		itemC0: [null, 'text', 'Skill', 'Making list items'],
-		itemD0: [null, 'text', 'Skill', 'Making list items'],
-		itemE0: [null, 'text', 'Skill', 'Making list items'],
-		itemF0: [null, 'text', 'Skill', 'Making list items'],
-		itemG0: [null, 'text', 'Skill', ''],
-		itemH0: [null, 'text', 'Skill', ''],
-		itemI0: [null, 'text', 'Skill', ''],
-		heading1: [null, 'text', 'Skill Heading', '/ / Soft'],
-		itemA1: [null, 'text', 'Skill', 'Being well liked'],
-		itemB1: [null, 'text', 'Skill', 'Being well liked'],
-		itemC1: [null, 'text', 'Skill', 'Being well liked'],
-		itemD1: [null, 'text', 'Skill', 'Being well liked'],
-		itemE1: [null, 'text', 'Skill', 'Being well liked'],
-		itemF1: [null, 'text', 'Skill', ''],
-		itemG1: [null, 'text', 'Skill', ''],
-		itemH1: [null, 'text', 'Skill', ''],
+		skillType_0: [null, 'text', 'Skill Heading', '/ / Technical'],
+		skill_A0: [null, 'text', 'Skill', 'Making list items'],
+		skill_B0: [null, 'text', 'Skill', 'Making list items'],
+		skill_C0: [null, 'text', 'Skill', 'Making list items'],
+		skill_D0: [null, 'text', 'Skill', 'Making list items'],
+		skill_E0: [null, 'text', 'Skill', 'Making list items'],
+		skill_F0: [null, 'text', 'Skill', 'Making list items'],
+		skill_G0: [null, 'text', 'Skill', ''],
+		skill_H0: [null, 'text', 'Skill', ''],
+		skill_I0: [null, 'text', 'Skill', ''],
+		skillType_1: [null, 'text', 'Skill Heading', '/ / Soft'],
+		skill_A1: [null, 'text', 'Skill', 'Being well liked'],
+		skill_B1: [null, 'text', 'Skill', 'Being well liked'],
+		skill_C1: [null, 'text', 'Skill', 'Being well liked'],
+		skill_D1: [null, 'text', 'Skill', 'Being well liked'],
+		skill_E1: [null, 'text', 'Skill', 'Being well liked'],
+		skill_F1: [null, 'text', 'Skill', ''],
+		skill_G1: [null, 'text', 'Skill', ''],
+		skill_H1: [null, 'text', 'Skill', ''],
 	});
 
 	const [introductionFields, setIntroductionFields] = useState({
@@ -99,30 +99,32 @@ function CVCreator(props) {
 	});
 
 	const [workExperienceFields, setWorkExperienceFields] = useState({
-		company0: [null, 'text', 'Company', 'Company Name'],
-		position0: [null, 'text', 'Position', '/ Position Title'],
-		duration0: [null, 'text', 'Tenure', 'From 2018 to 2020'],
-		summary0: [null, 'text', 'Position Summary', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'],
-		achievementA0: [null, 'text', 'Achievement', 'Made x money doing y things'],
-		achievementB0: [null, 'text', 'Achievement', 'Made x money doing y things'],
-		achievementC0: [null, 'text', 'Achievement', 'Made x money doing y things'],
-		achievementD0: [null, 'text', 'Achievement', ''],
-		achievementE0: [null, 'text', 'Achievement', ''],
-		company1: [null, 'text', 'Company', 'Company Name'],
-		position1: [null, 'text', 'Position', '/ Position Title'],
-		duration1: [null, 'text', 'Tenure', 'From 2018 to 2020'],
-		summary1: [null, 'text', 'Position Summary', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'],
-		achievementA1: [null, 'text', 'Achievement', 'Made x money doing y things'],
-		achievementB1: [null, 'text', 'Achievement', 'Made x money doing y things'],
-		achievementC1: [null, 'text', 'Achievement', 'Made x money doing y things'],
-		achievementD1: [null, 'text', 'Achievement', ''],
-		achievementE1: [null, 'text', 'Achievement', ''],
-		achievementF1: [null, 'text', 'Achievement', ''],
+		company_0: [null, 'text', 'Company', 'Company Name'],
+		position_0: [null, 'text', 'Position', '/ Position Title'],
+		duration_0: [null, 'text', 'Tenure', 'From 2018 to 2020'],
+		summary_0: [null, 'text', 'Position Summary', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'],
+		achievement_A0: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		achievement_B0: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		achievement_C0: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		achievement_D0: [null, 'text', 'Achievement', ''],
+		achievement_E0: [null, 'text', 'Achievement', ''],
+		company_1: [null, 'text', 'Company', 'Company Name'],
+		position_1: [null, 'text', 'Position', '/ Position Title'],
+		duration_1: [null, 'text', 'Tenure', 'From 2018 to 2020'],
+		summary_1: [null, 'text', 'Position Summary', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'],
+		achievement_A1: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		achievement_B1: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		achievement_C1: [null, 'text', 'Achievement', 'Made x money doing y things'],
+		achievement_D1: [null, 'text', 'Achievement', ''],
+		achievement_E1: [null, 'text', 'Achievement', ''],
+		achievement_F1: [null, 'text', 'Achievement', ''],
 	});
 	
 	const [portraitFields, setPortraitFields] = useState({
-		portrait_image: [''],
+		image: [null],
 	});
+
+	/* For dynamic access to fields and setters*/
 
 	const allFields = {
 		contact: contactFields,
@@ -141,14 +143,93 @@ function CVCreator(props) {
 		workExperience: setWorkExperienceFields,
 		portrait: setPortraitFields,
 	}
+	
+	/* 	These functions convert MongoDb's nested state to
+		this React Apps flattened state, which uses
+		Classification Tags in the key to distinguish
+		data: '0' for Groups 'A' for list items.
+	*/
 
-	// Build and save new state when given userInfo from database
+	function groupSansClassificationTags(section) {
+		const sectionFields = allFields[section];
+        let groupWithoutClassificationTags = {};
 
-	useEffect(() => {
-		if (props.location && props.location.state.userInfo) {
+        Object.keys(allFields[section]).forEach((fieldKey) => {
+			const keyWithoutTag = fieldKey.split('_')[0];
+			groupWithoutClassificationTags[keyWithoutTag] = [...sectionFields[fieldKey]];
+        });
 
+        return groupWithoutClassificationTags;
+    }
+
+	const mergeMongoDataToState = (mongoInfo, section) => {
+		const newState = {};
+
+		// Copy field array, replace [0] with user info, add to new state obj
+        Object.keys(mongoInfo).forEach((key) => {
+			if (key !== '_id') {
+				const sectionFields = allFields[section];
+
+				const newField = [...sectionFields[key]];
+				newField[0] = mongoInfo[key];
+
+				newState[key] = newField;
+			};
+        })
+
+		allFieldSetters[section]((prevState) => {
+			return({ ...prevState, ...newState });
+		})
+	}
+	
+	const mergeMongoDataToDynamicState = (mongoInfo, section) => {
+		const gWithoutClassification = groupSansClassificationTags(section);
+		const newState = {};
+
+		if (Array.isArray(mongoInfo)) {
+			mongoInfo.forEach((group, i) => {
+				const groupTag = i.toString();
+
+				Object.keys(group).filter(key => key !== '_id').forEach((key) => {
+					const data = group[key];
+					const fieldsCopy = [...gWithoutClassification[key]];
+
+					if (Array.isArray(data)) {
+						data.forEach((listItem, iter) => {
+							const listItemTag = String.fromCharCode(65 + iter);
+							const fieldsCopyCopy = [...fieldsCopy];
+
+							fieldsCopy[0] = listItem;
+							newState[key.concat('_', listItemTag, groupTag)] = fieldsCopyCopy;
+						})
+					} else {
+						fieldsCopy[0] = data;
+						newState[key.concat('_', groupTag)] = fieldsCopy;
+					}
+				})
+			})
 		}
-	}, [])
+
+		allFieldSetters[section]((prevState) => {
+			return({ ...prevState, ...newState });
+		})
+	}
+
+	const [userInfoLoaded, setUserInfoLoaded] = useState(null);
+
+	if (props.location.state) {
+		const userInfo = props.location.state.userInfo;
+		if (userInfoLoaded !== userInfo) {
+			console.log(props.location.state)
+			setUserInfoLoaded(userInfo)
+			mergeMongoDataToState(userInfo.contact, 'contact');
+			mergeMongoDataToDynamicState(userInfo.education, 'education');
+			mergeMongoDataToDynamicState(userInfo.skills, 'skills');
+			mergeMongoDataToState(userInfo.introduction, 'introduction');
+			mergeMongoDataToDynamicState(userInfo.workExperience, 'workExperience');
+		}
+	}
+
 
 	// Form Toggle
 
@@ -191,7 +272,7 @@ function CVCreator(props) {
 	}
 
 	const handleImageChange = (result) => {
-		const imageChangeObject = {portrait_image: [result]};
+		const imageChangeObject = {image: [result]};
 	
 		setPortraitFields((prevState) => {
 			return {...prevState, ...imageChangeObject};

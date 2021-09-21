@@ -9,20 +9,16 @@ import LoginForm from './components/auth/login-form';
 function App() {
   return (
     <div className="App">
+      <Header />
+      <Hero />
       <Switch>
         <Route path="/login">
-          <Header />
-          <Hero />
           <LoginForm />
-          <Footer />
         </Route>
-        <Route path="/">
-          <Header />
-          <Hero />
-          <CVCreator />
-          <Footer />
+        <Route path="/"  render={(props) => <CVCreator {...props}/>}>
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
 }

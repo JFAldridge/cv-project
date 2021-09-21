@@ -5,18 +5,24 @@ const PositionTitle = styled.span`
     font-weight: normal;
 `;
 
+const Achievement = styled.li`
+    && {
+        font-size: .85em;
+    }
+`;
+
 function Position({fieldGroup, groupNum}) {
     
     function winnowAndSortListitems(fields) {
         let listItems = [];
 
-        Object.keys(fields).forEach((field) => {
-            const listItemIdentifier = field.charAt(field.length - 2);
-            if (listItemIdentifier === listItemIdentifier.toUpperCase()) {
+        Object.keys(fields).forEach((field,i) => {
+            // Check whether catalogue tag has two chars
+            if (field.split('_')[1].length === 2) {
                 const listItem = fieldGroup[field];
 
                 if (listItem !== null && listItem !== '') {
-                    listItems.push(<li key={listItemIdentifier}>{listItem}</li>);
+                    listItems.push(<Achievement key={i}>{listItem}</Achievement>);
                 }
             }
         });
@@ -27,9 +33,9 @@ function Position({fieldGroup, groupNum}) {
 
     return (
         <div className="position">
-            <h4 className="company">{fieldGroup['company' + groupNum]} <PositionTitle>{fieldGroup['position' + groupNum]}</PositionTitle></h4>
-            <p className="duration">{fieldGroup['duration' + groupNum]}</p>
-            <p className="position-summary">{fieldGroup['summary' + groupNum]}</p>
+            <h4 className="company">{fieldGroup['company_' + groupNum]} <PositionTitle>{fieldGroup['position' + groupNum]}</PositionTitle></h4>
+            <p className="duration">{fieldGroup['duration_' + groupNum]}</p>
+            <p className="position-summary">{fieldGroup['summary_' + groupNum]}</p>
             <ul className="achievements">
                 {winnowAndSortListitems(fieldGroup)}
             </ul>

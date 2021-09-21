@@ -27,7 +27,7 @@ function Portrait({fields}) {
     return (
         <PortraitContainer>
             <PortraitWrapper>
-                {fields.image !== '' &&
+                {fields.image &&
                     <PortraitImage src={fields.image} alt="Portrait" />}
             </PortraitWrapper>
         </PortraitContainer>

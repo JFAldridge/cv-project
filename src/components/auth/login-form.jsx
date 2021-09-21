@@ -84,7 +84,7 @@ function LoginForm() {
                 to={{
                     pathname: '/',
                     state: {
-                        userInfo
+                        userInfo: userInfo
                     }
                 }}
             />

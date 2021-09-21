@@ -31,9 +31,9 @@ function Education({fields}) {
             <h2>Education</h2>
             {
                 getFieldGroupNumbers().map((groupNum) => {
-                    const degreeInfo = fields['degree' + groupNum];
-                    const institutionInfo = fields['institution' + groupNum];
-                    const timeToDegreeInfo = fields['timeToDegree' + groupNum];
+                    const degreeInfo = fields['degree_' + groupNum];
+                    const institutionInfo = fields['institution_' + groupNum];
+                    const timeToDegreeInfo = fields['timeToDegree_' + groupNum];
 
                     return (
                         <InstitutionDiv 
