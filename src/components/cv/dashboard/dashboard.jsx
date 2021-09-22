@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ThemeSelector from './theme-selector';
 import styled, { ThemeContext } from 'styled-components';
 import CreateTheme from './create-theme';
@@ -42,13 +42,35 @@ const DashboardWrapper = styled.div`
 
 const DashButton = styled.button`
     &&.btn {
-        margin-right: auto;
     }
 `;
 
-function Dashboard({printHandle, workingThemeSet, themeChangeHandle, userInfoBackupHandle}) {
+const FlashMessageContainer = styled.div`
+    color: #fefefe;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    p {
+        margin: 0;
+        color: ${props => props.message === 'Info saved' ? '#95ffb1;' : '#ffdb77;'}
+    }
+`;
+
+function Dashboard({printHandle, workingThemeSet, themeChangeHandle, userInfoBackupHandle, flashMessage, flashMessageExpire}) {
     const themeContext = useContext(ThemeContext);
     const [allThemes, setAllThemes] = useState(getFromLS('all-themes').data);
+
+    useEffect(() => {
+        if (flashMessage) {
+            const flashTimeout = setTimeout(() => {
+                console.log('inside timeout')
+                flashMessageExpire()
+            }, 3000)
+
+            return () => clearTimeout(flashTimeout);
+        }
+    }, [flashMessage, flashMessageExpire]);
 
     const camelize = (str) => {
         return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
@@ -100,6 +122,11 @@ function Dashboard({printHandle, workingThemeSet, themeChangeHandle, userInfoBac
                 onClick={userInfoBackupHandle}>
                 Save Info
             </DashButton>
+            <FlashMessageContainer message={flashMessage}>
+                {flashMessage &&
+                    <p>{flashMessage}</p>
+                }                
+            </FlashMessageContainer>
 			<ThemeSelector 
                 workingThemeSet={workingThemeSet} 
                 allThemes={allThemes}

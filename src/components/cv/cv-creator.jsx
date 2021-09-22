@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect} from 'react';
+import React, { useState, useRef, useEffect, useCallback} from 'react';
 import CV from './cv';
 import Dashboard from './dashboard/dashboard';
 
@@ -270,7 +270,12 @@ function CVCreator(props) {
 		return currentValueState;
 	}
 
-	const [exportError, setExportError] = useState(null);
+	const [flashMessage, setFlashMessage] = useState(null);
+
+	const expireFlashMessage = useCallback(() => {
+		console.log('expire');
+		setFlashMessage(null);
+	}, [setFlashMessage]);
 
 	const exportStateInMongoFormat = () => {
 		const mongoFormattedState = {};
@@ -320,9 +325,9 @@ function CVCreator(props) {
                 userInfo: mongoFormattedState
             }
         }).then( response => {
-            console.log(response.data.message);
+            setFlashMessage('Info saved');
         }).catch( error => {
-            console.log(error);
+            setFlashMessage('Save unsuccessful');
         })
 	}
 	
@@ -467,6 +472,8 @@ function CVCreator(props) {
 					workingThemeSet={setWorkingTheme}
 					themeChangeHandle={handleThemeChange}
 					userInfoBackupHandle={handleUserInfoBackup}
+					flashMessage={flashMessage}
+					flashMessageExpire={expireFlashMessage}
 					/>
 					<CV 
 						portrait={determineDataDisplayed(portraitFields)}
