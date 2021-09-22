@@ -1,7 +1,7 @@
 import React from 'react';
 import DeletableFieldGroup from './deletable-field-group';
 
-function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fieldGroupDelete, formDisplay}) {
+function CVDynamicForm({fields, section, inputChangeHandle, fieldGroupCreate, fieldGroupDelete, formDisplay}) {
  
     const displayForm = () => {
         formDisplay(null);
@@ -94,4 +94,4 @@ function CVDynamicFrom({fields, section, inputChangeHandle, fieldGroupCreate, fi
     );
 }
 
-export default CVDynamicFrom;
+export default CVDynamicForm;

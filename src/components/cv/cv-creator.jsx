@@ -4,7 +4,7 @@ import Dashboard from './dashboard/dashboard';
 
 // Form imports
 import CVForm from './user-info-forms/cv-form';
-import CVDynamicFrom from './user-info-forms/cv-dynamic-form';
+import CVDynamicForm from './user-info-forms/cv-dynamic-form';
 import CVImageForm from './user-info-forms/cv-image-form';
 
 // React to print
@@ -132,7 +132,6 @@ function CVCreator(props) {
 		skills: skillsFields,
 		introduction: introductionFields,
 		workExperience: workExperienceFields,
-		portrait: portraitFields,
 	}
 
 	const allFieldSetters = {
@@ -141,7 +140,6 @@ function CVCreator(props) {
 		skills: setSkillsFields,
 		introduction: setIntroductionFields,
 		workExperience: setWorkExperienceFields,
-		portrait: setPortraitFields,
 	}
 	
 	/* 	These functions convert MongoDb's nested state to
@@ -213,27 +211,112 @@ function CVCreator(props) {
 		})
 	}
 
-	const [userInfoLoaded, setUserInfoLoaded] = useState(null);
+	const userInfoLoaded = useRef(false);
 
-	if (props.location.state) {
+	// Props have been loaded from login/register redirect and hadn't been there before
+	if (props.location.state && !userInfoLoaded.current) { 
 		const userInfo = props.location.state.userInfo;
-		if (userInfoLoaded !== userInfo) {
-			console.log(props.location.state)
-			setUserInfoLoaded(userInfo)
-			updateStateWithMongoData(userInfo.contact, 'contact');
-			updateStateWithMongoData(userInfo.education, 'education');
-			updateStateWithMongoData(userInfo.skills, 'skills');
-			updateStateWithMongoData(userInfo.introduction, 'introduction');
-			updateStateWithMongoData(userInfo.workExperience, 'workExperience');
+		
+		userInfoLoaded.current = true;
+		
+		Object.entries(userInfo).forEach(([section, data]) => {
+			updateStateWithMongoData(data, section);
+		});
+	}
+
+	const [localLoggedInStatus, setLocalLoggedInStatus] = useState(false);
+
+	// Clear user info when log out occurs
+	if (props.loggedIn !== localLoggedInStatus) {
+		
+		setLocalLoggedInStatus(props.loggedIn);
+
+		if (!props.loggedIn) {
+			Object.entries(allFields).forEach(([section, fields]) => {
+				const newState = {}
+
+				Object.entries(fields).forEach(([key, fields]) => {
+					const fieldsCopy = [...fields];
+					fieldsCopy[0] = null;
+
+					newState[key] = fieldsCopy;
+				})
+
+				allFieldSetters[section]((prevState) => {
+					return {...prevState, ...newState};
+				})
+			})
 		}
 	}
 
+	/* 	These functions convert Reacts flattened state to
+		MongoDB's nested state.
+	*/
 
+	const stateWithOnlyCurrentValueField = (sectionFields) => {
+		/* {key: value, key2: value2, ...} */
+		let currentValueState = {};
+
+		Object.entries(sectionFields).forEach(([key, fields]) => {
+			currentValueState[key] = fields[0];
+		})
+
+		return currentValueState;
+	}
+
+	const exportStateInMongoFormat = () => {
+		const mongoFormattedState = {};
+
+		Object.entries(allFields).forEach(([section, sectionFields]) => {
+			const currentValueState = stateWithOnlyCurrentValueField(sectionFields);
+			const sampleKey = Object.keys(currentValueState)[0];
+
+			if (sampleKey.split('_').length === 1) { // Non dynamic sections copy over
+				mongoFormattedState[section] = currentValueState;	
+			} else {
+				mongoFormattedState[section] = [];
+				mongoFormattedState[section][0] = {};
+
+				// Keys must be sorted to maintain listTag ordering
+				Object.keys(currentValueState).sort().forEach((fieldKey) => {
+					const taglessKey = fieldKey.split('_')[0];
+					const tag = fieldKey.split('_')[1];
+					const groupTag = tag.slice(-1);
+					const listItemTag = tag.slice(-2, -1); // Empty string if 1 character tag
+					const currentValue = currentValueState[fieldKey];
+
+					if (!mongoFormattedState[section][groupTag]) { // Creat group object if it doesn't exist
+						mongoFormattedState[section][groupTag] = {}
+					}
+
+					const group = mongoFormattedState[section][groupTag];
+
+					if (!listItemTag) { // Non-listitems can be copied into group objects 
+						group[taglessKey] = currentValue;
+					} else { // else a list array is needed
+						if (!group[taglessKey]) {
+							group[taglessKey] = [];
+						}
+						group[taglessKey].push(currentValue);
+					}
+				})
+			}
+
+		})
+		console.log(mongoFormattedState);
+	}
+	
 	// Form Toggle
 
 	const [displayForm, setDisplayForm] = useState(null);
 
 	/* Event handlers */
+
+	// For backing up data
+	const handleUserInfoBackup = () => {
+		exportStateInMongoFormat();
+	}
+
 	// For theme
 
 	const handleThemeChange = (event) => {
@@ -363,6 +446,7 @@ function CVCreator(props) {
 					printHandle={handlePrint} 
 					workingThemeSet={setWorkingTheme}
 					themeChangeHandle={handleThemeChange}
+					userInfoBackupHandle={handleUserInfoBackup}
 					/>
 					<CV 
 						portrait={determineDataDisplayed(portraitFields)}
@@ -384,7 +468,7 @@ function CVCreator(props) {
 					/>
 				}
 				{formType === 'dynamic' &&
-					<CVDynamicFrom 
+					<CVDynamicForm 
 						fields={allFields[displayForm]}
 						section={displayForm} 
 						inputChangeHandle={handleInputChange}

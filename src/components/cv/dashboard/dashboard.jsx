@@ -15,7 +15,7 @@ const DashboardWrapper = styled.div`
         font-weight: 500;
         font-size: 14px;
         letter-spacing: 1px;
-        padding: 12px 32px;
+        padding: 12px 15px;
         border-radius: 10px;
         transition: 0.5s;
         line-height: 1;
@@ -40,13 +40,13 @@ const DashboardWrapper = styled.div`
     }
 `;
 
-const PrintButton = styled.button`
+const DashButton = styled.button`
     &&.btn {
         margin-right: auto;
     }
 `;
 
-function Dashboard({printHandle, workingThemeSet, themeChangeHandle}) {
+function Dashboard({printHandle, workingThemeSet, themeChangeHandle, userInfoBackupHandle}) {
     const themeContext = useContext(ThemeContext);
     const [allThemes, setAllThemes] = useState(getFromLS('all-themes').data);
 
@@ -90,11 +90,16 @@ function Dashboard({printHandle, workingThemeSet, themeChangeHandle}) {
 
     return (
         <DashboardWrapper>
-            <PrintButton 
+            <DashButton 
 				className="btn btn-print-cv"
 				onClick={printHandle}>
 				Print / Save PDF
-			</PrintButton>
+			</DashButton>
+            <DashButton
+                className="btn btn-print-cv"
+                onClick={userInfoBackupHandle}>
+                Save Info
+            </DashButton>
 			<ThemeSelector 
                 workingThemeSet={workingThemeSet} 
                 allThemes={allThemes}

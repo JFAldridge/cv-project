@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Redirect } from 'react-router';
+import { setToLS } from '../../utils/storage';
 
 import CVInput from '../cv/user-info-forms/cv-input';
 
@@ -41,7 +42,7 @@ const AuthForm = styled(Form)`
     }
 `;
 
-function LoginForm() {
+function LoginForm({loggedIn, loginToggle}) {
     const [inputFields, setInputFields] = useState({
         email: '',
         password: ''
@@ -62,7 +63,7 @@ function LoginForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
+      
         axios({
             method: 'POST',
             url: 'http://localhost:5000/auth/login',
@@ -71,8 +72,9 @@ function LoginForm() {
                 password: inputFields.password
             }
         }).then( user => {
+            setToLS('token', user.data.token);
+            loginToggle();
             setUserInfo(user.data.userInfo);
-            console.log(user)
         }).catch( error => {
             setError(error);
         })
@@ -97,7 +99,7 @@ function LoginForm() {
                         <h2>Log In</h2>
                         <p className="mb-3">Not registered? Register Now!</p>
                         {error &&
-                        <p className="text-danger">Error: {error.message}</p>}
+                        <p className="text-danger">That email/password combination doesn't exist</p>}
                         <CVInput  
                             inputName="email"
                             currentValue= {inputFields.email}
