@@ -9,3 +9,7 @@ export const getFromLS = key => {
         return JSON.parse(value);
     }
 }
+
+export const removeFromLS = (key) => {
+    window.localStorage.removeItem(key);
+}

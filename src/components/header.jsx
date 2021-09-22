@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Header({loggedIn, loginToggle}) {
+function Header({loggedIn, logoutHandle}) {
 
     return (
         <header id="header" className="d-flex align-items-center header-transparent">
@@ -11,7 +11,7 @@ function Header({loggedIn, loginToggle}) {
                 </div>
                 <Link to='/'>Home</Link>
                 {loggedIn ?
-                    <li onClick={loginToggle}>Log Out</li>
+                    <li onClick={logoutHandle}>Log Out</li>
                     :
                     <Link to='/login'>Login</Link>
                 }

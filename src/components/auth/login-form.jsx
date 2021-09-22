@@ -42,7 +42,7 @@ const AuthForm = styled(Form)`
     }
 `;
 
-function LoginForm({loggedIn, loginToggle}) {
+function LoginForm({loggedIn, loginHandle}) {
     const [inputFields, setInputFields] = useState({
         email: '',
         password: ''
@@ -73,7 +73,7 @@ function LoginForm({loggedIn, loginToggle}) {
             }
         }).then( user => {
             setToLS('token', user.data.token);
-            loginToggle();
+            loginHandle();
             setUserInfo(user.data.userInfo);
         }).catch( error => {
             setError(error);

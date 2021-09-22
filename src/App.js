@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Switch, Route } from "react-router-dom";
+import { removeFromLS } from './utils/storage';
 import CVCreator from './components/cv/cv-creator';
 import Header from './components/header';
 import Hero from './components/hero';
@@ -10,17 +11,22 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const toggleLogin = () => {
-    loggedIn ? setLoggedIn(false) : setLoggedIn(true);
+  const handleLogin = () => {
+    setLoggedIn(true);
+  }
+
+  const handleLogout = () => {
+    removeFromLS('token');
+    setLoggedIn(false);
   }
 
   return (
     <div className="App">
-      <Header loggedIn={loggedIn} loginToggle={toggleLogin}/>
+      <Header loggedIn={loggedIn} logoutHandle={handleLogout}/>
       <Hero />
       <Switch>
         <Route path="/login">
-          <LoginForm loggedIn={loggedIn} loginToggle={toggleLogin} />
+          <LoginForm loggedIn={loggedIn} loginHandle={handleLogin} />
         </Route>
         <Route path="/"  render={(props) => <CVCreator {...props} loggedIn={loggedIn} />}>
         </Route>
