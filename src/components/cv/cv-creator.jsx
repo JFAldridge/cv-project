@@ -17,6 +17,12 @@ import { useTheme } from '../../theme/useTheme.jsx';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 
+// Axios
+import axios from 'axios';
+
+// Localstorage
+import { getFromLS } from '../../utils/storage';
+
 
 const CVCreatorWrapper = styled.div`
 	display: flex;
@@ -264,6 +270,8 @@ function CVCreator(props) {
 		return currentValueState;
 	}
 
+	const [exportError, setExportError] = useState(null);
+
 	const exportStateInMongoFormat = () => {
 		const mongoFormattedState = {};
 
@@ -303,7 +311,19 @@ function CVCreator(props) {
 			}
 
 		})
-		console.log(mongoFormattedState);
+		
+		axios({
+            method: 'PUT',
+            url: 'http://localhost:5000/user/userinfo',
+			headers: { Authorization: `Bearer ${getFromLS('token')}`},
+            data: {
+                userInfo: mongoFormattedState
+            }
+        }).then( response => {
+            console.log(response.data.message);
+        }).catch( error => {
+            console.log(error);
+        })
 	}
 	
 	// Form Toggle
