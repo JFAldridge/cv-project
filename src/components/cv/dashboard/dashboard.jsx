@@ -64,7 +64,6 @@ function Dashboard({printHandle, workingThemeSet, themeChangeHandle, userInfoBac
     useEffect(() => {
         if (flashMessage) {
             const flashTimeout = setTimeout(() => {
-                console.log('inside timeout')
                 flashMessageExpire()
             }, 3000)
 

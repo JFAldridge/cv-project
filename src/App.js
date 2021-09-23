@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, Route } from "react-router-dom";
-import { removeFromLS } from './utils/storage';
+import { removeFromLS, getFromLS } from './utils/storage';
 import CVCreator from './components/cv/cv-creator';
 import Header from './components/header';
 import Hero from './components/hero';
@@ -19,6 +19,11 @@ function App() {
     removeFromLS('token');
     setLoggedIn(false);
   }
+
+  useEffect(() => {
+    const token = getFromLS('token');
+    if (token) setLoggedIn(true);
+  }, []);
 
   return (
     <div className="App">

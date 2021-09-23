@@ -219,7 +219,7 @@ function CVCreator(props) {
 
 	const userInfoLoaded = useRef(false);
 
-	// Props have been loaded from login/register redirect and hadn't been there before
+	// Props have been loaded from login redirect and hadn't been there before
 	if (props.location.state && !userInfoLoaded.current) { 
 		const userInfo = props.location.state.userInfo;
 		
@@ -252,8 +252,23 @@ function CVCreator(props) {
 					return {...prevState, ...newState};
 				})
 			})
+		} else {
+			axios({
+				method: 'GET',
+				url: 'http://localhost:5000/user/userinfo',
+				headers: { Authorization: `Bearer ${getFromLS('token')}`},
+			}).then( response => {
+				Object.entries(response.data.userInfo).forEach(([section, data]) => {
+					updateStateWithMongoData(data, section);
+				});
+			}).catch( error => {
+				console.log(error)
+				setFlashMessage('Info unavailable');
+			})
 		}
 	}
+
+	
 
 	/* 	These functions convert Reacts flattened state to
 		MongoDB's nested state.
@@ -273,7 +288,6 @@ function CVCreator(props) {
 	const [flashMessage, setFlashMessage] = useState(null);
 
 	const expireFlashMessage = useCallback(() => {
-		console.log('expire');
 		setFlashMessage(null);
 	}, [setFlashMessage]);
 

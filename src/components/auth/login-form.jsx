@@ -99,7 +99,7 @@ function LoginForm({loggedIn, loginHandle}) {
                         <h2>Log In</h2>
                         <p className="mb-3">Not registered? Register Now!</p>
                         {error &&
-                        <p className="text-danger">That email/password combination doesn't exist</p>}
+                            <p className="text-danger">That email/password combination doesn't exist</p>}
                         <CVInput  
                             inputName="email"
                             currentValue= {inputFields.email}
