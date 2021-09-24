@@ -18,6 +18,7 @@ const NavList = styled.ul`
         color: #ededed;
         margin-left: 13px;
         padding: 4px;
+        padding: 7px;
         padding-bottom: 2px;
         &:hover {
             color: #ffffff;
