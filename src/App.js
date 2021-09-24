@@ -6,6 +6,7 @@ import Header from './components/header';
 import Hero from './components/hero';
 import Footer from './components/footer';
 import LoginForm from './components/auth/login-form';
+import RegisterForm from './components/auth/register-form';
 
 function App() {
 
@@ -30,6 +31,9 @@ function App() {
       <Header loggedIn={loggedIn} logoutHandle={handleLogout}/>
       <Hero />
       <Switch>
+        <Route path="/register">
+          <RegisterForm loggedIn={loggedIn} loginHandle={handleLogin} />
+        </Route>
         <Route path="/login">
           <LoginForm loggedIn={loggedIn} loginHandle={handleLogin} />
         </Route>

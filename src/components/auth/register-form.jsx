@@ -3,7 +3,6 @@ import { Form } from 'react-bootstrap';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Redirect } from 'react-router';
-import { setToLS } from '../../utils/storage';
 import { Link } from 'react-router-dom';
 
 import CVInput from '../cv/user-info-forms/cv-input';
@@ -52,13 +51,13 @@ const AuthForm = styled(Form)`
     }
 `;
 
-function LoginForm({loggedIn, loginHandle}) {
+function RegisterForm(props) {
     const [inputFields, setInputFields] = useState({
         email: '',
         password: ''
     });
-    const [userInfo, setUserInfo] = useState(null);
-    const [error, setError] = useState(null);
+    const [errorMessages, setErrorMessages] = useState(null);
+    const [registered, setRegistered] = useState(false);
 
     const handleInputChange = (event) => {
 		const name = event.target.name;	
@@ -71,33 +70,50 @@ function LoginForm({loggedIn, loginHandle}) {
 		});
 	}
 
+    const prettifyAndSetErrorMessages = (messagesObj) => {
+        let messages = [];
+
+        Object.values(messagesObj).forEach((message, i) => {
+            messages.push(<li key={i} className="text-danger">{message}</li>);
+        })
+
+        setErrorMessages(messages);
+    }
+
+    const checkEmailValidity = (emailInput) => {
+        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(emailInput)) {
+            return true;
+        }
+    } 
+
     const handleSubmit = (event) => {
         event.preventDefault();
-      
+        const trimmedEmail = inputFields.email.trim;
+        const trimmedPassword = inputFields.password.trim;
+
+        if (!checkEmailValidity(trimmedEmail)) {
+            return prettifyAndSetErrorMessages({ email: 'Invalid email format!'});
+        }
+
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/auth/login',
+            url: 'http://localhost:5000/auth/register',
             data: {
-                email: inputFields.email,
-                password: inputFields.password
+                email: trimmedEmail,
+                password: trimmedPassword
             }
-        }).then( user => {
-            setToLS('token', user.data.token);
-            loginHandle();
-            setUserInfo(user.data.userInfo);
+        }).then( response => {
+            setRegistered(true);
         }).catch( error => {
-            setError(error);
+            prettifyAndSetErrorMessages(error.response.data.errMessages);
         })
     }
 
-    if (userInfo) {
+    if (registered) {
         return (
             <Redirect 
                 to={{
-                    pathname: '/',
-                    state: {
-                        userInfo: userInfo
-                    }
+                    pathname: '/login',
                 }}
             />
         );
@@ -106,12 +122,12 @@ function LoginForm({loggedIn, loginHandle}) {
             <AuthContainer>
                 <FormContainer>
                     <AuthForm onSubmit={handleSubmit}>
-                        <h2>Log In</h2>
-                        <p className="mb-3">Not registered? 
-                            <Link to='/register'>Register Now!</Link>
+                        <h2>Register</h2>
+                        <p className="mb-3">Already registered? 
+                            <Link to='/login'>Login!</Link>
                         </p>
-                        {error &&
-                            <p className="text-danger">That email/password combination doesn't exist</p>}
+                        {errorMessages &&
+                            <ul>{errorMessages}</ul>}
                         <CVInput  
                             inputName="email"
                             currentValue= {inputFields.email}
@@ -134,4 +150,4 @@ function LoginForm({loggedIn, loginHandle}) {
     } 
 }
 
-export default LoginForm;
+export default RegisterForm;
