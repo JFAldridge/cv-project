@@ -4,6 +4,7 @@ import styled, { ThemeContext } from 'styled-components';
 import CreateTheme from './create-theme';
 import { getFromLS } from '../../../utils/storage';
 import { v4 as uuidv4  } from 'uuid';
+import { Link } from 'react-router-dom';
 
 const DashboardWrapper = styled.div`
     display: flex;
@@ -14,9 +15,8 @@ const DashboardWrapper = styled.div`
         font-family: 'Noto Sans JP', sans-serif;
         font-weight: 500;
         font-size: 14px;
-        letter-spacing: 1px;
+        
         padding: 12px 15px;
-        border-radius: 10px;
         transition: 0.5s;
         line-height: 1;
         margin: 20px 10px;
@@ -24,6 +24,8 @@ const DashboardWrapper = styled.div`
         background-color: transparent;
         animation-delay: 0.8s;
         border: 2px solid #68A4C4;
+        border-radius: 10px;
+        letter-spacing: 1px;
         &:hover {
             background: #68A4C4;
             color: #fff;
@@ -57,10 +59,52 @@ const FlashMessageContainer = styled.div`
     }
 `;
 
-function Dashboard({printHandle, workingThemeSet, themeChangeHandle, userInfoBackupHandle, flashMessage, flashMessageExpire}) {
+const CallToRegister = styled.div`
+    width: 45%;
+    border: 2px solid #68A4C4;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    box-shadow: 0 0 3px #ffffff6b;
+    margin: 9px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+        margin: 0;
+        color: #fefefe;
+        height: 38px;
+    }
+    a {
+        color: #fefefe;
+        text-decoration: none;
+        margin-left: 4px;
+        font-size: 1.2em;
+        &:hover {
+            color: #a2cce3;
+        }
+    }
+`;
+
+const Spacer = styled.div`
+    width: 5%;
+`;
+
+const Divider = styled.span`
+    display:inline-block;
+    height: 24px;
+    width: 2px;
+    border-left: 2px solid #68A4C4;
+    box-shadow: 0 0 3px #ffffff6b;
+    position: relative;
+    top: 6px;
+    margin: 0 7px;
+`;
+
+function Dashboard({printHandle, workingThemeSet, themeChangeHandle, userInfoBackupHandle, flashMessage, flashMessageExpire, loggedIn}) {
     const themeContext = useContext(ThemeContext);
     const [allThemes, setAllThemes] = useState(getFromLS('all-themes').data);
-
+    
     useEffect(() => {
         if (flashMessage) {
             const flashTimeout = setTimeout(() => {
@@ -107,6 +151,26 @@ function Dashboard({printHandle, workingThemeSet, themeChangeHandle, userInfoBac
         // Add to all themes and set with default name
         setAllThemes({...allThemes, ...newThemeData});
         workingThemeSet({...workingTheme, ...{name: "New Theme"}});
+    }
+
+    if (!loggedIn) {
+        return (
+            <DashboardWrapper>
+                <DashButton 
+                    className="btn btn-print-cv"
+                    onClick={printHandle}>
+                    Print / Save PDF
+                </DashButton>
+                <Spacer></Spacer>
+                <ThemeSelector 
+                    workingThemeSet={workingThemeSet} 
+                    allThemes={allThemes}
+                />
+                <CallToRegister>
+                    <p>Create a theme! <Link to='/login'>Login</Link> <Divider></Divider> <Link to='/register'>Register</Link></p>
+                </CallToRegister>
+            </DashboardWrapper>
+        );
     }
 
     return (

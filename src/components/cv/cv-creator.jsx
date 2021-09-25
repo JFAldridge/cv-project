@@ -23,6 +23,9 @@ import axios from 'axios';
 // Localstorage
 import { getFromLS } from '../../utils/storage';
 
+// Webfont
+import WebFont from 'webfontloader';
+
 
 const CVCreatorWrapper = styled.div`
 	display: flex;
@@ -52,6 +55,22 @@ function CVCreator(props) {
 		// Working theme should be name New Theme when first loaded
 		setWorkingTheme({...theme, ...{name: 'New Theme'}});
 	}, [theme]);
+
+	// When Logging out, reset theme and apply fonts(fontloader is in hidden theme creator)
+
+	useEffect(() => {
+		if (!props.loggedIn) {
+			setWorkingTheme({...theme, ...{name: 'New Theme'}});
+			const hFontVal = workingTheme.headerFont;
+            const cFontVal = workingTheme.contentFont;
+            
+            WebFont.load({
+                google: {
+                    families: [hFontVal, cFontVal]
+                }
+            });
+		}
+	}, [props.loggedIn, theme, workingTheme.headerFont, workingTheme.contentFont])
 
 	/* State for user info */
 
@@ -488,6 +507,7 @@ function CVCreator(props) {
 					userInfoBackupHandle={handleUserInfoBackup}
 					flashMessage={flashMessage}
 					flashMessageExpire={expireFlashMessage}
+					loggedIn={props.loggedIn}
 					/>
 					<CV 
 						portrait={determineDataDisplayed(portraitFields)}
