@@ -32,4 +32,4 @@ npm start
 - Printable CV with customizable content
 - Theme creator to customize visual appearance of CV
 - Authentication and authorization
-- Capable of sending data to backend for logged in users
+- Saves CV data to backend
