@@ -1,6 +1,6 @@
 # CV Application
 
-A React app which provides users with a CV template to fill and print or download as a PDF.  
+A React app which provides users with a CV template to fill and style, then print or download as a PDF.   
 Inspired by [The Odin Project](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/cv-application) 
 
 [Live Demo](https://jfaldridge.dev/cvcreator/index.html) (test login -> email: he@man.com, password: universe)
