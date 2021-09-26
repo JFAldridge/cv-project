@@ -101,7 +101,7 @@ function CVCreator(props) {
 		skill_C0: [null, 'text', 'Skill', 'Making list items'],
 		skill_D0: [null, 'text', 'Skill', 'Making list items'],
 		skill_E0: [null, 'text', 'Skill', 'Making list items'],
-		skill_F0: [null, 'text', 'Skill', 'Making list items'],
+		skill_F0: [null, 'text', 'Skill', ''],
 		skill_G0: [null, 'text', 'Skill', ''],
 		skill_H0: [null, 'text', 'Skill', ''],
 		skill_I0: [null, 'text', 'Skill', ''],
@@ -110,7 +110,7 @@ function CVCreator(props) {
 		skill_B1: [null, 'text', 'Skill', 'Being well liked'],
 		skill_C1: [null, 'text', 'Skill', 'Being well liked'],
 		skill_D1: [null, 'text', 'Skill', 'Being well liked'],
-		skill_E1: [null, 'text', 'Skill', 'Being well liked'],
+		skill_E1: [null, 'text', 'Skill', ''],
 		skill_F1: [null, 'text', 'Skill', ''],
 		skill_G1: [null, 'text', 'Skill', ''],
 		skill_H1: [null, 'text', 'Skill', ''],
@@ -144,6 +144,8 @@ function CVCreator(props) {
 		achievement_E1: [null, 'text', 'Achievement', ''],
 		achievement_F1: [null, 'text', 'Achievement', ''],
 	});
+
+	//console.log(workExperienceFields);
 	
 	const [portraitFields, setPortraitFields] = useState({
 		image: [null],
@@ -180,14 +182,18 @@ function CVCreator(props) {
 			tags are added back on
 		*/
 		const sectionFields = allFields[section];
-        let groupWithoutClassificationTags = {};
+        let groupSansClassificationTags = {};
 
-        Object.keys(allFields[section]).forEach((fieldKey) => {
+        Object.keys(sectionFields).sort().forEach((fieldKey) => {
 			const keyWithoutTag = fieldKey.split('_')[0];
-			groupWithoutClassificationTags[keyWithoutTag] = [...sectionFields[fieldKey]];
+			if (!groupSansClassificationTags[keyWithoutTag]) {
+				groupSansClassificationTags[keyWithoutTag] = [...sectionFields[fieldKey]];
+			}
         });
 
-        return groupWithoutClassificationTags;
+		console.log(groupSansClassificationTags)
+
+        return groupSansClassificationTags;
     }
 			
 	const updateStateWithMongoData = (mongoInfo, section) => {
@@ -281,7 +287,6 @@ function CVCreator(props) {
 					updateStateWithMongoData(data, section);
 				});
 			}).catch( error => {
-				console.log(error)
 				setFlashMessage('Info unavailable');
 			})
 		}
