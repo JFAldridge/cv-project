@@ -97,7 +97,7 @@ function RegisterForm(props) {
 
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/auth/register',
+            url: 'https://fathomless-dusk-73604.herokuapp.com/auth/register',
             data: {
                 email: trimmedEmail,
                 password: trimmedPassword

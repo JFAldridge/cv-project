@@ -191,8 +191,6 @@ function CVCreator(props) {
 			}
         });
 
-		console.log(groupSansClassificationTags)
-
         return groupSansClassificationTags;
     }
 			
@@ -280,7 +278,7 @@ function CVCreator(props) {
 		} else {
 			axios({
 				method: 'GET',
-				url: 'http://localhost:5000/user/userinfo',
+				url: 'https://fathomless-dusk-73604.herokuapp.com/user/userinfo',
 				headers: { Authorization: `Bearer ${getFromLS('token')}`},
 			}).then( response => {
 				Object.entries(response.data.userInfo).forEach(([section, data]) => {
@@ -357,7 +355,7 @@ function CVCreator(props) {
 		
 		axios({
             method: 'PUT',
-            url: 'http://localhost:5000/user/userinfo',
+            url: 'https://fathomless-dusk-73604.herokuapp.com/user/userinfo',
 			headers: { Authorization: `Bearer ${getFromLS('token')}`},
             data: {
                 userInfo: mongoFormattedState
