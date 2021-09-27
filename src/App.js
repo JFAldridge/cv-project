@@ -18,6 +18,7 @@ function App() {
 
   const handleLogout = () => {
     removeFromLS('token');
+    removeFromLS('theme');
     setLoggedIn(false);
   }
 
