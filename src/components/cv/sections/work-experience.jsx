@@ -33,7 +33,7 @@ function Position({fieldGroup, groupNum}) {
 
     return (
         <div className="position">
-            <h4 className="company">{fieldGroup['company_' + groupNum]} <PositionTitle>{fieldGroup['position' + groupNum]}</PositionTitle></h4>
+            <h4 className="company">{fieldGroup['company_' + groupNum]} <PositionTitle>{fieldGroup['position_' + groupNum]}</PositionTitle></h4>
             <p className="duration">{fieldGroup['duration_' + groupNum]}</p>
             <p className="position-summary">{fieldGroup['summary_' + groupNum]}</p>
             <ul className="achievements">

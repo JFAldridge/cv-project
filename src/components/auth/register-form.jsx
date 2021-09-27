@@ -81,15 +81,14 @@ function RegisterForm(props) {
     }
 
     const checkEmailValidity = (emailInput) => {
-        if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(emailInput)) {
-            return true;
-        }
+        const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return re.test(emailInput);
     } 
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const trimmedEmail = inputFields.email.trim;
-        const trimmedPassword = inputFields.password.trim;
+        const trimmedEmail = inputFields.email.trim().toLowerCase();
+        const trimmedPassword = inputFields.password.trim();
 
         if (!checkEmailValidity(trimmedEmail)) {
             return prettifyAndSetErrorMessages({ email: 'Invalid email format!'});
