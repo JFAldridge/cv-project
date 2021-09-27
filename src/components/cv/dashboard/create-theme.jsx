@@ -242,7 +242,7 @@ function CreateTheme({themeChangeHandle, createdThemeSave}) {
                             <div className="row mb-3">
                                 <div className="col-10 offset-1">
                                     <Dropdown.Item as={SaveButton} className="mt-4 btn create-theme">
-                                        Save Theme
+                                        Add Theme
                                     </Dropdown.Item>
                                 </div>
                             </div>
