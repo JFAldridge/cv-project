@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import ThemeSelector from './theme-selector';
 import styled, { ThemeContext } from 'styled-components';
 import CreateTheme from './create-theme';
-import { getFromLS } from '../../../utils/storage';
+import { getFromLS, setToLS } from '../../../utils/storage';
 import { v4 as uuidv4  } from 'uuid';
 import { Link } from 'react-router-dom';
 
@@ -138,6 +138,18 @@ function Dashboard({printHandle, workingThemeSet, themeChangeHandle, userInfoBac
         return name + i.toString();
     }
 
+    const deleteTheme = (themeName) => {
+        const nameCamelized = camelize(themeName);
+        const { [nameCamelized]: _, ...newAllThemes } = allThemes;
+        console.log('taco')
+        console.log(allThemes)
+        // nested for localstorage
+        const allThemesLS = {};
+        allThemesLS['data'] = {...newAllThemes};
+
+        setAllThemes({...newAllThemes});
+        setToLS('all-themes', allThemesLS);
+    }
     const saveCreatedTheme = () => {
         // Duplicate working theme, give it unique id, ensure name uniqueness
         let workingTheme = {...themeContext};
@@ -147,9 +159,14 @@ function Dashboard({printHandle, workingThemeSet, themeChangeHandle, userInfoBac
         // Format it to fit allThemes and combine
         let newThemeData = {};
         newThemeData[camelize(workingTheme["name"])] = {...workingTheme};
+
+        // nested for localstorage
+        const allThemesLS = {};
+        allThemesLS['data'] = {...allThemes, ...newThemeData};
    
         // Add to all themes and set with default name
         setAllThemes({...allThemes, ...newThemeData});
+        setToLS('all-themes', allThemesLS);
         workingThemeSet({...workingTheme, ...{name: "New Theme"}});
     }
 
@@ -193,6 +210,7 @@ function Dashboard({printHandle, workingThemeSet, themeChangeHandle, userInfoBac
 			<ThemeSelector 
                 workingThemeSet={workingThemeSet} 
                 allThemes={allThemes}
+                themeDelete={deleteTheme}
             />
             <CreateTheme 
                 themeChangeHandle={themeChangeHandle}

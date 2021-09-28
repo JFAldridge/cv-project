@@ -35,7 +35,17 @@ const ThemeIcon = styled.div`
     margin-right: 8px;
 `;
 
-function ThemeSelector({workingThemeSet, allThemes}) {
+const DeleteIcon = styled.i`
+    margin-left: 18px;
+    font-size: 1.5em;
+    transition: 0.5s;
+    &:hover {
+       color: #1e4356; 
+    }
+`;
+
+
+function ThemeSelector({workingThemeSet, allThemes, themeDelete}) {
     const {setMode} = useTheme();
     const themeContext = useContext(ThemeContext);
 
@@ -53,7 +63,7 @@ function ThemeSelector({workingThemeSet, allThemes}) {
 
             <ThemeMenu varient="dark">
                 {
-                    Object.values(allThemes).map(theme => {
+                    Object.values(allThemes).map((theme, i) => {
                         return (
                             <ThemeOption
                                 className="btn"
@@ -65,6 +75,11 @@ function ThemeSelector({workingThemeSet, allThemes}) {
                                     accentBg={theme.accentBg}
                                 />
                                 {theme.name}
+                                {i > 2 &&
+                                    <DeleteIcon 
+                                        className="bi bi-x-square close-input-group"
+                                        onClick={() => themeDelete(theme.name)}
+                                    ></DeleteIcon>}
                             </ThemeOption>
                         );
                     })

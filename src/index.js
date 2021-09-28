@@ -7,10 +7,12 @@ import { HashRouter } from "react-router-dom";
 
 import * as themes from './theme/schema.json';
 import * as allFonts from './theme/allFonts.json';
-import { setToLS } from './utils/storage';
+import { setToLS, existsInLS } from './utils/storage';
 
 const Index = () => {
-  setToLS('all-themes', themes.default);
+  if (!existsInLS('all-themes')) {
+    setToLS('all-themes', themes.default);
+  }
   setToLS('theme', themes.default.data.navyAvi);
   setToLS('all-fonts', allFonts.default);
   return(

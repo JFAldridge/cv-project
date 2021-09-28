@@ -13,3 +13,8 @@ export const getFromLS = key => {
 export const removeFromLS = (key) => {
     window.localStorage.removeItem(key);
 }
+
+export const existsInLS = key => {
+    const value = window.localStorage.getItem(key);
+    return !!value;
+}
